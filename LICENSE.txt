@@ -6,7 +6,8 @@ World PIDS-Pack [MTR 4/JCM]: Terms & Conditions:
     TeamPommes is the creator and copyright owner of this resource pack.
     These Terms of Use may be modified by the owner at any time.
     These Terms of Use apply only if you use this resource pack yourself or publicly.
-    The terms listed in the LICENSE.txt file supersede any license, readme, or terms of use information provided elsewhere.
+    The terms listed in the LICENSE.txt file supersede any license, readme, or terms of use information
+    provided elsewhere.
     The owner has the final say on what terms of use apply to this resource pack and its elements.
 
 
@@ -14,10 +15,13 @@ With this resource pack, you MAY:
 
     use (both private and on public servers) and edit the resource pack at any time.
     show the resourcepack in your videos, live streams, or blogs.
-    show an edited version of the resource pack in your videos, live streams, or blogs if the resource pack version is not public.
+    show an edited version of the resource pack in your videos, live streams, or blogs if the resource
+    pack version is not public.
 
 
 With this resource pack, you MAY NOT:
 
-    include unedited elements of the resource pack in your own resource pack when publishing it unless you have permission from the owner.
+    include unedited elements of the resource pack in your own resource pack when publishing it unless
+    you have permission from the owner.
+
 
