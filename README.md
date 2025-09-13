@@ -6,4 +6,4 @@ Download it here: https://modrinth.com/resourcepack/world-pids-pack
 [Tutorial & Guidelines](CONTRIBUTING.md)
 
 ## Pack-License
-[License](LICENSE.md)
+[License](LICENSE.txt)
