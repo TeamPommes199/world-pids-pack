@@ -56,6 +56,14 @@ function render(ctx, state, pids) {
         eta = Math.round(eta);
         if (eta < 1) {
           eta = 0
+          Text.create("Arrival ETA")
+              .text(eta + " dk")
+              .color(0xffff00)
+              .pos(pids.width - 42, rowY)
+              .size(32, 7)
+              .scaleXY()
+              .scale(1.65)
+              .draw(ctx);
         } else {
           Text.create("Arrival ETA")
               .text(eta + " dk")
