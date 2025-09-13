@@ -10,7 +10,7 @@ If so, here is a tutorial showing you how to get the pack, edit it, and submit y
 ## 2. Clone Your Fork
 Open a terminal and run:
 ```bash
-git clone https://github.com/YOUR_USERNAME/world-pids-pack.git
+git clone https://github.com/YOUR_USERNAME/world-pids-pack
 cd world-pids-pack
 ```
 - replace YOUR_USERNAME with your username
