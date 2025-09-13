@@ -10,9 +10,10 @@ If so, here is a tutorial showing you how to get the pack, edit it, and submit y
 ## 2. Clone Your Fork
 Open a terminal and run:
 ```bash
-git clone https://github.com/TeamPommes199/world-pids-pack.git
+git clone https://github.com/YOUR_USERNAME/world-pids-pack.git
 cd world-pids-pack
 ```
+- replace YOUR_USERNAME with your username
 
 ## 3. Create a New Branch
 - It’s recommended to work on a separate branch:
@@ -45,3 +46,13 @@ git push origin feature/your-change-name
 - Click "Compare & pull request".
 - Write a short description of what you changed.
 - Submit the pull request.
+
+
+## Contributor License Agreement
+
+By submitting code to this repository, you agree that:
+
+- Your contribution will become part of the **World-PIDs-Pack** project.
+- Your contribution will be distributed under the same license as the project (see [LICENSE](LICENSE.txt)).
+- You still retain the rights to use your own code elsewhere.
+- You cannot hold the project maintainers liable for using your contribution as part of the pack.
