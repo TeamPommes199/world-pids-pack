@@ -56,3 +56,4 @@ By submitting code to this repository, you agree that:
 - Your contribution will be distributed under the same license as the project (see [LICENSE](LICENSE.txt)).
 - You still retain the rights to use your own code elsewhere.
 - You cannot hold the project maintainers liable for using your contribution as part of the pack.
+- You will not be paid for contributing to this pack. All contributions are made voluntarily and free of charge.
