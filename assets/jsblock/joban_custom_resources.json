@@ -1,0 +1,263 @@
+{
+	"pids_images": [
+		{
+			"id": "munich_s_bahn",
+			"name": "Munich S-Bahn",
+			"background": "jsblock:custom_directory/munich.png",
+			"thumbnail": "jsblock:custom_directory/munich.png",
+			"scriptFiles": ["jsblock:scripts/munich_sbahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "munich_s_bahn_1a",
+			"name": "Munich S-Bahn",
+			"background": "jsblock:custom_directory/munich.png",
+			"thumbnail": "jsblock:custom_directory/munich.png",
+			"scriptFiles": ["jsblock:scripts/munich_sbahn_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "munich_u_bahn",
+			"name": "Munich Subway",
+			"background": "jsblock:custom_directory/munich_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/munich_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/munich_ubahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "nuremberg",
+			"name": "Nuremberg S-Bahn",
+			"background": "jsblock:custom_directory/nuremberg.png",
+			"thumbnail": "jsblock:custom_directory/nuremberg.png",
+			"scriptFiles": ["jsblock:scripts/nuremberg.js"],
+			"blacklist": ["lcd_pids", "pids_1a"]
+		},
+
+		{
+			"id": "hamburg_s_bahn",
+			"name": "Hamburg S-Bahn",
+			"background": "jsblock:custom_directory/hamburg.png",
+			"thumbnail": "jsblock:custom_directory/hamburg.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_sbahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "hamburg_u_bahn",
+			"name": "Hamburg Subway",
+			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_ubahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "hamburg_u_bahn_colored",
+			"name": "Hamburg Subway (colored)",
+			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "hamburg_u_bahn_1a",
+			"name": "Hamburg Subway",
+			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "hamburg_u_bahn_colored_1a",
+			"name": "Hamburg Subway (colored)",
+			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "db_old",
+			"name": "DB PIDS (2016)",
+			"background": "jsblock:custom_directory/db_old.png",
+			"thumbnail": "jsblock:custom_directory/db_old.png",
+			"scriptFiles": ["jsblock:scripts/db_old.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "db_big",
+			"name": "DB PIDS (big)",
+			"background": "jsblock:custom_directory/blank.png",
+			"thumbnail": "jsblock:custom_directory/blank.png",
+			"scriptFiles": ["jsblock:scripts/db_big.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "obb",
+			"name": "ÖBB",
+			"background": "jsblock:custom_directory/obb.png",
+			"thumbnail": "jsblock:custom_directory/obb.png",
+			"scriptFiles": ["jsblock:scripts/obb.js"],
+			"blacklist": []
+		},
+
+		{
+			"id": "obb_2022",
+			"name": "ÖBB (2022)",
+			"background": "jsblock:custom_directory/obb_2022.png",
+			"thumbnail": "jsblock:custom_directory/obb_2022.png",
+			"scriptFiles": ["jsblock:scripts/obb_2022.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "sbb",
+			"name": "SBB",
+			"background": "jsblock:custom_directory/sbb.png",
+			"thumbnail": "jsblock:custom_directory/sbb.png",
+			"scriptFiles": ["jsblock:scripts/sbb.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "vienna_u_bahn",
+			"name": "Vienna Subway ",
+			"background": "jsblock:custom_directory/vienna_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/vienna_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/vienna_u_bahn.js"],
+			"blacklist": ["lcd_pids", "pids_1a"]
+		},
+
+		{
+			"id": "karlsruhe_stadtbahn",
+			"name": "Karlsruhe Light Rail",
+			"background": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
+			"thumbnail": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
+			"scriptFiles": ["jsblock:scripts/karlsruhe_stadtbahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "rostock_tram",
+			"name": "Rostock Tram",
+			"background": "jsblock:custom_directory/rostock_tram.png",
+			"thumbnail": "jsblock:custom_directory/rostock_tram.png",
+			"scriptFiles": ["jsblock:scripts/rostock_tram.js"],
+			"blacklist": []
+		},
+
+		{
+			"id": "frankfurt_u_bahn",
+			"name": "Frankfurt Subway",
+			"background": "jsblock:custom_directory/black.png",
+			"thumbnail": "jsblock:custom_directory/black.png",
+			"scriptFiles": ["jsblock:scripts/frankfurt_ubahn.js"],
+			"blacklist": []
+		},
+
+		{
+			"id": "stockholm_u_bahn",
+			"name": "Stockholm Subway",
+			"background": "jsblock:custom_directory/stockholm_subway.png",
+			"thumbnail": "jsblock:custom_directory/stockholm_subway.png",
+			"scriptFiles": ["jsblock:scripts/stockholm_subway.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "sj_sweden",
+			"name": "SJ (Statens Järnväg)",
+			"background": "jsblock:custom_directory/sj_sweden_depatures.png",
+			"thumbnail": "jsblock:custom_directory/sj_sweden_depatures.png",
+			"scriptFiles": ["jsblock:scripts/sj_sweden.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "berlin_u_bahn_1a",
+			"name": "Berlin Subway",
+			"background": "jsblock:custom_directory/berlin_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/berlin_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/berlin_u_bahn_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "berlin_u_bahn",
+			"name": "Berlin Subway",
+			"background": "jsblock:custom_directory/berlin_u_bahn.png",
+			"thumbnail": "jsblock:custom_directory/berlin_u_bahn.png",
+			"scriptFiles": ["jsblock:scripts/berlin_u_bahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "berlin_s_bahn",
+			"name": "Berlin S-Bahn",
+			"background": "jsblock:custom_directory/berlin_s_bahn.png",
+			"thumbnail": "jsblock:custom_directory/berlin_s_bahn.png",
+			"scriptFiles": ["jsblock:scripts/berlin_s_bahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "sydney",
+			"name": "Sydney",
+			"background": "jsblock:custom_directory/sydney.png",
+			"thumbnail": "jsblock:custom_directory/sydney.png",
+			"scriptFiles": ["jsblock:scripts/sydney.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "dutch",
+			"name": "Dutch",
+			"background": "jsblock:custom_directory/dutch.png",
+			"thumbnail": "jsblock:custom_directory/dutch.png",
+			"scriptFiles": ["jsblock:scripts/dutch.js"],
+			"blacklist": ["pids_1a"]
+		},
+		{
+			"id": "hungarian",
+			"name": "Hungarian",
+			"background": "jsblock:custom_directory/hungarian_depature.png",
+			"thumbnail": "jsblock:custom_directory/hungarian_depature.png",
+			"scriptFiles": ["jsblock:scripts/hungarian.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "izmir_metro",
+			"name": "Izmir Subway",
+			"background": "jsblock:custom_directory/izmir_metro.png",
+			"thumbnail": "jsblock:custom_directory/izmir_metro.png",
+			"scriptFiles": ["jsblock:scripts/izmir_metro.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "athen_suburban",
+			"name": "Athen (Suburban)",
+			"background": "jsblock:custom_directory/athen_suburban.png",
+			"thumbnail": "jsblock:custom_directory/athen_suburban.png",
+			"scriptFiles": ["jsblock:scripts/athen_suburban.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "portuguese_depature",
+			"name": "Portuguese (Depatures)",
+			"background": "jsblock:custom_directory/portuguese_depature.png",
+			"thumbnail": "jsblock:custom_directory/portuguese_depature.png",
+			"scriptFiles": ["jsblock:scripts/portuguese_depature.js"],
+			"blacklist": ["pids_1a"]
+		}
+	]
+}
