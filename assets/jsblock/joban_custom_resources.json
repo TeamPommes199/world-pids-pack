@@ -118,6 +118,24 @@
 		},
 
 		{
+			"id": "obb_departure",
+			"name": "ÖBB (departure board)",
+			"background": "jsblock:custom_directory/obb_depature.png",
+			"thumbnail": "jsblock:custom_directory/obb_depature.png",
+			"scriptFiles": ["jsblock:scripts/obb_departure.js"],
+			"blacklist": []
+		},
+
+		{
+			"id": "obb_arrival",
+			"name": "ÖBB (arrival board)",
+			"background": "jsblock:custom_directory/obb_arrival.png",
+			"thumbnail": "jsblock:custom_directory/obb_arrival.png",
+			"scriptFiles": ["jsblock:scripts/obb_arrival.js"],
+			"blacklist": []
+		},
+
+		{
 			"id": "sbb",
 			"name": "SBB",
 			"background": "jsblock:custom_directory/sbb.png",
