@@ -12,6 +12,12 @@ function render(ctx, state, pids) {
     customMsgs = customMsgs.map(item => item.trim());
 
     if (pids.type == "pids_projector") {
+        Texture.create("Background")
+            .texture("jsblock:custom_directory/db_big_row_top_top.png")
+            .size(pids.width + 7, (pids.height / 18) + 4.55)
+            .pos(-3.5, rowY - 9.5)
+            .draw(ctx);
+
         for (let customMsg of customMsgs) {
             if (customMsg.includes("rows:")) {
                 rows = customMsg.replace("rows:", "")
@@ -33,6 +39,7 @@ function render(ctx, state, pids) {
         .size(pids.width + 7, (pids.height / 18) + 2)
         .pos(-3.5, rowY - 0.75)
         .draw(ctx);
+
     for (let i = rows * (page - 1); i < rows * page; i++) {
         let x  = (i - rows * (page - 1))
         if (x / 2 !== Math.round(x / 2) - 0.5) {
