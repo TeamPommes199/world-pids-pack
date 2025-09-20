@@ -276,6 +276,15 @@
 			"thumbnail": "jsblock:custom_directory/portuguese_depature.png",
 			"scriptFiles": ["jsblock:scripts/portuguese_depature.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "finish_vr",
+			"name": "Finish VR",
+			"background": "jsblock:custom_directory/blank.png",
+			"thumbnail": "jsblock:custom_directory/blank.png",
+			"scriptFiles": ["jsblock:scripts/finish_vr.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
