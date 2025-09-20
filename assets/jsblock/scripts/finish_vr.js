@@ -93,6 +93,12 @@ function render(ctx, state, pids) {
             .pos(60, 1.5)
             .size(60, 30)
             .draw(ctx);
+
+        Texture.create("train_stopping_areas")
+            .texture("jsblock:custom_directory/finish_vr_stop_area.png")
+            .size(pids.width, 11.5)
+            .pos(0, pids.height - 11.5)
+            .draw(ctx);
     }
 }
 
