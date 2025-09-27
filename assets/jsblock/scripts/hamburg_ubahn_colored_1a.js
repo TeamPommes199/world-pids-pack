@@ -2,14 +2,24 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-    Texture.create("Background")
-    .texture("jsblock:custom_directory/hamburg_u_bahn_colored_1a.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
-
     let arrival = pids.arrivals().get(0);
-    let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2)];
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+    customMsgs = customMsgs.split(';');
+    customMsgs = customMsgs.map(item => item.trim());
+
     if(arrival != null) {
+        let color = arrival.routeColor()
+        let colorMsg = customMsgs.find(item => item.includes(arrival.routeNumber() + "_color" + ": #"))
+        if (colorMsg) {
+            color = "0x" + colorMsg.replace(arrival.routeNumber() + "_color" + ": #", "")
+        }
+
+        Texture.create("Background")
+            .texture("jsblock:custom_directory/hamburg_u_bahn_colored_1a.png")
+            .size(pids.width, pids.height)
+            .color(color)
+            .draw(ctx);
+
         Text.create("Number Text")
             .text(arrival.routeNumber())
             .centerAlign()
@@ -49,7 +59,7 @@ function render(ctx, state, pids) {
             .draw(ctx);
 
         for (let customMsg of customMsgs) {
-            if (customMsg.includes(arrival.routeNumber(), ":")) {
+            if (customMsg.includes(arrival.routeNumber() + ":")) {
                 let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
                 Text.create("Custom Text")
                     .text(TextUtil.cycleString(customMsg_r))
@@ -63,6 +73,11 @@ function render(ctx, state, pids) {
             }
         }
     } else {
+        Texture.create("Background")
+            .texture("jsblock:custom_directory/hamburg_u_bahn_colored_1a.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+
         Text.create("not in service")
             .text("BETRIEBSPAUSE")
             .pos(110, -22.5)
