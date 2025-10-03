@@ -285,6 +285,15 @@
 			"thumbnail": "jsblock:custom_directory/blank.png",
 			"scriptFiles": ["jsblock:scripts/finish_vr.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "wmata",
+			"name": "WMATA",
+			"background": "jsblock:custom_directory/wmata.png",
+			"thumbnail": "jsblock:custom_directory/wmata.png",
+			"scriptFiles": ["jsblock:scripts/wmata.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
