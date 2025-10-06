@@ -294,6 +294,15 @@
 			"thumbnail": "jsblock:custom_directory/wmata.png",
 			"scriptFiles": ["jsblock:scripts/wmata.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "sncb",
+			"name": "SNCB",
+			"background": "jsblock:custom_directory/sncb.png",
+			"thumbnail": "jsblock:custom_directory/sncb.png",
+			"scriptFiles": ["jsblock:scripts/sncb.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
