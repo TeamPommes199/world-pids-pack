@@ -82,6 +82,48 @@ function render(ctx, state, pids) {
             .draw(ctx);
       }
     }
+    let customMsg = pids.getCustomMessage(3);
+    if(customMsg != "") {
+      Texture.create("ETA background")
+          .texture("jsblock:custom_directory/wmata_custom_row.png")
+          .pos(0, pids.height - 26)
+          .size(pids.width, 26)
+          .draw(ctx);
+
+      if (customMsg.includes("|")) {
+        let index = customMsg.indexOf("|")
+        let [customMsgPartOne, customMsgPartTwo] = [customMsg.slice(0, index), customMsg.slice(index + 1)]
+        Text.create("Arrival destination")
+            .text(customMsgPartOne)
+            .pos(pids.width / 2, pids.height - 25.5)
+            .size(pids.width - 15, 12)
+            .scaleXY()
+            .centerAlign()
+            .scale(1.1)
+            .color(0xffffff)
+            .draw(ctx);
+
+        Text.create("Arrival destination")
+            .text(customMsgPartTwo)
+            .pos(pids.width / 2, pids.height - 13)
+            .size(pids.width - 15, 12)
+            .scaleXY()
+            .centerAlign()
+            .scale(1.1)
+            .color(0xffffff)
+            .draw(ctx);
+      } else {
+        Text.create("Arrival destination")
+            .text(customMsg)
+            .pos(pids.width / 2, pids.height - 25.5)
+            .size(pids.width - 2, 12)
+            .scaleXY()
+            .centerAlign()
+            .scale(1.1)
+            .color(0xffffff)
+            .draw(ctx);
+      }
+    }
   } else {
     Texture.create("Background")
         .texture("jsblock:custom_directory/wmata.png")
