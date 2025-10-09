@@ -99,6 +99,34 @@ function render(ctx, state, pids) {
             .size(pids.width, 11.5)
             .pos(0, pids.height - 11.5)
             .draw(ctx);
+
+        let car_length = arrival_first.carCount();
+        for (let i = 0; i < car_length && i < 14; i++) {
+            let posX = i * 9.5 + 0.25
+
+            if (i + 1 === 1) {
+                Texture.create("train_stopping_areas")
+                    .texture("jsblock:custom_directory/quad_left_missing.png")
+                    .size(9.25, 9.25)
+                    .pos(posX, pids.height - 21)
+                    .draw(ctx);
+            } else {
+                Texture.create("train_stopping_areas")
+                    .texture("jsblock:custom_directory/quad.png")
+                    .size(9.25, 9.25)
+                    .pos(posX, pids.height - 21)
+                    .draw(ctx);
+            }
+
+            Text.create("train_stopping_areas")
+                .text(i + 1)
+                .size(1.75, 1.75)
+                .pos(posX + 4.75, pids.height - 18)
+                .scale(0.6)
+                .centerAlign()
+                .color(0x1111aa)
+                .draw(ctx);
+        }
     }
 }
 
