@@ -242,6 +242,16 @@
 			"scriptFiles": ["jsblock:scripts/dutch.js"],
 			"blacklist": ["pids_1a"]
 		},
+
+		{
+			"id": "dutch_bus",
+			"name": "Dutch (Bus)",
+			"background": "jsblock:custom_directory/dutch_bus.png",
+			"thumbnail": "jsblock:custom_directory/dutch_bus.png",
+			"scriptFiles": ["jsblock:scripts/dutch_bus.js"],
+			"blacklist": ["pids_1a"]
+		},
+
 		{
 			"id": "hungarian",
 			"name": "Hungarian",
