@@ -101,7 +101,7 @@ function render(ctx, state, pids) {
             .draw(ctx);
 
         let car_length = arrival_first.carCount();
-        for (let i = 0; i < car_length && i < 14; i++) {
+        for (let i = 0; i < car_length && i < 15; i++) {
             let posX = i * 9.5 + 0.25
 
             if (i + 1 === 1) {
