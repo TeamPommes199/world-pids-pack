@@ -50,7 +50,7 @@ function render(ctx, state, pids) {
                 }
 
                 Text.create("stop_line_" + line)
-                    .text(stop)
+                    .text(stop.replace("|", " "))
                     .pos(100, 14 + 5.25 * line)
                     .size(45, 5)
                     .scaleXY()

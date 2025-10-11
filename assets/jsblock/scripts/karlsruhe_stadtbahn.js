@@ -17,7 +17,7 @@ function render(ctx, state, pids) {
         if (pids.arrivals().get(0) != null) {gleis = pids.arrivals().get(0).platformName()} else {gleis = "-"}
         Text.create("station name")
         .pos(15, 3)
-        .text(pids.station().getName() + " (Gleis " + gleis + ")")
+        .text(pids.station().getName().replace("|", " ") + " (Gleis " + gleis + ")")
         .size(pids.width - 30, 10)
         .scaleXY()
         .scale(0.8)
@@ -245,7 +245,7 @@ function render(ctx, state, pids) {
         if (pids.arrivals().get(0) != null) {gleis = pids.arrivals().get(0).platformName()} else {gleis = "-"}
         Text.create("station name")
         .pos(15, 3)
-        .text(pids.station().getName() + " (Gleis " + gleis + ")")
+        .text(pids.station().getName().replace("|", " ") + " (Gleis " + gleis + ")")
         .size(pids.width - 30, 10)
         .scaleXY()
         .scale(0.8)

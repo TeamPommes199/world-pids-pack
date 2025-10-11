@@ -15,7 +15,7 @@ function render(ctx, state, pids) {
       if (pids.station() != null) {
         Text.create("station name")
         .pos(2, 3)
-        .text(pids.station().getName())
+        .text(pids.station().getName().replace("|", " "))
         .size(pids.width - 30, 10)
         .scaleXY()
         .scale(0.8)
@@ -149,7 +149,7 @@ function render(ctx, state, pids) {
       if (pids.station() != null) {
         Text.create("station name")
         .pos(2, 3)
-        .text(pids.station().getName())
+        .text(pids.station().getName().replace("|", " "))
         .size(pids.width - 30, 10)
         .scaleXY()
         .scale(0.8)
@@ -265,7 +265,7 @@ function render(ctx, state, pids) {
     if (pids.station() != null) {
       Text.create("station name")
           .pos(2, 3)
-          .text(pids.station().getName())
+          .text(pids.station().getName().replace("|", " "))
           .size(pids.width - 30, 10)
           .scaleXY()
           .scale(0.8)

@@ -14,7 +14,7 @@ function render(ctx, state, pids) {
     if (pids.station() != null) {
       Text.create("station name")
           .pos(40, 3)
-          .text(pids.station().getName())
+          .text(pids.station().getName().replace("|", " "))
           .size(75, 10)
           .scaleXY()
           .wrapText()

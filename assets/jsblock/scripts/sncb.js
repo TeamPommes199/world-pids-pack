@@ -21,9 +21,11 @@ function render(ctx, state, pids) {
         if (pids.station() && arrival_first.route()) {
             let stops = arrival_first.route().getPlatforms().toArray().map((platform) => platform.stationName);
             let stops_at = ""
+            let stationClean = pids.station().getName().normalize("NFC").trim();
+            let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 1;
 
-            for (let i = 0; i < stops.length; i++) {
-                stops_at += stops[i]
+            for (let x = 0; i < stops.length; i++) {
+                stops_at += stops[i].replace("|", " ")
                 if (i !== (stops.length - 1)) {
                     stops_at += ", "
                 }

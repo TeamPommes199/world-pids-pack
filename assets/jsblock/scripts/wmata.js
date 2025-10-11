@@ -116,7 +116,7 @@ function render(ctx, state, pids) {
         Text.create("Arrival destination")
             .text(customMsg)
             .pos(pids.width / 2, pids.height - 25.5)
-            .size(pids.width - 2, 12)
+            .size(pids.width - 15, 12)
             .scaleXY()
             .centerAlign()
             .scale(1.1)

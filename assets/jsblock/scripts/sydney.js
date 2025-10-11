@@ -81,7 +81,7 @@ function render(ctx, state, pids) {
             }
 
             for (let line = 0; line < displayStops.length; line++) {
-                let stop = displayStops[line].normalize("NFC").trim();
+                let stop = displayStops[line].normalize("NFC").trim().replace("|", " ");
 
                 Text.create("stop_line_" + line)
                     .text(stop)

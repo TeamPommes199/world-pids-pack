@@ -37,7 +37,7 @@ function render(ctx, state, pids) {
         .draw(ctx);
 
         Text.create("Arrival destination")
-        .text(arrival.destination())
+        .text(TextUtil.cycleString(arrival.destination()))
         .pos(30, rowY + 11.5)
         .size(60, 25)
         .scale(1)
