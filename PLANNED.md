@@ -7,7 +7,7 @@ Here, you can see all the planned PIDs and features.
 - Hannover Light Rail
 - Bremen Regional Train6
 - Copenhagen Metro
-- Norweigen PIDs
+- Norwegian PIDs
 - Hamburg Bus/Tram
 
 ## Features
