@@ -6,10 +6,11 @@ Here, you can see all the planned PIDs and features.
 - SNCB (depature board)
 - Serbian PIDs
 - Hannover Light Rail
-- Bremen Regional Train6
+- Bremen Regional Train
 - Copenhagen Metro
 - Norwegian PIDs
 - Hamburg Bus/Tram
+- Nuremberg Subway
 
 ## Features
 - Dutch:

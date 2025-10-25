@@ -308,10 +308,28 @@
 
 		{
 			"id": "sncb",
-			"name": "SNCB",
+			"name": "SNCB (single line)",
 			"background": "jsblock:custom_directory/sncb.png",
 			"thumbnail": "jsblock:custom_directory/sncb.png",
 			"scriptFiles": ["jsblock:scripts/sncb.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "sncb_board",
+			"name": "SNCB (board)",
+			"background": "jsblock:custom_directory/sncb_board.png",
+			"thumbnail": "jsblock:custom_directory/sncb_board.png",
+			"scriptFiles": ["jsblock:scripts/sncb_board.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "polish_pkp",
+			"name": "Polish (PKP-Style)",
+			"background": "jsblock:custom_directory/polish_pkp.png",
+			"thumbnail": "jsblock:custom_directory/polish_pkp.png",
+			"scriptFiles": ["jsblock:scripts/polish_pkp.js"],
 			"blacklist": ["pids_1a"]
 		}
 	]
