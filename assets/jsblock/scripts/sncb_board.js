@@ -24,6 +24,36 @@ function render(ctx, state, pids) {
     let rowY = 8.15 + ((i - 14 * (page - 1)) * 4.87);
     let arrival = pids.arrivals().get(i);
     if (arrival != null) {
+      if (pids.station() && arrival.route()) {
+        let stops = arrival.route().getPlatforms().toArray().map((platform) => platform.stationName);
+        let stops_at = ""
+        let stationClean = pids.station().getName().normalize("NFC").trim();
+        let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 1;
+        let i_2 = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 3;
+        let i_3 = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 5;
+
+        if (stops[i] != null && stops[i] !== arrival.destination()) {
+          stops_at = stops_at + stops[i].replace("|", " ")
+        }
+
+        if (stops[i_2] != null && stops[i_2] !== arrival.destination()) {
+          stops_at = stops_at + ", " + stops[i_2].replace("|", " ")
+        }
+
+        if (stops[i_3] != null && stops[i_3] !== arrival.destination()) {
+          stops_at = stops_at + ", " + stops[i_3].replace("|", " ")
+        }
+
+        Text.create("Station Text")
+            .text("via " + stops_at)
+            .pos(66, rowY)
+            .size(85, 5)
+            .scaleXY() // <----
+            .scale(0.6)
+            .color(0xffffff)
+            .draw(ctx);
+      }
+
       Text.create("Number Text")
           .text(arrival.routeNumber())
           .pos(pids.width - 16, rowY + 0.2)
@@ -36,7 +66,7 @@ function render(ctx, state, pids) {
       Text.create("Arrival destination")
           .text(TextUtil.cycleString(arrival.destination()))
           .pos(35, rowY)
-          .size(90, 5)
+          .size(48.5, 5)
           .scaleXY() // <----
           .scale(0.6)
           .color(0xffff00)
