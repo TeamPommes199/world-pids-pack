@@ -33,7 +33,7 @@ function render(ctx, state, pids) {
         let i_3 = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 5;
 
         if (stops[i] != null && stops[i] !== arrival.destination()) {
-          stops_at = stops_at + stops[i].replace("|", " ")
+          stops_at = stops_at + "via " + stops[i].replace("|", " ")
         }
 
         if (stops[i_2] != null && stops[i_2] !== arrival.destination()) {
@@ -45,7 +45,7 @@ function render(ctx, state, pids) {
         }
 
         Text.create("Station Text")
-            .text("via " + stops_at)
+            .text(stops_at)
             .pos(66, rowY)
             .size(85, 5)
             .scaleXY() // <----
