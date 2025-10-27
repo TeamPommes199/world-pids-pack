@@ -118,6 +118,15 @@
 		},
 
 		{
+			"id": "obb_2022_1a",
+			"name": "ÖBB (2022)",
+			"background": "jsblock:custom_directory/obb_2022_1a.png",
+			"thumbnail": "jsblock:custom_directory/obb_2022_1a.png",
+			"scriptFiles": ["jsblock:scripts/obb_2022_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "obb_departure",
 			"name": "ÖBB (departure board)",
 			"background": "jsblock:custom_directory/obb_depature.png",
