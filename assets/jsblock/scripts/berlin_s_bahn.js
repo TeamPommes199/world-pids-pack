@@ -6,13 +6,20 @@ function render(ctx, state, pids) {
   customMsgs = customMsgs.split(';');
   customMsgs = customMsgs.map(item => item.trim());
 
+  let rows = 5
+  for (let customMsg of customMsgs) {
+    if (customMsg.includes("rows:")) {
+      rows = customMsg.replace("rows:", "")
+    }
+  }
+
   let page = 1
   let pageMsg = customMsgs.find(item => item.includes("page:"))
   let arrival_first = pids.arrivals().get(0);
   if (pageMsg) {
     page = pageMsg.replace("page:", "")
     if (page < 1) {page = 1}
-    arrival_first = pids.arrivals().get((page - 1) * 5);
+    arrival_first = pids.arrivals().get((page - 1) * rows);
   }
 
   if (arrival_first != null) {
@@ -211,7 +218,7 @@ function render(ctx, state, pids) {
           .draw(ctx);
 
       let rowY = 7
-      for (let i = 5 * (page - 1); i < 5 * page; i++) {
+      for (let i = rows * (page - 1); i < rows * page; i++) {
         let arrival = pids.arrivals().get(i);
         if (arrival != null) {
           Texture.create("Circle Colored")
