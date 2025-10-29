@@ -340,6 +340,15 @@
 			"thumbnail": "jsblock:custom_directory/polish_pkp.png",
 			"scriptFiles": ["jsblock:scripts/polish_pkp.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "bremen_regio_train",
+			"name": "Bremen (Regio Train)",
+			"background": "jsblock:custom_directory/dot_matrix_1a.png",
+			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"scriptFiles": ["jsblock:scripts/bremen_regio_train.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		}
 	]
 }
