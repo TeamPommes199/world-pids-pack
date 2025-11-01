@@ -164,7 +164,7 @@
 
 		{
 			"id": "karlsruhe_stadtbahn",
-			"name": "Karlsruhe Light Rail",
+			"name": "Karlsruhe (Light Rail)",
 			"background": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
 			"thumbnail": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
 			"scriptFiles": ["jsblock:scripts/karlsruhe_stadtbahn.js"],
@@ -343,11 +343,20 @@
 		},
 
 		{
-			"id": "bremen_regio_train",
+			"id": "bremen_regio_train_1a",
 			"name": "Bremen (Regio Train)",
 			"background": "jsblock:custom_directory/dot_matrix_1a.png",
 			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/bremen_regio_train.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "hannover_light_rail_1a",
+			"name": "Hannover (Light Rail)",
+			"background": "jsblock:custom_directory/dot_matrix_1a.png",
+			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"scriptFiles": ["jsblock:scripts/hannover_light_rail_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		}
 	]
