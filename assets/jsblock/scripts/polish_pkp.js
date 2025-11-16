@@ -26,12 +26,20 @@ function render(ctx, state, pids) {
             let stops_at = ""
             let stationClean = pids.station().getName().normalize("NFC").trim();
             let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 1;
+            let i_2 = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 3;
+            let i_3 = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 5;
 
-            for (let x = 0; i < stops.length; i++) {
-                stops_at += stops[i].replace("|", " ")
-                if (i !== (stops.length - 1)) {
-                    stops_at += ", "
-                }
+            if (stops[i] != null && stops[i] !== arrival_first.destination()) {
+                stops_at = ""
+                stops_at = stops_at + stops[i].replace("|", " ")
+            }
+
+            if (stops[i_2] != null && stops[i_2] !== arrival_first.destination()) {
+                stops_at = stops_at + ", " + stops[i_2].replace("|", " ")
+            }
+
+            if (stops[i_3] != null && stops[i_3] !== arrival_first.destination()) {
+                stops_at = stops_at + ", " + stops[i_3].replace("|", " ")
             }
 
             Text.create("arrival_first stops")
