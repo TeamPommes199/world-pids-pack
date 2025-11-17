@@ -82,6 +82,15 @@
 		},
 
 		{
+			"id": "hamburg_bus_tram",
+			"name": "Hamburg (Bus/Tram)",
+			"background": "jsblock:custom_directory/hamburg_bus_tram.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_bus_tram.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_bus_tram.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "db_old",
 			"name": "DB PIDS (2016)",
 			"background": "jsblock:custom_directory/db_old.png",
