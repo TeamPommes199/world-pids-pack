@@ -2,8 +2,6 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Hamburg Bus/Tram
-- Copenhagen Metro
 - Norwegian PIDs
 - Nuremberg Subway
 - ÖBB (newer old PIDs?!)
