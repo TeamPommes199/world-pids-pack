@@ -367,6 +367,15 @@
 			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/hannover_light_rail_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "copenhagen_metro",
+			"name": "Copenhagen (Metro)",
+			"background": "jsblock:custom_directory/copenhagen_metro.png",
+			"thumbnail": "jsblock:custom_directory/copenhagen_metro.png",
+			"scriptFiles": ["jsblock:scripts/copenhagen_metro.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
