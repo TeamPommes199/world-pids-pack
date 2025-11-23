@@ -12,11 +12,12 @@ function render(ctx, state, pids) {
     let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2), pids.getCustomMessage(3)];
 
     let arrival_first = pids.arrivals().get(0);
-    if(arrival_first != null) {
+    let routeName;
+    if (arrival_first != null) {
         let arrival_text = arrival_first.routeNumber()
 
-        for(let customMsg of customMsgs) {
-            if(customMsg.includes(arrival_first.routeNumber(), ":")) {
+        for (let customMsg of customMsgs) {
+            if (customMsg.includes(arrival_first.routeNumber(), ":")) {
                 arrival_text = customMsg.replace(arrival_first.routeNumber() + ":", "")
             }
         }
@@ -61,7 +62,7 @@ function render(ctx, state, pids) {
             .color(0xFFFFFF)
             .draw(ctx);
 
-        routeName = Text.create("arrival_first Name Text")
+        let routeName = Text.create("arrival_first Name Text")
             .scale(0.65)
             .pos(37, pids.height - 18)
             .size(130, 30)
