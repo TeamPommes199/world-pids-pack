@@ -6,6 +6,8 @@ Here, you can see all the planned PIDs and features.
 - Nuremberg Subway
 - ÖBB (newer old PIDs?!)
 - 3rd SNCB PIDs
+- Italian Departure Board
+- Hamburg Subway (New)
 
 ## Features
 - Dutch:
