@@ -13,6 +13,7 @@ function render(ctx, state, pids) {
 
     let arrival_first = pids.arrivals().get(0);
     let arrival_number_pos = pids.width - 1
+    let train = true
     if(arrival_first != null) {
         let arrival_text = arrival_first.routeNumber()
 
@@ -28,6 +29,9 @@ function render(ctx, state, pids) {
                     .draw(ctx);
 
                 arrival_number_pos = pids.width - 21
+            }
+            if(customMsg.includes("train: disable")){
+                train = false
             }
         }
 
@@ -91,62 +95,63 @@ function render(ctx, state, pids) {
             .size(60, 30)
             .draw(ctx);
 
-        let cars = arrival_first.cars()
-        let end = false
-        for (let i = 0; i < cars.length; i++) {
-            let car_id = cars[i].getVehicleId()
-            let carTerms = ["cab", "for", "back"]
-            let sizeX = 19.5
-            let sizeY = 9.5
-            let position = (pids.width / 2) - (9.75 * cars.length) + (19.5 * i)
-            if (19.5 * cars.length > 132) {
-                let scale = 132 / (19.5 * cars.length)
-                position = (pids.width / 2) - (9.75 * cars.length * scale) + (19.5 * i * scale)
-                sizeX = sizeX * scale
-                sizeY = sizeY * scale
-            }
+        if (train) {
+            let cars = arrival_first.cars()
+            let end = false
+            for (let i = 0; i < cars.length; i++) {
+                let car_id = cars[i].getVehicleId()
+                let carTerms = ["cab", "for", "back"]
+                let sizeX = 19.5
+                let sizeY = 9.5
+                let position = (pids.width / 2) - (9.75 * cars.length) + (19.5 * i)
+                if (19.5 * cars.length > 132) {
+                    let scale = 132 / (19.5 * cars.length)
+                    position = (pids.width / 2) - (9.75 * cars.length * scale) + (19.5 * i * scale)
+                    sizeX = sizeX * scale
+                    sizeY = sizeY * scale
+                }
 
+                if (i === 0) {
+                    end = true
+                    Texture.create("Next Background")
+                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .size(sizeX, sizeY)
+                        .pos(position, pids.height - 22)
+                        .draw(ctx);
+                    continue
+                }
 
-            if (i === 0) {
-                end = true
-                Texture.create("Next Background")
-                    .texture("jsblock:custom_directory/dutch_cab_1.png")
-                    .size(sizeX, sizeY)
-                    .pos(position, pids.height - 22)
-                    .draw(ctx);
-                continue
-            }
+                if (i + 1 === cars.length) {
+                    end = false
+                    Texture.create("Next Background")
+                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .size(sizeX, sizeY)
+                        .pos(position, pids.height - 22)
+                        .draw(ctx);
+                    continue
+                }
 
-            if (i + 1 === cars.length) {
-                end = false
-                Texture.create("Next Background")
-                    .texture("jsblock:custom_directory/dutch_cab_2.png")
-                    .size(sizeX, sizeY)
-                    .pos(position, pids.height - 22)
-                    .draw(ctx);
-                continue
-            }
-
-            if (carTerms.some(term => car_id.includes(term)) && !end) {
-                end = true
-                Texture.create("Next Background")
-                    .texture("jsblock:custom_directory/dutch_cab_1.png")
-                    .size(sizeX, sizeY)
-                    .pos(position, pids.height - 22)
-                    .draw(ctx);
-            } else if (carTerms.some(term => car_id.includes(term)) && end) {
-                end = false
-                Texture.create("Next Background")
-                    .texture("jsblock:custom_directory/dutch_cab_2.png")
-                    .size(sizeX, sizeY)
-                    .pos(position, pids.height - 22)
-                    .draw(ctx);
-            } else {
-                Texture.create("Next Background")
-                    .texture("jsblock:custom_directory/dutch_trailer.png")
-                    .size(sizeX, sizeY)
-                    .pos(position, pids.height - 22)
-                    .draw(ctx);
+                if (carTerms.some(term => car_id.includes(term)) && !end) {
+                    end = true
+                    Texture.create("Next Background")
+                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .size(sizeX, sizeY)
+                        .pos(position, pids.height - 22)
+                        .draw(ctx);
+                } else if (carTerms.some(term => car_id.includes(term)) && end) {
+                    end = false
+                    Texture.create("Next Background")
+                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .size(sizeX, sizeY)
+                        .pos(position, pids.height - 22)
+                        .draw(ctx);
+                } else {
+                    Texture.create("Next Background")
+                        .texture("jsblock:custom_directory/dutch_trailer.png")
+                        .size(sizeX, sizeY)
+                        .pos(position, pids.height - 22)
+                        .draw(ctx);
+                }
             }
         }
     }
