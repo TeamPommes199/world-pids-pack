@@ -2,7 +2,6 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Norwegian PIDs
 - Nuremberg Subway
 - ÖBB (newer old PIDs?!)
 - 3rd SNCB PIDs
@@ -10,7 +9,5 @@ Here, you can see all the planned PIDs and features.
 - Hamburg Subway (New)
 
 ## Features
-- Dutch:
-  - car-list Display
 - ÖBB Pids (arrival/departure)
   - option to disable logo

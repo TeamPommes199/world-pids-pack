@@ -376,6 +376,15 @@
 			"thumbnail": "jsblock:custom_directory/copenhagen_metro.png",
 			"scriptFiles": ["jsblock:scripts/copenhagen_metro.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "norway",
+			"name": "Norway",
+			"background": "jsblock:custom_directory/norway.png",
+			"thumbnail": "jsblock:custom_directory/norway.png",
+			"scriptFiles": ["jsblock:scripts/norway.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
