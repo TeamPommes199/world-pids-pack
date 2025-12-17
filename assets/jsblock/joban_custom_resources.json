@@ -37,6 +37,15 @@
 		},
 
 		{
+			"id": "nuremberg_subway",
+			"name": "Nuremberg Subway",
+			"background": "jsblock:custom_directory/nuremberg_subway.png",
+			"thumbnail": "jsblock:custom_directory/nuremberg_subway.png",
+			"scriptFiles": ["jsblock:scripts/nuremberg_subway.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "hamburg_s_bahn",
 			"name": "Hamburg S-Bahn",
 			"background": "jsblock:custom_directory/hamburg.png",
