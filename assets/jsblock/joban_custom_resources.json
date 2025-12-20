@@ -190,6 +190,15 @@
 		},
 
 		{
+			"id": "vienna_u_bahn_1a",
+			"name": "Vienna Subway ",
+			"background": "jsblock:custom_directory/vienna_u_bahn_1a.png",
+			"thumbnail": "jsblock:custom_directory/vienna_u_bahn_1a.png",
+			"scriptFiles": ["jsblock:scripts/vienna_u_bahn_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "karlsruhe_stadtbahn",
 			"name": "Karlsruhe (Light Rail)",
 			"background": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
