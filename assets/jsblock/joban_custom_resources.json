@@ -163,6 +163,15 @@
 		},
 
 		{
+			"id": "obb_old_1_1a",
+			"name": "ÖBB (old)",
+			"background": "jsblock:custom_directory/obb_old_1_1a.png",
+			"thumbnail": "jsblock:custom_directory/obb_old_1_1a.png",
+			"scriptFiles": ["jsblock:scripts/obb_old_1_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "sbb",
 			"name": "SBB",
 			"background": "jsblock:custom_directory/sbb.png",
