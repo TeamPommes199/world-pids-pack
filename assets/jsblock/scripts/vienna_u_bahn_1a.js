@@ -18,7 +18,7 @@ function render(ctx, state, pids) {
         .size(11.63, 6)
         .scale(2.4)
         .scaleXY()
-        .color(0xFFFFFF)
+        .color(0xE2FF7A)
         .draw(ctx);
 
         let text = TextUtil.cycleString(arrival_first.destination());
@@ -38,7 +38,7 @@ function render(ctx, state, pids) {
                     .size(45, 6)
                     .scale(2.4)
                     .scaleXY()
-                    .color(0xFFFFFF)
+                    .color(0xE2FF7A)
                     .draw(ctx);
 
                 xOffset += 7.85
@@ -49,7 +49,7 @@ function render(ctx, state, pids) {
                     .size(45, 6)
                     .scale(2.4)
                     .scaleXY()
-                    .color(0xFFFFFF)
+                    .color(0xE2FF7A)
                     .draw(ctx);
 
                 xOffset += 9.3
@@ -61,7 +61,7 @@ function render(ctx, state, pids) {
 
         Text.create("arrival ETA")
         .text(eta)
-        .color(0xffffff)
+        .color(0xE2FF7A)
         .rightAlign()
         .scale(2.4)
         .pos(pids.width + 0.7, 15)
@@ -79,7 +79,7 @@ function render(ctx, state, pids) {
         .size(11.63, 6)
         .scale(2.4)
         .scaleXY()
-        .color(0xFFFFFF)
+        .color(0xE2FF7A)
         .draw(ctx);
 
         let text = TextUtil.cycleString(arrival_second.destination());
@@ -99,7 +99,7 @@ function render(ctx, state, pids) {
                     .size(45, 6)
                     .scale(2.4)
                     .scaleXY()
-                    .color(0xFFFFFF)
+                    .color(0xE2FF7A)
                     .draw(ctx);
 
                 xOffset += 7.85
@@ -110,7 +110,7 @@ function render(ctx, state, pids) {
                     .size(45, 6)
                     .scale(2.4)
                     .scaleXY()
-                    .color(0xFFFFFF)
+                    .color(0xE2FF7A)
                     .draw(ctx);
 
                 xOffset += 9.3
@@ -122,7 +122,7 @@ function render(ctx, state, pids) {
 
         Text.create("arrival_second ETA")
         .text(eta)
-        .color(0xffffff)
+        .color(0xE2FF7A)
         .rightAlign()
         .scale(2.4)
         .pos(pids.width + 0.7, 34.5)

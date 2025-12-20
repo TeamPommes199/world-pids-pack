@@ -13,7 +13,7 @@ function render(ctx, state, pids) {
     if(arrival_first != null) {
         Text.create("arrival_first Number Text")
         .text(arrival_first.routeNumber())
-        .pos(29, 7.5)
+        .pos(29, 4.5)
         .leftAlign()
         .size(pids.width - 130, 6)
         .scale(1.55)
@@ -48,7 +48,7 @@ function render(ctx, state, pids) {
     if(arrival_second != null) {
         Text.create("arrival_second Number Text")
             .text(arrival_second.routeNumber())
-            .pos(29, 46.5)
+            .pos(29, 48.5)
             .leftAlign()
             .size(14, 6)
             .scale(1.3)
@@ -58,7 +58,7 @@ function render(ctx, state, pids) {
 
         Text.create("arrival_second destination")
             .text(TextUtil.cycleString(arrival_second.destination()))
-            .pos(49, 46.5)
+            .pos(49, 48.5)
             .size(pids.width - 95, 6)
             .scale(1.3)
             .scaleXY()
@@ -73,7 +73,7 @@ function render(ctx, state, pids) {
             .color(0xffffff)
             .rightAlign()
             .scale(1)
-            .pos(pids.width - 1, 38.5)
+            .pos(pids.width - 1, 40.5)
             .size(48, 24)
             .scaleXY()
             .draw(ctx);
@@ -88,7 +88,7 @@ function render(ctx, state, pids) {
     Text.create("Clock")
         .text(time)
         .color(0xFFFFFF)
-        .pos(pids.width - 2, 7.5)
+        .pos(pids.width - 2, 4.5)
         .scale(0.9)
         .rightAlign()
         .draw(ctx);
