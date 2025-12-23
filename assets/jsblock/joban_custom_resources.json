@@ -412,6 +412,15 @@
 			"thumbnail": "jsblock:custom_directory/norway.png",
 			"scriptFiles": ["jsblock:scripts/norway.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "euston",
+			"name": "Euston",
+			"background": "jsblock:custom_directory/euston.png",
+			"thumbnail": "jsblock:custom_directory/euston.png",
+			"scriptFiles": ["jsblock:scripts/euston.js"],
+			"blacklist": ["pids_1a", "lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2"]
 		}
 	]
 }
