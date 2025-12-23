@@ -26,6 +26,7 @@ function render(ctx, state, pids) {
         if (arrival != null) {
             let eta = (arrival.arrivalTime() - Date.now()) / 60000;
             let etas = arrival.departureTime()
+            let deviation = arrival.deviation()
             let late_eta = new Date(etas)
             let late_hours = late_eta.getHours()
             let late_minutes = late_eta.getMinutes()
@@ -92,6 +93,16 @@ function render(ctx, state, pids) {
                     .scale(0.2)
                     .color(0xFFFFFF)
                     .draw(ctx);
+
+                if (deviation > 285000) {
+                    Text.create("boarding")
+                        .text("Delayed")
+                        .pos(posX + 28.9, 1)
+                        .scale(0.3)
+                        .color(0xFFFFFF)
+                        .rightAlign()
+                        .draw(ctx);
+                }
             }
 
             Text.create("eta")
