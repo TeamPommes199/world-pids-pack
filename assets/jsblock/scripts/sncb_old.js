@@ -1,4 +1,5 @@
 include(Resources.id("jsblock:scripts/pids_util.js"));
+let counter = 0
 
 function create(ctx, state, pids) {
 }
@@ -9,6 +10,7 @@ function render(ctx, state, pids) {
     .size(pids.width, pids.height)
     .draw(ctx);
 
+    let msg = true
     let arrival_first = pids.arrivals().get(0);
     if(arrival_first != null) {
         let text = TextUtil.cycleString(arrival_first.destination());
@@ -113,11 +115,58 @@ function render(ctx, state, pids) {
 
             xOffset += 8.45
         }
+
+        let customMsg = pids.getCustomMessage(3);
+        if (customMsg == "" && pids.station() && arrival_first.route()) {
+            msg = false
+            let stationClean = pids.station().getName().normalize("NFC").trim();
+            let stops = arrival_first.route().getPlatforms().toArray().map(p => p.stationName);
+            let currentIndex = stops.findIndex(s => s.normalize("NFC").trim() === stationClean);
+            let nextStops = stops.slice(currentIndex + 1);
+            let stops_at = ""
+
+            for (let i = 0; i < nextStops.length; i++) {
+                stops_at = stops_at + nextStops[i].replace("|", "")
+                if (i + 1 !== nextStops.length) {stops_at = stops_at + ", "}
+            }
+
+            let firstPart = "Ce train s'arrête à:"
+            let firstNumber = Math.round(counter / 500) * 36
+            let secondNumber = 36 * (Math.round(counter / 500) + 1)
+
+            xOffset = 0
+            posX = 4.7
+            for (let i = 0; i < firstPart.length; i++) {
+                Text.create("customMsg")
+                    .text(firstPart[i])
+                    .pos(posX + xOffset, 56.5)
+                    .scale(0.5625)
+                    .color(0xEFDB0B)
+                    .draw(ctx);
+
+                xOffset += 3.52
+            }
+
+            xOffset = 0
+            posX = 4.7
+            for (let i = 0; i < stops_at.substring(firstNumber, secondNumber).length; i++) {
+                Text.create("customMsg")
+                    .text(stops_at.substring(firstNumber, secondNumber)[i])
+                    .pos(posX + xOffset, 66.5)
+                    .scale(0.5625)
+                    .color(0xEFDB0B)
+                    .draw(ctx);
+
+                xOffset += 3.52
+            }
+
+            if (counter / 500 > stops_at.length / 36) {counter = 0}
+        }
     }
 
     let customMsg = pids.getCustomMessage(3);
     customMsg = String(customMsg)
-    if (customMsg !== "") {
+    if (customMsg !== "" && msg === true) {
         let lastSpaceIndex = customMsg.lastIndexOf(' ', 36);
         if (customMsg.length <= 36) {
             let xOffset = 0
@@ -190,10 +239,7 @@ function render(ctx, state, pids) {
         }
     }
 
-    Texture.create("Second Layer")
-    .texture("jsblock:custom_directory/sncb_old_second_layer.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
+    counter++
 }
 
 function dispose(ctx, state, pids) {
