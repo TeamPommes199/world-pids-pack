@@ -361,6 +361,15 @@
 		},
 
 		{
+			"id": "sncb_old",
+			"name": "SNCB (sing line - old)",
+			"background": "jsblock:custom_directory/sncb_old.png",
+			"thumbnail": "jsblock:custom_directory/sncb_old.png",
+			"scriptFiles": ["jsblock:scripts/sncb_old.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "sncb_board",
 			"name": "SNCB (board)",
 			"background": "jsblock:custom_directory/sncb_board.png",

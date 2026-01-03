@@ -22,7 +22,7 @@ function render(ctx, state, pids) {
     let hours = date.getHours();
     let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
 
-    let clock_out_degree = 6 * date.getSeconds() + 180
+    let clock_out_degree = 6 * date.getSeconds() + 102
     let clock_out_matrices = new Matrices();
     clock_out_matrices.translate(
         0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
@@ -31,7 +31,7 @@ function render(ctx, state, pids) {
     )
     clock_out_matrices.rotateZDegrees(clock_out_degree)
 
-    let clock_in_degree = -6 * date.getSeconds() + 180
+    let clock_in_degree = -6 * date.getSeconds() - 102
     let clock_in_matrices = new Matrices();
     clock_in_matrices.translate(
         0.395 * (1 - Math.cos(clock_in_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_in_degree * Math.PI / 180),
