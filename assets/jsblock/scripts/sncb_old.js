@@ -1,5 +1,5 @@
 include(Resources.id("jsblock:scripts/pids_util.js"));
-let counter = 0
+let counter = {}
 
 function create(ctx, state, pids) {
 }
@@ -130,9 +130,13 @@ function render(ctx, state, pids) {
                 if (i + 1 !== nextStops.length) {stops_at = stops_at + ", "}
             }
 
+            let pids_pos = pids.blockPos().x() + "_" + pids.blockPos().y() + "_" + pids.blockPos().z()
+            if (!counter[pids_pos]) {
+                counter[pids_pos] = 0
+            }
             let firstPart = "Ce train s'arrête à:"
-            let firstNumber = Math.round(counter / 500) * 36
-            let secondNumber = 36 * (Math.round(counter / 500) + 1)
+            let firstNumber = Math.round(counter[pids_pos] / 125) * 36
+            let secondNumber = 36 * (Math.round(counter[pids_pos] / 125) + 1)
 
             xOffset = 0
             posX = 4.7
@@ -160,7 +164,8 @@ function render(ctx, state, pids) {
                 xOffset += 3.52
             }
 
-            if (counter / 500 > stops_at.length / 36) {counter = 0}
+            if (counter[pids_pos] / 125 > stops_at.length / 36) {counter[pids_pos] = 0}
+            counter[pids_pos]++
         }
     }
 
@@ -238,8 +243,6 @@ function render(ctx, state, pids) {
             }
         }
     }
-
-    counter++
 }
 
 function dispose(ctx, state, pids) {
