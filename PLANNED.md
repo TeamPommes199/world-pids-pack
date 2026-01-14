@@ -11,4 +11,3 @@ Here, you can see all the planned PIDs and features.
 ## Features
 - ÖBB Pids (arrival/departure)
   - option to disable logo
-- Vienna Subway (remove black bars)
