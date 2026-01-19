@@ -298,6 +298,15 @@
 		},
 
 		{
+			"id": "dutch_tram",
+			"name": "Dutch (Tram)",
+			"background": "jsblock:custom_directory/dutch_tram.png",
+			"thumbnail": "jsblock:custom_directory/dutch_tram.png",
+			"scriptFiles": ["jsblock:scripts/dutch_tram.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "hungarian",
 			"name": "Hungarian",
 			"background": "jsblock:custom_directory/hungarian_depature.png",
@@ -433,3 +442,4 @@
 		}
 	]
 }
+
