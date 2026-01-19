@@ -5,7 +5,7 @@ function render(ctx, state, pids) {
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/dutch_bus.png")
+        .texture("jsblock:custom_directory/dutch_tram.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 
@@ -97,7 +97,7 @@ function render(ctx, state, pids) {
         eta = Math.round(eta)
         if (eta < 1) {
           Texture.create("Arrival ETA")
-              .texture("jsblock:custom_directory/dutch_bus_sign.png")
+              .texture("jsblock:custom_directory/dutch_tram_sign.png")
               .pos(pids.width - 21.5, rowY + 1.5)
               .size(20.5, 8.5) // <----
               .draw(ctx);
@@ -126,7 +126,7 @@ function render(ctx, state, pids) {
     }
 
     if (pids.getCustomMessage(2) !== "" || pids.getCustomMessage(3) !== "") {
-      Texture.create("dutch bus info")
+      Texture.create("dutch tram info")
           .texture("jsblock:custom_directory/dutch_bus_custom_row.png")
           .pos(0, pids.height - 11)
           .size(pids.width, 11)
@@ -155,7 +155,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/dutch_bus.png")
+        .texture("jsblock:custom_directory/dutch_tram.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }
