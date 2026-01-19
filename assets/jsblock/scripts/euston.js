@@ -12,6 +12,13 @@ function render(ctx, state, pids) {
         return msg;
     })
 
+    let plat_announce_time = 0.5
+    for (let customMsg of customMsgs) {
+        if (customMsg.includes("plat_announce_time:")) {
+            plat_announce_time = parseFloat(customMsg.replace("plat_announce_time:", "") / 60)
+        }
+    }
+
     Texture.create("Background")
         .texture("jsblock:custom_directory/euston/euston.png")
         .size(pids.height * 7.8, pids.height)
@@ -74,7 +81,7 @@ function render(ctx, state, pids) {
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
 
-            if (eta < 0.5 && eta > 0.04) {
+            if (eta < plat_announce_time && eta > 0.04) {
                 let arrived_platform = "left"
                 for (let msg of customMsgs) {
                     if (msg.includes("platform_top:") && msg.includes(" " + arrival.platformName() + ",")) {
@@ -334,7 +341,7 @@ function render(ctx, state, pids) {
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
 
-            if (eta < 0.5) {
+            if (eta < plat_announce_time) {
                 Texture.create("platform status")
                     .texture("jsblock:custom_directory/lrr_u_bahn.png")
                     .size(pids.height * 0.79, 9.5)
@@ -447,8 +454,8 @@ function render(ctx, state, pids) {
                     let late_eta = new Date(arrivalTimestamp)
                     let late_time = late_eta.getHours().toString().padStart(2, '0') + ":" +
                         late_eta.getMinutes().toString().padStart(2, '0');
-                    let plat = (eta < 0.5) ? TextUtil.cycleString(arrival.platformName()) : "-";
-                    let color = (eta < 0.5) ? 0x00D933 : 0x0080FF
+                    let plat = (eta < plat_announce_time) ? TextUtil.cycleString(arrival.platformName()) : "-";
+                    let color = (eta < plat_announce_time) ? 0x00D933 : 0x0080FF
 
                     stopsMap[destName] = {
                         "destination": destName,
@@ -568,7 +575,7 @@ function render(ctx, state, pids) {
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
 
-            if (eta < 0.5) {
+            if (eta < plat_announce_time) {
                 Text.create("stop_from_station_" + i)
                     .text(TextUtil.cycleString(arrival.route().getPlatforms().toArray().map(p => p.stationName)[0]))
                     .pos(posX + 1.5, posY)
