@@ -371,7 +371,7 @@
 
 		{
 			"id": "sncb_old",
-			"name": "SNCB (sing line - old)",
+			"name": "SNCB (single line - old)",
 			"background": "jsblock:custom_directory/sncb_old.png",
 			"thumbnail": "jsblock:custom_directory/sncb_old.png",
 			"scriptFiles": ["jsblock:scripts/sncb_old.js"],
@@ -439,6 +439,15 @@
 			"thumbnail": "jsblock:custom_directory/euston.png",
 			"scriptFiles": ["jsblock:scripts/euston.js"],
 			"blacklist": ["pids_1a", "lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2"]
+		},
+
+		{
+			"id": "trenitalia",
+			"name": "Trenitalia",
+			"background": "jsblock:custom_directory/trenitalia.png",
+			"thumbnail": "jsblock:custom_directory/trenitalia.png",
+			"scriptFiles": ["jsblock:scripts/trenitalia.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }

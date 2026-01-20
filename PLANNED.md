@@ -2,7 +2,6 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Italian Departure Board
 - Hamburg Subway (New)
 - London (Bus)
 - Rotterdam (Metro)
