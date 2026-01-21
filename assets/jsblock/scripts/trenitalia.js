@@ -1,4 +1,5 @@
 include(Resources.id("jsblock:scripts/pids_util.js"));
+let counter = {}
 
 function create(ctx, state, pids) {
 }
@@ -46,10 +47,33 @@ function render(ctx, state, pids) {
             .scaleXY()
             .color(0xFF6C00)
             .draw(ctx);
+
+        if ((arrival_first.arrivalTime() - Date.now()) / 60000 < 0.25) {
+            let pids_pos = pids.blockPos().x() + "_" + pids.blockPos().y() + "_" + pids.blockPos().z()
+            if (!counter[pids_pos]) {counter[pids_pos] = 0}
+
+            if (counter[pids_pos] > 75) {
+                if (counter[pids_pos] > 150) {counter[pids_pos] = 0}
+
+                Texture.create("light_1")
+                    .texture("jsblock:custom_directory/trenitalia_light.png")
+                    .pos(82.475, 6)
+                    .size(3, 3)
+                    .draw(ctx);
+            } else {
+                Texture.create("light_2")
+                    .texture("jsblock:custom_directory/trenitalia_light.png")
+                    .pos(87.8, 6)
+                    .size(3, 3)
+                    .draw(ctx);
+            }
+
+            counter[pids_pos]++
+        }
     }
 
     if (pids.getCustomMessage(3) != "") {
-        Text.create("arrival_first ETA")
+        Text.create("customMsg")
             .text(pids.getCustomMessage(3).replace("|", " ").toUpperCase())
             .scale(0.675)
             .pos(3, 54)
