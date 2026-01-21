@@ -164,7 +164,7 @@
 
 		{
 			"id": "obb_old_1_1a",
-			"name": "ÖBB (old)",
+			"name": "ÖBB S-Bahn",
 			"background": "jsblock:custom_directory/obb_old_1_1a.png",
 			"thumbnail": "jsblock:custom_directory/obb_old_1_1a.png",
 			"scriptFiles": ["jsblock:scripts/obb_old_1_1a.js"],
