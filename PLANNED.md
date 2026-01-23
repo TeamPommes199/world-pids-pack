@@ -2,10 +2,9 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Hamburg Subway (New)
+- Manchester
 - London (Bus)
 - Rotterdam (Metro)
-- Manchester
 
 ## Features
 - ÖBB Pids (arrival/departure)

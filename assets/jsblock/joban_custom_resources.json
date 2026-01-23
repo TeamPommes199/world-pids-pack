@@ -91,6 +91,15 @@
 		},
 
 		{
+			"id": "hamburg_u_bahn_new",
+			"name": "Hamburg Subway (New)",
+			"background": "jsblock:custom_directory/hamburg_subway_new.png",
+			"thumbnail": "jsblock:custom_directory/hamburg_subway_new.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_subway_new.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "hamburg_bus_tram",
 			"name": "Hamburg (Bus/Tram)",
 			"background": "jsblock:custom_directory/hamburg_bus_tram.png",
