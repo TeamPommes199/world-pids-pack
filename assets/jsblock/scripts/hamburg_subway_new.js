@@ -41,15 +41,6 @@ function render(ctx, state, pids) {
             .color(0xffffff)
             .draw(ctx);
 
-        Text.create("Arrival destination")
-            .text(TextUtil.cycleString(arrival.destination()))
-            .pos(38, 2.5)
-            .size(85.71, 10)
-            .scaleXY()
-            .scale(1.4)
-            .color(0xffffff)
-            .draw(ctx);
-
         let eta = (arrival.arrivalTime() - Date.now()) / 60000;
         if (eta < 0.5) {
             eta = "fährt sofort"
@@ -67,11 +58,13 @@ function render(ctx, state, pids) {
             .rightAlign()
             .draw(ctx);
 
+        let destination = TextUtil.cycleString(arrival.destination())
         let customMsg_r = "#//#"
         if (new Date().getSeconds() < 15 || new Date().getSeconds() > 30 && new Date().getSeconds() < 45) {
             for (let customMsg of customMsgs) {
                 if (customMsg.includes(arrival.routeNumber(), ":")) {
                     customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                    destination = "Information"
                     Text.create("Custom Text")
                         .text(customMsg_r.replace("|", " "))
                         .pos(pids.width / 2, 22)
@@ -161,6 +154,15 @@ function render(ctx, state, pids) {
                     .draw(ctx);
             }
         }
+
+        Text.create("destination")
+            .text(destination)
+            .pos(38, 2.5)
+            .size(85.71, 10)
+            .scaleXY()
+            .scale(1.4)
+            .color(0xffffff)
+            .draw(ctx);
     } else {
         Text.create("BETRIEBSPAUSE")
             .text("BETRIEBSPAUSE")

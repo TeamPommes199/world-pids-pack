@@ -5,6 +5,7 @@ Here, you can see all the planned PIDs and features.
 - Manchester
 - London (Bus)
 - Rotterdam (Metro)
+- Blackbox Landscape LCD
 
 ## Features
 - ÖBB Pids (arrival/departure)
