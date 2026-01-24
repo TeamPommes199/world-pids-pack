@@ -42,6 +42,22 @@ function render(ctx, state, pids) {
         .size(48, 24)
         .scaleXY()
         .draw(ctx);
+
+        if (pids.station() && arrival_first.route()) {
+            let stops = arrival_first.route().getPlatforms().toArray().map((platform) => platform.stationName);
+            let stationClean = pids.station().getName().normalize("NFC").trim();
+            let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 2;
+
+            if (stops[i] != null && stops[i] != arrival_first.destination()) {
+                Text.create("arrival_first stops")
+                    .text("weiter nach " + stops[i].replace("|", " "))
+                    .pos(2, 43)
+                    .size(pids.width - 4, 5.5)
+                    .scaleXY()
+                    .color(0xFFFFFF)
+                    .draw(ctx);
+            }
+        }
     }
 
     let arrival_second = pids.arrivals().get(1);
