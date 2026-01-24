@@ -343,6 +343,15 @@
 		},
 
 		{
+			"id": "thessaloniki_metro",
+			"name": "Thessaloniki (Metro)",
+			"background": "jsblock:custom_directory/thessaloniki_metro.png",
+			"thumbnail": "jsblock:custom_directory/thessaloniki_metro.png",
+			"scriptFiles": ["jsblock:scripts/thessaloniki_metro.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "portuguese_depature",
 			"name": "Portuguese (Depatures)",
 			"background": "jsblock:custom_directory/portuguese_depature.png",
