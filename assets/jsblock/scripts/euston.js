@@ -438,7 +438,7 @@ function render(ctx, state, pids) {
 
     for (let i = 0; i < platforms.length * 10; i++) {
         let arrival = pids.arrivals().get(i)
-        if (arrival != null) {
+        if (arrival != null && pids.station() && arrival.route()) {
             let stationClean = pids.station().getName().normalize("NFC").trim();
             let stopping = arrival.route().getPlatforms().toArray().map(p => p.stationName);
             let currentIndex = stopping.findIndex(s => s.normalize("NFC").trim() === stationClean);
@@ -566,7 +566,7 @@ function render(ctx, state, pids) {
     for (let i = 0; i < 17; i++) {
         let arrival = pids.arrivals().get(i);
 
-        if (arrival != null) {
+        if (arrival != null && pids.station() && arrival.route()) {
             let posY = 16.2352 + ((pids.height - 12.5) / 17 * i)
             let eta = (arrival.arrivalTime() - Date.now()) / 60000;
             let etas = arrival.arrivalTime()
