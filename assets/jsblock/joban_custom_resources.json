@@ -316,6 +316,15 @@
 		},
 
 		{
+			"id": "rotterdam_metro_1a",
+			"name": "Rotterdam (Metro)",
+			"background": "jsblock:custom_directory/rotterdam_metro.png",
+			"thumbnail": "jsblock:custom_directory/rotterdam_metro.png",
+			"scriptFiles": ["jsblock:scripts/rotterdam_metro.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "hungarian",
 			"name": "Hungarian",
 			"background": "jsblock:custom_directory/hungarian_depature.png",
