@@ -137,78 +137,95 @@ function render(ctx, state, pids) {
       }
       for (let i = 1; i < 3; i++) {
         rowY = 38.5 + (13.3 * i)
-        let arrival = pids.arrivals().get(i);
-        if (arrival != null) {
+        if (pids.getCustomMessage(3) != "" && i == 2) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
-              .pos(2.5, rowY - 2)
-              .size(21, 10)
-              .color(arrival.routeColor())
+              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .pos(0, rowY - 2)
+              .size(pids.width, 10)
               .draw(ctx);
 
           Text.create("Number Text")
-              .text(arrival.routeNumber())
+              .text(pids.getCustomMessage(3))
               .scale(0.75)
-              .centerAlign()
-              .pos(12.5, rowY)
-              .size(22, 9) // <----
-              .scaleXY() // <----
-              .color(0xFFFFFF)
+              .pos(1, rowY)
+              .size(pids.width / 0.75 - 2, 10)
+              .marquee()
+              .color(0x000022)
               .draw(ctx);
+        } else {
+          let arrival = pids.arrivals().get(i);
+          if (arrival != null) {
+            Texture.create("Circle Colored")
+                .texture("jsblock:custom_directory/lrr.png")
+                .pos(2.5, rowY - 2)
+                .size(21, 10)
+                .color(arrival.routeColor())
+                .draw(ctx);
 
-          Text.create("Arrival destination")
-              .text(TextUtil.cycleString(arrival.destination()))
-              .pos(26.5, rowY)
-              .size(60, 9)
-              .scaleXY() // <----
-              .scale(0.80)
-              .color(0xFFFFFF)
-              .draw(ctx);
+            Text.create("Number Text")
+                .text(arrival.routeNumber())
+                .scale(0.75)
+                .centerAlign()
+                .pos(12.5, rowY)
+                .size(22, 9) // <----
+                .scaleXY() // <----
+                .color(0xFFFFFF)
+                .draw(ctx);
 
-          let car_length = arrival.carCount();
-          if (car_length > 2 && car_length < 5) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
+            Text.create("Arrival destination")
+                .text(TextUtil.cycleString(arrival.destination()))
+                .pos(26.5, rowY)
+                .size(60, 9)
+                .scaleXY() // <----
+                .scale(0.80)
+                .color(0xFFFFFF)
                 .draw(ctx);
-          } else if (car_length > 7) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
+
+            let car_length = arrival.carCount();
+            if (car_length > 2 && car_length < 5) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length > 7) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length > 5 && car_length < 8) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length < 3) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            }
+
+            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+            if (eta < 0.5) {
+              eta = ""
+            } else {
+              eta = Math.round(eta) + " min  "
+            }
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xFFFFFF)
+                .pos(pids.width + 1, rowY)
+                .scale(0.80)
+                .size(30, 9) // <----
+                .scaleXY() // <----
+                .rightAlign()
                 .draw(ctx);
-          } else if (car_length > 5 && car_length < 8) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
-                .draw(ctx);
-          } else if (car_length < 3) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
-                .draw(ctx);
+
+            rowY = rowY + 13.3
           }
-
-          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-          if (eta < 0.5) {
-            eta = ""
-          } else {
-            eta = Math.round(eta) + " min  "
-          }
-          Text.create("Arrival ETA")
-              .text(eta)
-              .color(0xFFFFFF)
-              .pos(pids.width + 1, rowY)
-              .scale(0.80)
-              .size(30, 9) // <----
-              .scaleXY() // <----
-              .rightAlign()
-              .draw(ctx);
-
-          rowY = rowY + 13.3
         }
       }
     } else {
@@ -219,78 +236,95 @@ function render(ctx, state, pids) {
 
       let rowY = 7
       for (let i = rows * (page - 1); i < rows * page; i++) {
-        let arrival = pids.arrivals().get(i);
-        if (arrival != null) {
+        if (pids.getCustomMessage(3) != "" && i == rows * page - 1) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
-              .pos(2.5, rowY - 2)
-              .size(21, 10)
-              .color(arrival.routeColor())
+              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .pos(0, rowY - 2)
+              .size(pids.width, 10)
               .draw(ctx);
 
           Text.create("Number Text")
-              .text(arrival.routeNumber())
+              .text(pids.getCustomMessage(3))
               .scale(0.75)
-              .centerAlign()
-              .pos(12.5, rowY)
-              .size(22, 9) // <----
-              .scaleXY() // <----
-              .color(0xFFFFFF)
+              .pos(1, rowY)
+              .size(pids.width / 0.75 - 2, 10)
+              .marquee()
+              .color(0x000022)
               .draw(ctx);
+        } else {
+          let arrival = pids.arrivals().get(i);
+          if (arrival != null) {
+            Texture.create("Circle Colored")
+                .texture("jsblock:custom_directory/lrr.png")
+                .pos(2.5, rowY - 2)
+                .size(21, 10)
+                .color(arrival.routeColor())
+                .draw(ctx);
 
-          Text.create("Arrival destination")
-              .text(TextUtil.cycleString(arrival.destination()))
-              .pos(26.5, rowY)
-              .size(60, 9)
-              .scaleXY() // <----
-              .scale(0.80)
-              .color(0xFFFFFF)
-              .draw(ctx);
+            Text.create("Number Text")
+                .text(arrival.routeNumber())
+                .scale(0.75)
+                .centerAlign()
+                .pos(12.5, rowY)
+                .size(22, 9) // <----
+                .scaleXY() // <----
+                .color(0xFFFFFF)
+                .draw(ctx);
 
-          let car_length = arrival.carCount();
-          if (car_length > 2 && car_length < 5) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
+            Text.create("Arrival destination")
+                .text(TextUtil.cycleString(arrival.destination()))
+                .pos(26.5, rowY)
+                .size(60, 9)
+                .scaleXY() // <----
+                .scale(0.80)
+                .color(0xFFFFFF)
                 .draw(ctx);
-          } else if (car_length > 7) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
+
+            let car_length = arrival.carCount();
+            if (car_length > 2 && car_length < 5) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length > 7) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length > 5 && car_length < 8) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            } else if (car_length < 3) {
+              Texture.create("Car length")
+                  .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
+                  .pos(79, rowY)
+                  .size(30, 5)
+                  .draw(ctx);
+            }
+
+            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+            if (eta < 0.5) {
+              eta = ""
+            } else {
+              eta = Math.round(eta) + " min  "
+            }
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xFFFFFF)
+                .pos(pids.width + 1, rowY)
+                .scale(0.80)
+                .size(30, 9) // <----
+                .scaleXY() // <----
+                .rightAlign()
                 .draw(ctx);
-          } else if (car_length > 5 && car_length < 8) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
-                .draw(ctx);
-          } else if (car_length < 3) {
-            Texture.create("Car length")
-                .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
-                .pos(79, rowY)
-                .size(30, 5)
-                .draw(ctx);
+
+            rowY = rowY + 13.3
           }
-
-          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-          if (eta < 0.5) {
-            eta = ""
-          } else {
-            eta = Math.round(eta) + " min  "
-          }
-          Text.create("Arrival ETA")
-              .text(eta)
-              .color(0xFFFFFF)
-              .pos(pids.width + 1, rowY)
-              .scale(0.80)
-              .size(30, 9) // <----
-              .scaleXY() // <----
-              .rightAlign()
-              .draw(ctx);
-
-          rowY = rowY + 13.3
         }
       }
     }
