@@ -24,41 +24,88 @@ function render(ctx, state, pids) {
     .draw(ctx);
 
     for (let i = 2 * (page - 1); i < 2 * page; i++) {
-      let rowY = 0 - 2.5 + ((i - 2 * (page - 1)) * 30);
-      let arrival = pids.arrivals().get(i);
-      if(arrival != null) {
-        Text.create("Number Text")
-        .text(arrival.routeNumber())
-        .pos(1, rowY)
-        .size(14, 25)  // <----
-        .scaleXY() // <----
-        .scale(2)
-        .color(0xcda222)
-        .draw(ctx);
+      if (pids.getCustomMessage(3) != "" && i == 2 * page - 1) {
+        let rowY = 0 - 9 + ((i - 2 * (page - 1)) * 30);
+        let arrival = pids.arrivals().get(i);
+        if (arrival != null) {
+          Text.create("Number Text")
+              .text(arrival.routeNumber())
+              .pos(1, rowY + 11.5)
+              .size(14, 25)
+              .scaleXY()
+              .color(0xcda222)
+              .draw(ctx);
 
-        Text.create("Arrival destination")
-        .text(TextUtil.cycleString(arrival.destination()))
-        .pos(30, rowY + 11.5)
-        .size(60, 25)
-        .scale(1)
-        .scaleXY() // <----
-        .color(0xcda222)
-        .draw(ctx);
+          Text.create("Arrival destination")
+              .text(TextUtil.cycleString(arrival.destination()))
+              .pos(30, rowY + 11.5)
+              .size(60, 25)
+              .scaleXY()
+              .color(0xcda222)
+              .draw(ctx);
 
-        let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-        if (eta < 0.5) {
-          // nothing...
-        } else {
-          eta = "in " + Math.round(eta) + " min";
-          Text.create("Arrival ETA")
-          .text(eta)
-          .color(0xcda222)
-          .pos(pids.width - 1.5, rowY + 11.5)
-          .size(70, 25) // <----
-          .scale(1)
-          .scaleXY() // <----
-          .rightAlign()
-          .draw(ctx);
+          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+          if (eta < 0.5) {
+            // nothing...
+          } else {
+            eta = "in " + Math.round(eta) + " min";
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xcda222)
+                .pos(pids.width - 1.5, rowY + 11.5)
+                .size(70, 25)
+                .scale(1)
+                .scaleXY()
+                .rightAlign()
+                .draw(ctx);
+          }
+        }
+
+        Text.create("custom text")
+            .text(pids.getCustomMessage(3))
+            .pos(1, 52)
+            .size(pids.width / 0.8 - 4, 25)
+            .marquee()
+            .scale(0.8)
+            .color(0xcda222)
+            .draw(ctx);
+      } else {
+        let rowY = 0 - 2.5 + ((i - 2 * (page - 1)) * 30);
+        let arrival = pids.arrivals().get(i);
+        if (arrival != null) {
+          Text.create("Number Text")
+              .text(arrival.routeNumber())
+              .pos(1, rowY)
+              .size(14, 25)  // <----
+              .scaleXY() // <----
+              .scale(2)
+              .color(0xcda222)
+              .draw(ctx);
+
+          Text.create("Arrival destination")
+              .text(TextUtil.cycleString(arrival.destination()))
+              .pos(30, rowY + 11.5)
+              .size(60, 25)
+              .scale(1)
+              .scaleXY() // <----
+              .color(0xcda222)
+              .draw(ctx);
+
+          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+          if (eta < 0.5) {
+            // nothing...
+          } else {
+            eta = "in " + Math.round(eta) + " min";
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xcda222)
+                .pos(pids.width - 1.5, rowY + 11.5)
+                .size(70, 25) // <----
+                .scale(1)
+                .scaleXY() // <----
+                .rightAlign()
+                .draw(ctx);
+          }
         }
       }
     }

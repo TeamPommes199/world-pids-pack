@@ -4,7 +4,7 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1);
   customMsgs = customMsgs.split(';');
   customMsgs = customMsgs.map(item => item.trim());
 
@@ -24,41 +24,87 @@ function render(ctx, state, pids) {
     .draw(ctx);
 
     for (let i = 2 * (page - 1); i < 2 * page; i++) {
-      let rowY = 0 - 9 + ((i - 2 * (page - 1)) * 30);
-      let arrival = pids.arrivals().get(i);
-      if(arrival != null) {
-        Text.create("Number Text")
-        .text(arrival.routeNumber())
-        .pos(1, rowY)
-        .size(17, 25)  // <----
-        .scaleXY() // <----
-        .scale(2)
-        .color(0xcda222)
-        .draw(ctx);
+      if (pids.getCustomMessage(2) != "" && i == 2 * page - 1) {
+        let rowY = 0 - 9 + ((i - 2 * (page - 1)) * 30);
+        let arrival = pids.arrivals().get(i);
+        if (arrival != null) {
+          Text.create("Number Text")
+              .text(arrival.routeNumber())
+              .pos(1, rowY + 11.5)
+              .size(34, 25)
+              .scaleXY()
+              .color(0xcda222)
+              .draw(ctx);
 
-        Text.create("Arrival destination")
-        .text(TextUtil.cycleString(arrival.destination()))
-        .pos(35, rowY + 11.5)
-        .size(90, 25)
-        .scale(1)
-        .scaleXY() // <----
-        .color(0xcda222)
-        .draw(ctx);
+          Text.create("Arrival destination")
+              .text(TextUtil.cycleString(arrival.destination()))
+              .pos(35, rowY + 11.5)
+              .size(90, 25)
+              .scaleXY()
+              .color(0xcda222)
+              .draw(ctx);
 
-        let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-        if (eta < 0.5) {
-          // nothing...
-        } else {
-          eta = "in " + Math.round(eta) + " min";
-          Text.create("Arrival ETA")
-          .text(eta)
-          .color(0xcda222)
-          .pos(pids.width - 1.5, rowY + 11.5)
-          .size(70, 25) // <----
-          .scale(1)
-          .scaleXY() // <----
-          .rightAlign()
-          .draw(ctx);
+          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+          if (eta < 0.5) {
+            // nothing...
+          } else {
+            eta = "in " + Math.round(eta) + " min";
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xcda222)
+                .pos(pids.width - 1.5, rowY + 11.5)
+                .size(70, 25)
+                .scaleXY()
+                .rightAlign()
+                .draw(ctx);
+          }
+        }
+        
+        Text.create("custom text")
+            .text(pids.getCustomMessage(2))
+            .pos(1, 50)
+            .size(pids.width / 0.8 - 4, 25)
+            .marquee()
+            .scale(0.8)
+            .color(0xcda222)
+            .draw(ctx);
+      } else {
+        let rowY = 0 - 9 + ((i - 2 * (page - 1)) * 30);
+        let arrival = pids.arrivals().get(i);
+        if (arrival != null) {
+          Text.create("Number Text")
+              .text(arrival.routeNumber())
+              .pos(1, rowY)
+              .size(17, 25) 
+              .scaleXY()
+              .scale(2)
+              .color(0xcda222)
+              .draw(ctx);
+
+          Text.create("Arrival destination")
+              .text(TextUtil.cycleString(arrival.destination()))
+              .pos(35, rowY + 11.5)
+              .size(90, 25)
+              .scale(1)
+              .scaleXY()
+              .color(0xcda222)
+              .draw(ctx);
+
+          let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+          if (eta < 0.5) {
+            // nothing...
+          } else {
+            eta = "in " + Math.round(eta) + " min";
+            Text.create("Arrival ETA")
+                .text(eta)
+                .color(0xcda222)
+                .pos(pids.width - 1.5, rowY + 11.5)
+                .size(70, 25)
+                .scale(1)
+                .scaleXY()
+                .rightAlign()
+                .draw(ctx);
+          }
         }
       }
     }
