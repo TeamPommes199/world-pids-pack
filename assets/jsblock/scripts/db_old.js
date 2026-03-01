@@ -4,6 +4,10 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+    customMsgs = customMsgs.split(';');
+    customMsgs = customMsgs.map(item => item.trim());
+
     Texture.create("Background")
     .texture("jsblock:custom_directory/db_old.png")
     .size(pids.width, pids.height)
@@ -44,18 +48,33 @@ function render(ctx, state, pids) {
         .size(48, 24)
         .draw(ctx);
 
-        if (deviation > 270000) {
+        let customMsg_r = false
+        for (let customMsg of customMsgs) {
+            if (customMsg.includes(arrival_first.routeNumber(), ":")) {
+                customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
+            }
+        }
+
+        if (deviation > 270000 || customMsg_r) {
             Texture.create("late_arrival ETA background")
             .texture("jsblock:custom_directory/lrr_u_bahn.png")
             .pos(27, 8)
             .size(pids.width - 65, 6)
             .draw(ctx);
-            
-            deviation = deviation / 60000
-            deviation = Math.round(deviation)
 
-            Text.create("late_arrival ETA")
-            .text("     Verspätung ca. "+ deviation + " Min.     ")
+            let message = ""
+            if (deviation > 270000) {
+                deviation = deviation / 60000
+                deviation = Math.round(deviation)
+                message = "+++ Verspätung ca. "+ deviation + " Min. +++"
+            }
+
+            if (customMsg_r) {
+                message = message + customMsg_r + " +++"
+            }
+
+            Text.create("message")
+            .text(message)
             .color(0x000000)
             .pos(28, 9)
             .scale(0.5)
