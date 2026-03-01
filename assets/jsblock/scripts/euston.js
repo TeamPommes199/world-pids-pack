@@ -19,6 +19,17 @@ function render(ctx, state, pids) {
         }
     }
 
+    let icons = ["awc", "lnr"]
+    for (let customMsg of customMsgs) {
+        if (customMsg.includes("active_icons:")) {
+            let iconsMsg = customMsg.replace("active_icons:", "")
+            let iconsArray = iconsMsg.split(",")
+            for (let icon of iconsArray) {
+                icons.push(icon.trim());
+            }
+        }
+    }
+
     Texture.create("Background")
         .texture("jsblock:custom_directory/euston/euston.png")
         .size(pids.height * 7.8, pids.height)
@@ -253,15 +264,29 @@ function render(ctx, state, pids) {
                     .draw(ctx);
             }
 
-            Text.create("arrival routeNumber")
-                .text(arrival.routeNumber())
-                .pos(posX + (pids.height * 0.4 / 2), 18)
-                .centerAlign()
-                .scale(0.5)
-                .size(pids.height * 0.75, 10)
-                .scaleXY()
-                .color(0xFFFFFF)
-                .draw(ctx);
+            let icon_active = false
+            for (let icon of icons) {
+                if (icon == arrival.routeNumber()) {
+                    icon_active = true
+                    Texture.create("arrival icon")
+                        .texture(`wpp:euston/${arrival.routeNumber()}.png`)
+                        .size(pids.height * 0.3925, pids.height * 0.0611)
+                        .pos(posX, 17.6)
+                        .draw(ctx);
+                }
+            }
+
+            if (!icon_active) {
+                Text.create("arrival routeNumber")
+                    .text(arrival.routeNumber())
+                    .pos(posX + (pids.height * 0.4 / 2), 18)
+                    .centerAlign()
+                    .scale(0.5)
+                    .size(pids.height * 0.75, 10)
+                    .scaleXY()
+                    .color(0xFFFFFF)
+                    .draw(ctx);
+            }
 
             if (pids.station() && arrival.route()) {
                 let stationClean = pids.station().getName().normalize("NFC").trim();
