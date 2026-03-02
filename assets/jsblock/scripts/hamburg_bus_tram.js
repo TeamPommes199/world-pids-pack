@@ -21,44 +21,55 @@ function render(ctx, state, pids) {
     }
 
     for (let i = 0; i < 4; i++) {
-        let arrival = pids.arrivals().get(i);
-        if (arrival != null) {
-            let rowY = 25 + (10 * i)
-
+        if (i === 3 && pids.getCustomMessage(3) != "") {
             Text.create("arrival routeNumber")
-                .text(arrival.routeNumber())
-                .pos(29, rowY)
-                .size(17, 12)
-                .scaleXY()
-                .rightAlign()
+                .text(pids.getCustomMessage(3))
+                .pos(15, 55)
+                .size(116, 12)
+                .marquee()
                 .color(0xff8c00)
                 .scale(0.88)
                 .draw(ctx);
+        } else {
+            let arrival = pids.arrivals().get(i);
+            if (arrival != null) {
+                let rowY = 25 + (10 * i)
 
-            Text.create("arrival destination")
-                .text(TextUtil.cycleString(arrival.destination()))
-                .pos(32, rowY + 1.85)
-                .size(pids.width - 48, 12)
-                .scaleXY()
-                .color(0xff8c00)
-                .scale(0.66)
-                .draw(ctx);
+                Text.create("arrival routeNumber")
+                    .text(arrival.routeNumber())
+                    .pos(29, rowY)
+                    .size(17, 12)
+                    .scaleXY()
+                    .rightAlign()
+                    .color(0xff8c00)
+                    .scale(0.88)
+                    .draw(ctx);
 
-            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-            if (eta < 0.5) {
-                eta = "sofort"
-            } else {
-                eta = Math.round(eta) + " min"
+                Text.create("arrival destination")
+                    .text(TextUtil.cycleString(arrival.destination()))
+                    .pos(32, rowY + 1.85)
+                    .size(pids.width - 48, 12)
+                    .scaleXY()
+                    .color(0xff8c00)
+                    .scale(0.66)
+                    .draw(ctx);
+
+                let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+                if (eta < 0.5) {
+                    eta = "sofort"
+                } else {
+                    eta = Math.round(eta) + " min"
+                }
+                Text.create("arrival ETA")
+                    .text(eta)
+                    .color(0xff8c00)
+                    .pos(pids.width - 13, rowY)
+                    .size(48, 12)
+                    .scaleXY()
+                    .rightAlign()
+                    .scale(0.88)
+                    .draw(ctx);
             }
-            Text.create("arrival ETA")
-                .text(eta)
-                .color(0xff8c00)
-                .pos(pids.width - 13, rowY)
-                .size(48, 12)
-                .scaleXY()
-                .rightAlign()
-                .scale(0.88)
-                .draw(ctx);
         }
     }
 }
