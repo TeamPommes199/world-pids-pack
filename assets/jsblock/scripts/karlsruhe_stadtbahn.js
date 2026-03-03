@@ -4,6 +4,23 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
+  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+  customMsgs = customMsgs.split(';');
+  customMsgs = customMsgs.map(item => item.trim());
+
+  let page = 1
+  let pageMsg = customMsgs.find(item => item.includes("page:"))
+  if (pageMsg) {
+    page = pageMsg.replace("page:", "")
+    if (page < 1) {page = 1}
+  }
+
+  let showEtaMsg = customMsgs.find(item => item.includes("show_minutes"))
+  let show_minutes = false
+  if (showEtaMsg) {
+    show_minutes = true
+  }
+
   Texture.create("Background")
       .texture("jsblock:custom_directory/karlsruhe_stadtbahn.png")
       .size(pids.width, pids.height)
@@ -135,7 +152,7 @@ function render(ctx, state, pids) {
 
           let eta = (arrival.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
             let etas = arrival.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
@@ -220,7 +237,7 @@ function render(ctx, state, pids) {
 
           let eta = (arrival_extra.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
             let etas = arrival_extra.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
@@ -268,8 +285,10 @@ function render(ctx, state, pids) {
           .scale(0.8)
           .draw(ctx);
 
-      for(let i = 0; i < 5; i++) {
-        let rowY = 16 + (i*10.3);
+      let x = 0
+      for(let i = 5 * (page - 1); i < 5 * page; i++) {
+        let rowY = 16 + (x*10.3);
+        x++
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
           Texture.create("Circle Colored")
@@ -316,13 +335,12 @@ function render(ctx, state, pids) {
 
           let eta = (arrival.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
             let etas = arrival.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
             let minutes = eta.getMinutes()
-            let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
-            eta = time
+            eta = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0')
           }
           Text.create("Arrival ETA")
               .text(eta)
