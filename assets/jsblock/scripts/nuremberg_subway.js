@@ -35,6 +35,24 @@ function render(ctx, state, pids) {
       .scaleXY()
       .draw(ctx);
 
+  if (pids.getCustomMessage(3) != "") {
+    Texture.create("custom message")
+        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+        .pos(0, pids.height - 10)
+        .size(pids.width, 10)
+        .color(0xc1cb28)
+        .draw(ctx);
+
+    Text.create("date")
+        .text(pids.getCustomMessage(3))
+        .color(0x000000)
+        .pos(1, pids.height - 7.75)
+        .size(pids.width / 0.65 - 2, 10)
+        .scale(0.65)
+        .marquee()
+        .draw(ctx);
+  }
+
   for (let i = 0; i < 2; i++) {
     let rowY = 6 + (i * 30);
     let arrival = pids.arrivals().get(i);
