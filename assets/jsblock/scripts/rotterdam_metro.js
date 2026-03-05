@@ -9,7 +9,7 @@ function render(ctx, state, pids) {
       .size(pids.width, pids.height)
       .draw(ctx);
 
-  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1);
   customMsgs = customMsgs.split(';');
   customMsgs = customMsgs.map(item => item.trim());
 
@@ -87,21 +87,45 @@ function render(ctx, state, pids) {
   }
 
   for (let i = 3 * (page - 1); i < 3 * page; i++) {
-    let eta = null
-    let rowY = 5 + ((i - 3 * (page - 1)) * 14);
-    let arrival = pids.arrivals().get(i);
+    if (i === 3 * page - 1 && pids.getCustomMessage(2) != "") {
+      let rowY = 5 + ((i - 3 * (page - 1)) * 14);
+      Texture.create("Background")
+          .texture("jsblock:custom_directory/rotterdam_background.png")
+          .pos(10, rowY + 10)
+          .size(pids.width, pids.height)
+          .draw(ctx);
 
-    if (arrival != null) {
-      eta = (arrival.arrivalTime() - Date.now()) / 60000;
-    }
+      Text.create("Number Text")
+          .text(pids.getCustomMessage(2))
+          .pos(10, rowY + 10)
+          .size(pids.width / 1.3 - 20, 10)
+          .marquee()
+          .scale(1.3)
+          .color(0xFFB600)
+          .draw(ctx);
+    } else {
+      let eta = null
+      let rowY = 5 + ((i - 3 * (page - 1)) * 14);
+      let arrival = pids.arrivals().get(i);
 
-    if (eta != null) {
-      if (eta < 0.5) {
-        Texture.create("Background")
-            .texture("jsblock:custom_directory/rotterdam_background_arrive.png")
-            .pos(10, rowY + 10)
-            .size(pids.width, pids.height)
-            .draw(ctx);
+      if (arrival != null) {
+        eta = (arrival.arrivalTime() - Date.now()) / 60000;
+      }
+
+      if (eta != null) {
+        if (eta < 0.5) {
+          Texture.create("Background")
+              .texture("jsblock:custom_directory/rotterdam_background_arrive.png")
+              .pos(10, rowY + 10)
+              .size(pids.width, pids.height)
+              .draw(ctx);
+        } else {
+          Texture.create("Background")
+              .texture("jsblock:custom_directory/rotterdam_background.png")
+              .pos(10, rowY + 10)
+              .size(pids.width, pids.height)
+              .draw(ctx);
+        }
       } else {
         Texture.create("Background")
             .texture("jsblock:custom_directory/rotterdam_background.png")
@@ -109,45 +133,39 @@ function render(ctx, state, pids) {
             .size(pids.width, pids.height)
             .draw(ctx);
       }
-    } else {
-      Texture.create("Background")
-          .texture("jsblock:custom_directory/rotterdam_background.png")
-          .pos(10, rowY + 10)
-          .size(pids.width, pids.height)
-          .draw(ctx);
-    }
 
-    if (arrival != null) {
-      eta = (arrival.arrivalTime() - Date.now()) / 60000;
-      Text.create("Number Text")
-          .text(arrival.routeNumber())
-          .pos(10, rowY)
-          .size(18, 25)  // <----
-          .scaleXY() // <----
-          .scale(1.3)
-          .color(0xFFB600)
-          .draw(ctx);
-
-      Text.create("Arrival destination")
-          .text(TextUtil.cycleString(arrival.destination().toUpperCase()))
-          .pos(35, rowY)
-          .size(75, 25)
-          .scale(1.3)
-          .scaleXY() // <----
-          .color(0xFFB600)
-          .draw(ctx);
-
-      if (eta >= 0.5) {
-        eta = Math.round(eta) + " min"
-        Text.create("Arrival ETA")
-            .text(eta)
-            .color(0xFFB600)
-            .pos(pids.width - 10, rowY)
-            .size(30, 25)
+      if (arrival != null) {
+        eta = (arrival.arrivalTime() - Date.now()) / 60000;
+        Text.create("Number Text")
+            .text(arrival.routeNumber())
+            .pos(10, rowY)
+            .size(18, 25)  // <----
+            .scaleXY() // <----
             .scale(1.3)
-            .rightAlign()
-            .scaleXY()
+            .color(0xFFB600)
             .draw(ctx);
+
+        Text.create("Arrival destination")
+            .text(TextUtil.cycleString(arrival.destination().toUpperCase()))
+            .pos(35, rowY)
+            .size(75, 25)
+            .scale(1.3)
+            .scaleXY() // <----
+            .color(0xFFB600)
+            .draw(ctx);
+
+        if (eta >= 0.5) {
+          eta = Math.round(eta) + " min"
+          Text.create("Arrival ETA")
+              .text(eta)
+              .color(0xFFB600)
+              .pos(pids.width - 10, rowY)
+              .size(30, 25)
+              .scale(1.3)
+              .rightAlign()
+              .scaleXY()
+              .draw(ctx);
+        }
       }
     }
   }
