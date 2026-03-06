@@ -266,7 +266,7 @@ function render(ctx, state, pids) {
 
             let icon_active = false
             for (let icon of icons) {
-                if (arrival.routeName().includes(icon)) {
+                if (arrival.routeName().toLowerCase().includes(icon)) {
                     icon_active = true
                     Texture.create("arrival icon")
                         .texture(`wpp:euston/${icon}.png`)
