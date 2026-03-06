@@ -266,10 +266,10 @@ function render(ctx, state, pids) {
 
             let icon_active = false
             for (let icon of icons) {
-                if (icon == arrival.routeNumber()) {
+                if (arrival.routeName().includes(icon)) {
                     icon_active = true
                     Texture.create("arrival icon")
-                        .texture(`wpp:euston/${arrival.routeNumber()}.png`)
+                        .texture(`wpp:euston/${icon}.png`)
                         .size(pids.height * 0.3925, pids.height * 0.0611)
                         .pos(posX, 17.6)
                         .draw(ctx);
