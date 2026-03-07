@@ -329,14 +329,32 @@ function render(ctx, state, pids) {
                 }
             }
 
-            Text.create("arrival destination")
-                .text("This train has " + arrival.cars().length + " coaches")
-                .pos(posX + 4.5, pids.height - 9)
-                .scale(0.2)
-                .size(pids.height * 1.5, 10)
-                .marquee()
-                .color(0xFFFF00)
-                .draw(ctx);
+            let customMsg_r = ""
+            for (let customMsg of customMsgs) {
+                if (customMsg.includes(arrival.routeNumber() + ":")) {
+                    customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                }
+            }
+
+            if (customMsg_r === "") {
+                Text.create("coaches")
+                    .text("This train has " + arrival.cars().length + " coaches")
+                    .pos(posX + 4.5, pids.height - 9)
+                    .scale(0.2)
+                    .size(pids.height * 1.5, 10)
+                    .marquee()
+                    .color(0xFFFF00)
+                    .draw(ctx);
+            } else {
+                Text.create("information")
+                    .text(customMsg_r.replace("|", " "))
+                    .pos(posX + 4.5, pids.height - 9)
+                    .scale(0.2)
+                    .size(pids.height * 1.5, 10)
+                    .marquee()
+                    .color(0xFFFF00)
+                    .draw(ctx);
+            }
         } else {
             Texture.create("train info")
                 .texture("jsblock:custom_directory/euston/euston_train_info.png")

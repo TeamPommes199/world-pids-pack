@@ -56,7 +56,7 @@
 
 		{
 			"id": "hamburg_u_bahn",
-			"name": "Hamburg Subway",
+			"name": "Hamburg (Subway)",
 			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
 			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn.js"],
@@ -65,7 +65,7 @@
 
 		{
 			"id": "hamburg_u_bahn_colored",
-			"name": "Hamburg Subway (colored)",
+			"name": "Hamburg (Subway - colored)",
 			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
 			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored.js"],
@@ -74,7 +74,7 @@
 
 		{
 			"id": "hamburg_u_bahn_1a",
-			"name": "Hamburg Subway",
+			"name": "Hamburg (Subway)",
 			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
 			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_1a.js"],
@@ -83,7 +83,7 @@
 
 		{
 			"id": "hamburg_u_bahn_colored_1a",
-			"name": "Hamburg Subway (colored)",
+			"name": "Hamburg (Subway - colored)",
 			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
 			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored_1a.js"],
@@ -92,7 +92,7 @@
 
 		{
 			"id": "hamburg_u_bahn_new",
-			"name": "Hamburg Subway (New)",
+			"name": "Hamburg (Subway - New)",
 			"background": "jsblock:custom_directory/hamburg_subway_new.png",
 			"thumbnail": "jsblock:custom_directory/hamburg_subway_new.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_subway_new.js"],
