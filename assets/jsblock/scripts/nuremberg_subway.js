@@ -9,10 +9,26 @@ function render(ctx, state, pids) {
       .size(pids.width, pids.height)
       .draw(ctx);
 
+  let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+  customMsgs = customMsgs.split(';');
+  customMsgs = customMsgs.map(item => item.trim());
+
+  let only_first = false
+  let onlyFirstMsg = customMsgs.find(item => item.includes("only_first"))
+  if (onlyFirstMsg) {
+    only_first = true
+  }
+
+  let only_arrivals = false
+  let onlyArrivalsMsg = customMsgs.find(item => item.includes("only_arrivals"))
+  if (onlyArrivalsMsg) {
+    only_arrivals = true
+  }
+
   let first_arrival = pids.arrivals().get(0);
   if (first_arrival != null) {
     let eta = (first_arrival.arrivalTime() - Date.now()) / 60000;
-    if (eta < 0.5) {
+    if (eta < 0.5 && !only_arrivals || only_first) {
       let rowY = 16;
 
       Texture.create("Background")
