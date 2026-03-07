@@ -10,7 +10,7 @@ function render(ctx, state, pids) {
     .size(pids.width, pids.height)
     .draw(ctx);
 
-    let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2), pids.getCustomMessage(3)];
+    let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2)];
 
     let arrival_first = pids.arrivals().get(0);
     if(arrival_first != null) {
