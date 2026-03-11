@@ -3,7 +3,7 @@ include(Resources.id("jsblock:scripts/pids_util.js"));
 function create(ctx, state, pids) {}
 
 function render(ctx, state, pids) {
-    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2) + ";" + pids.getCustomMessage(3);
     customMsgs = customMsgs.split(';');
     customMsgs = customMsgs.map(item => item.trim());
 
@@ -265,14 +265,16 @@ function render(ctx, state, pids) {
             }
 
             let icon_active = false
-            for (let icon of icons) {
-                if (arrival.routeName().toLowerCase().includes(icon)) {
-                    icon_active = true
-                    Texture.create("arrival icon")
-                        .texture(`wpp:euston/${icon}.png`)
-                        .size(pids.height * 0.3925, pids.height * 0.0611)
-                        .pos(posX, 17.6)
-                        .draw(ctx);
+            if (arrival.routeNumber() != "") {
+                for (let icon of icons) {
+                    if (arrival.routeName().toLowerCase().includes(icon)) {
+                        icon_active = true
+                        Texture.create("arrival icon")
+                            .texture(`wpp:euston/${icon}.png`)
+                            .size(pids.height * 0.3925, pids.height * 0.0611)
+                            .pos(posX, 17.6)
+                            .draw(ctx);
+                    }
                 }
             }
 
@@ -336,7 +338,7 @@ function render(ctx, state, pids) {
                 }
             }
 
-            if (customMsg_r === "") {
+            if (customMsg_r === "" || arrival.routeNumber() == "") {
                 Text.create("coaches")
                     .text("This train has " + arrival.cars().length + " coaches")
                     .pos(posX + 4.5, pids.height - 9)
@@ -347,7 +349,7 @@ function render(ctx, state, pids) {
                     .draw(ctx);
             } else {
                 Text.create("information")
-                    .text(customMsg_r.replace("|", " "))
+                    .text(customMsg_r)
                     .pos(posX + 4.5, pids.height - 9)
                     .scale(0.2)
                     .size(pids.height * 1.5, 10)
