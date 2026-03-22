@@ -425,7 +425,7 @@
 
 		{
 			"id": "bremen_regio_train_1a",
-			"name": "Bremen (Regio Train)",
+			"name": "DB DSA+",
 			"background": "jsblock:custom_directory/dot_matrix_1a.png",
 			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/bremen_regio_train.js"],
