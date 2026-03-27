@@ -4,11 +4,6 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-  Texture.create("Background")
-      .texture("jsblock:custom_directory/obb_depature.png")
-      .size(pids.width, pids.height)
-      .draw(ctx);
-
   let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1) + ";" + pids.getCustomMessage(2);
   customMsgs = customMsgs.split(';');
   customMsgs = customMsgs.map(item => item.trim());
@@ -18,6 +13,24 @@ function render(ctx, state, pids) {
   if (pageMsg) {
     page = pageMsg.replace("page:", "")
     if (page < 1) {page = 1}
+  }
+
+  let logo = true
+  let logoMsg = customMsgs.find(item => item.includes("disable_logo"))
+  if (logoMsg) {
+    logo = false
+  }
+
+  if (logo) {
+    Texture.create("Background")
+        .texture("jsblock:custom_directory/obb_depature.png")
+        .size(pids.width, pids.height)
+        .draw(ctx);
+  } else {
+    Texture.create("Background")
+        .texture("jsblock:custom_directory/obb_depature_w_obb.png")
+        .size(pids.width, pids.height)
+        .draw(ctx);
   }
 
   let date = new Date;
