@@ -475,6 +475,15 @@
 			"thumbnail": "jsblock:custom_directory/trenitalia.png",
 			"scriptFiles": ["jsblock:scripts/trenitalia.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "london_bus_1a",
+			"name": "London (Bus)",
+			"background": "jsblock:custom_directory/dot_matrix_1a.png",
+			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"scriptFiles": ["jsblock:scripts/london_bus.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		}
 	]
 }
