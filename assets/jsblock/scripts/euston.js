@@ -13,19 +13,31 @@ function render(ctx, state, pids) {
     })
 
     let plat_announce_time = 0.5
-    for (let customMsg of customMsgs) {
-        if (customMsg.includes("plat_announce_time:")) {
-            plat_announce_time = parseFloat(customMsg.replace("plat_announce_time:", "") / 60)
-        }
-    }
-
     let icons = ["awc", "lnr"]
+
     for (let customMsg of customMsgs) {
         if (customMsg.includes("active_icons:")) {
             let iconsMsg = customMsg.replace("active_icons:", "")
             let iconsArray = iconsMsg.split(",")
             for (let icon of iconsArray) {
                 icons.push(icon.trim());
+            }
+        }
+
+        if (customMsg.includes("plat_announce_time:")) {
+            plat_announce_time = parseFloat(customMsg.replace("plat_announce_time:", "") / 60)
+        }
+    }
+
+    let routes_for_icons = []
+    for (let icon of icons) {
+        for (let customMsg of customMsgs) {
+            if (customMsg.includes(icon + ":")) {
+                let iconsMsg = customMsg.replace(icon + ":", "")
+                let iconsArray = iconsMsg.split(",")
+                for (let routeIcon of iconsArray) {
+                    routes_for_icons.push({"icon": icon, "route": routeIcon.trim()});
+                }
             }
         }
     }
@@ -265,22 +277,36 @@ function render(ctx, state, pids) {
             }
 
             let icon_active = false
+            let icon
             if (arrival.routeNumber() != "") {
-                for (let icon of icons) {
-                    if (arrival.routeName().toLowerCase().includes(icon)) {
+                for (let icon_obj of routes_for_icons) {
+                    if (arrival.routeName().toLowerCase().includes(icon_obj.route.toLowerCase())) {
                         icon_active = true
                         Texture.create("arrival icon")
-                            .texture(`wpp:euston/${icon}.png`)
+                            .texture(`wpp:euston/${icon_obj.icon}.png`)
                             .size(pids.height * 0.3925, pids.height * 0.0611)
                             .pos(posX, 17.6)
                             .draw(ctx);
+                    }
+                }
+
+                if (!icon_active) {
+                    for (icon of icons) {
+                        if (arrival.routeName().toLowerCase().includes(icon.toLowerCase())) {
+                            icon_active = true
+                            Texture.create("arrival icon")
+                                .texture(`wpp:euston/${icon}.png`)
+                                .size(pids.height * 0.3925, pids.height * 0.0611)
+                                .pos(posX, 17.6)
+                                .draw(ctx);
+                        }
                     }
                 }
             }
 
             if (!icon_active) {
                 Text.create("arrival routeNumber")
-                    .text(arrival.routeNumber())
+                    .text(arrival.routeNumber() + " " + icon)
                     .pos(posX + (pids.height * 0.4 / 2), 18)
                     .centerAlign()
                     .scale(0.5)
