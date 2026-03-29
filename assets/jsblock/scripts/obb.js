@@ -13,7 +13,7 @@ function render(ctx, state, pids) {
     if(arrival_first != null) {
         Text.create("arrival_first Number Text")
         .text(arrival_first.routeNumber())
-        .pos(0.5, 20)
+        .pos(8.5, 20)
         .leftAlign()
         .size(12, 6)
         .scale(1.55)
@@ -23,8 +23,8 @@ function render(ctx, state, pids) {
 
         Text.create("arrival_first destination")
         .text(TextUtil.cycleString(arrival_first.destination()))
-        .pos(0.5, 30)
-        .size(45, 6)
+        .pos(8.5, 30)
+        .size(64, 6)
         .scale(1.3)
         .scaleXY()
         .color(0xFFFFFF)
@@ -36,7 +36,7 @@ function render(ctx, state, pids) {
             .color(0xffffff)
             .rightAlign()
             .scale(0.8)
-            .pos(pids.width - 0.5, 26)
+            .pos(pids.width - 8.5, 26)
             .size(48, 24)
             .draw(ctx);
         } else {
@@ -45,7 +45,7 @@ function render(ctx, state, pids) {
             .color(0xffffff)
             .rightAlign()
             .scale(0.8)
-            .pos(pids.width - 0.5, 26)
+            .pos(pids.width - 8.5, 26)
             .size(48, 24)
             .draw(ctx);
         }
@@ -61,7 +61,7 @@ function render(ctx, state, pids) {
         .color(0xffffff)
         .rightAlign()
         .scale(1.2)
-        .pos(pids.width - 3, 26)
+        .pos(pids.width - 8.5, 26)
         .size(48, 24)
         .scaleXY()
         .draw(ctx);

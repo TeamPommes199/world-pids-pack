@@ -132,7 +132,16 @@
 			"background": "jsblock:custom_directory/obb.png",
 			"thumbnail": "jsblock:custom_directory/obb.png",
 			"scriptFiles": ["jsblock:scripts/obb.js"],
-			"blacklist": []
+			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "obb_1a",
+			"name": "ÖBB",
+			"background": "jsblock:custom_directory/obb.png",
+			"thumbnail": "jsblock:custom_directory/obb.png",
+			"scriptFiles": ["jsblock:scripts/obb_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
 
 		{
