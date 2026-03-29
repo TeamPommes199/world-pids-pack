@@ -17,7 +17,7 @@ function render(ctx, state, pids) {
     if (seconds % 20 < 10) {
         time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0')
     } else {
-        time = date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()
+        time = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear()
     }
 
     Text.create("date")
