@@ -52,20 +52,20 @@ function render(ctx, state, pids) {
     let hours = date.getHours();
     let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
 
-    let clock_out_degree = 6 * date.getSeconds() + 102
+    let clock_out_degree = -6 * date.getSeconds() - 102
     let clock_out_matrices = new Matrices();
     clock_out_matrices.translate(
-        0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
         0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
+        0.395 * (Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.395,
         0
     )
     clock_out_matrices.rotateZDegrees(clock_out_degree)
 
-    let clock_in_degree = -6 * date.getSeconds() - 102
+    let clock_in_degree = 6 * date.getSeconds() + 102
     let clock_in_matrices = new Matrices();
     clock_in_matrices.translate(
-        0.395 * (1 - Math.cos(clock_in_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_in_degree * Math.PI / 180),
-        0.395 * (1 - Math.cos(clock_in_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_in_degree * Math.PI / 180),
+        0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
+        0.395 * (1 + Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.79,
         0
     )
     clock_in_matrices.rotateZDegrees(clock_in_degree)
@@ -75,6 +75,7 @@ function render(ctx, state, pids) {
         .pos(pids.height * 0.2, pids.height * 0.2)
         .size(pids.height * 0.6, pids.height * 0.6)
         .matrices(clock_in_matrices)
+        .zOrder(1)
         .draw(ctx);
 
     Texture.create("clock out")
@@ -82,6 +83,7 @@ function render(ctx, state, pids) {
         .pos(pids.height * 0.2, pids.height * 0.2)
         .size(pids.height * 0.6, pids.height * 0.6)
         .matrices(clock_out_matrices)
+        .zOrder(1)
         .draw(ctx);
 
     Text.create("Clock")
@@ -89,6 +91,7 @@ function render(ctx, state, pids) {
         .color(0xFFFFFF)
         .pos(pids.height * 0.5, pids.height / 2 - 4)
         .centerAlign()
+        .zOrder(1)
         .draw(ctx);
 
     let posX = pids.height * 0.8
@@ -121,24 +124,28 @@ function render(ctx, state, pids) {
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "down") {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "right") {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 }
 
@@ -147,6 +154,7 @@ function render(ctx, state, pids) {
                     .pos(posX + 1.5, 9.5333)
                     .scale(0.2)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("platform")
@@ -154,6 +162,7 @@ function render(ctx, state, pids) {
                     .pos(posX + 1.5, 11.8)
                     .scale(0.4)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
             } else if (eta < 0.05) {
                 let arrived_platform = "left"
@@ -172,24 +181,28 @@ function render(ctx, state, pids) {
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "down") {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "right") {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 } else {
                     Texture.create("train info")
                         .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
+                        .zOrder(1)
                         .draw(ctx);
                 }
 
@@ -199,6 +212,7 @@ function render(ctx, state, pids) {
                     .scale(0.3)
                     .color(0xFFFFFF)
                     .rightAlign()
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("platform text")
@@ -206,6 +220,7 @@ function render(ctx, state, pids) {
                     .pos(posX + 1.5, 9.5333)
                     .scale(0.2)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("platform")
@@ -213,12 +228,14 @@ function render(ctx, state, pids) {
                     .pos(posX + 1.5, 11.8)
                     .scale(0.4)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
             } else {
                 Texture.create("train info")
                     .texture("jsblock:custom_directory/euston/euston_train_info.png")
                     .size(pids.height * 0.4, pids.height)
                     .pos(posX, 0)
+                    .zOrder(1)
                     .draw(ctx);
 
                 Text.create("platform text")
@@ -226,6 +243,7 @@ function render(ctx, state, pids) {
                     .pos(posX + 1.5, 12)
                     .scale(0.2)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 if (deviation > 285000) {
@@ -235,6 +253,7 @@ function render(ctx, state, pids) {
                         .scale(0.3)
                         .color(0xFFFFFF)
                         .rightAlign()
+                        .zOrder(2)
                         .draw(ctx);
                 }
             }
@@ -244,6 +263,7 @@ function render(ctx, state, pids) {
                 .pos(posX + 1.5, 1)
                 .scale(0.3)
                 .color(0xFFFFFF)
+                .zOrder(2)
                 .draw(ctx);
 
             Text.create("arrival destination")
@@ -253,6 +273,7 @@ function render(ctx, state, pids) {
                 .scaleXY()
                 .scale(0.3)
                 .color(0xFFFFFF)
+                .zOrder(2)
                 .draw(ctx);
 
             if (pids.station() && arrival.route()) {
@@ -273,6 +294,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 1.5, 10)
                     .scaleXY()
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
             }
 
@@ -286,6 +308,7 @@ function render(ctx, state, pids) {
                             .texture(`wpp:euston/${icon_obj.icon}.png`)
                             .size(pids.height * 0.3925, pids.height * 0.0611)
                             .pos(posX, 17.6)
+                            .zOrder(2)
                             .draw(ctx);
                     }
                 }
@@ -298,6 +321,7 @@ function render(ctx, state, pids) {
                                 .texture(`wpp:euston/${icon}.png`)
                                 .size(pids.height * 0.3925, pids.height * 0.0611)
                                 .pos(posX, 17.6)
+                                .zOrder(2)
                                 .draw(ctx);
                         }
                     }
@@ -313,6 +337,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 0.75, 10)
                     .scaleXY()
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
             }
 
@@ -340,6 +365,7 @@ function render(ctx, state, pids) {
                         .pos(posX + 1.5, 24)
                         .scale(0.2)
                         .color(0xFFFF00)
+                        .zOrder(2)
                         .draw(ctx);
                 }
 
@@ -353,6 +379,7 @@ function render(ctx, state, pids) {
                         .size(pids.height * 1.4, 10)
                         .scaleXY()
                         .color(0xFFFFFF)
+                        .zOrder(2)
                         .draw(ctx);
                 }
             }
@@ -372,6 +399,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 1.5, 10)
                     .marquee()
                     .color(0xFFFF00)
+                    .zOrder(2)
                     .draw(ctx);
             } else {
                 Text.create("information")
@@ -381,6 +409,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 1.5, 10)
                     .marquee()
                     .color(0xFFFF00)
+                    .zOrder(2)
                     .draw(ctx);
             }
         } else {
@@ -388,6 +417,7 @@ function render(ctx, state, pids) {
                 .texture("jsblock:custom_directory/euston/euston_train_info.png")
                 .size(pids.height * 0.4, pids.height)
                 .pos(posX, 0)
+                .zOrder(1)
                 .draw(ctx);
         }
 
@@ -398,6 +428,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/euston/euston_further_departures.png")
         .size(pids.height * 0.8, pids.height)
         .pos(posX, 0)
+        .zOrder(1)
         .draw(ctx);
 
     for (let i = 10; i < 17; i++) {
@@ -418,6 +449,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 0.79, 9.5)
                     .pos(posX, posY + 0.3)
                     .color(0x00D933)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("platform")
@@ -426,6 +458,7 @@ function render(ctx, state, pids) {
                     .centerAlign()
                     .scale(0.2)
                     .color(0xFFFFFF)
+                    .zOrder(3)
                     .draw(ctx);
             } else {
                 Texture.create("platform status")
@@ -433,6 +466,7 @@ function render(ctx, state, pids) {
                     .size(7, 3)
                     .pos(posX + 37.75, posY + 0.7)
                     .color(0x0080FF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("wait")
@@ -441,6 +475,7 @@ function render(ctx, state, pids) {
                     .centerAlign()
                     .scale(0.2)
                     .color(0xFFFFFF)
+                    .zOrder(3)
                     .draw(ctx);
             }
 
@@ -449,6 +484,7 @@ function render(ctx, state, pids) {
                 .pos(posX + 2, posY + 1.5)
                 .scale(0.2333)
                 .color(0xFFFFFF)
+                .zOrder(2)
                 .draw(ctx);
 
             Text.create("arrival destination")
@@ -458,6 +494,7 @@ function render(ctx, state, pids) {
                 .size(pids.height * 1.4, 10)
                 .scaleXY()
                 .color(0xFFFFFF)
+                .zOrder(2)
                 .draw(ctx);
 
             if (pids.station() && arrival.route()) {
@@ -472,6 +509,7 @@ function render(ctx, state, pids) {
                         .pos(posX + 10, posY + 4.5)
                         .scale(0.2333)
                         .color(0xFFFF00)
+                        .zOrder(2)
                         .draw(ctx);
                 }
 
@@ -491,6 +529,7 @@ function render(ctx, state, pids) {
                     .scale(0.2333)
                     .color(0xFFFFFF)
                     .marquee()
+                    .zOrder(2)
                     .draw(ctx);
             }
         }
@@ -502,6 +541,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/euston/euston_fastest.png")
         .size(pids.height * 0.8, pids.height)
         .pos(posX, 0)
+        .zOrder(1)
         .draw(ctx);
 
     let platforms = pids.arrivals().platforms()
@@ -567,6 +607,7 @@ function render(ctx, state, pids) {
             .size(4.5, 3)
             .pos(posX + 43.4, posY - 0.8)
             .color(stop["color"])
+            .zOrder(2)
             .draw(ctx);
 
         Text.create("stop_destination_" + line)
@@ -576,6 +617,7 @@ function render(ctx, state, pids) {
             .size(pids.height, 10)
             .scaleXY()
             .color(0xFFFFFF)
+            .zOrder(2)
             .draw(ctx);
 
         Text.create("stop_operator_" + line)
@@ -585,6 +627,7 @@ function render(ctx, state, pids) {
             .size(pids.height, 10)
             .scaleXY()
             .color(0xFFFFFF)
+            .zOrder(2)
             .draw(ctx);
 
         Text.create("stop_plat_" + line)
@@ -595,6 +638,7 @@ function render(ctx, state, pids) {
             .size(pids.height * 0.2, 10)
             .scaleXY()
             .color(0xFFFFFF)
+            .zOrder(3)
             .draw(ctx);
 
         Text.create("stop_time_" + line)
@@ -603,6 +647,7 @@ function render(ctx, state, pids) {
             .rightAlign()
             .scale(0.25)
             .color(0xFFFFFF)
+            .zOrder(2)
             .draw(ctx);
     }
 
@@ -612,6 +657,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/euston/euston_welcome.png")
         .size(pids.height * 0.6, pids.height)
         .pos(posX, 0)
+        .zOrder(1)
         .draw(ctx);
 
     if (pids.station() != null) {
@@ -623,6 +669,7 @@ function render(ctx, state, pids) {
             .size(pids.height * 0.75, 10)
             .scaleXY()
             .centerAlign()
+            .zOrder(2)
             .draw(ctx)
     }
 
@@ -632,6 +679,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/euston/euston_arrivals.png")
         .size(pids.height * 0.6, pids.height)
         .pos(posX, 0)
+        .zOrder(1)
         .draw(ctx);
 
     for (let i = 0; i < 17; i++) {
@@ -654,6 +702,7 @@ function render(ctx, state, pids) {
                     .size(pids.height * 1.2, 10)
                     .scaleXY()
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("stop_plat_" + i)
@@ -662,6 +711,7 @@ function render(ctx, state, pids) {
                     .rightAlign()
                     .scale(0.25)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
 
                 Text.create("stop_time_" + i)
@@ -670,6 +720,7 @@ function render(ctx, state, pids) {
                     .rightAlign()
                     .scale(0.25)
                     .color(0xFFFFFF)
+                    .zOrder(2)
                     .draw(ctx);
             }
         }

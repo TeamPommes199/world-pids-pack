@@ -16,6 +16,7 @@ function render(ctx, state, pids) {
             .texture("jsblock:custom_directory/db_big_row_top_top.png")
             .size(pids.width + 7, (pids.height / 18) + 4.55)
             .pos(-3.5, rowY - 9.5)
+            .zOrder(0)
             .draw(ctx);
 
         for (let customMsg of customMsgs) {
@@ -38,6 +39,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/db_big_row_top.png")
         .size(pids.width + 7, (pids.height / 18) + 2)
         .pos(-3.5, rowY - 0.75)
+        .zOrder(0)
         .draw(ctx);
 
     for (let i = rows * (page - 1); i < rows * page; i++) {
@@ -48,6 +50,7 @@ function render(ctx, state, pids) {
                 .texture("jsblock:custom_directory/db_big_row.png")
                 .size(pids.width + 7, (pids.height / 18) + 2)
                 .pos(-3.5, rowY - 0.75)
+                .zOrder(0)
                 .draw(ctx);
         } else {
             rowY += 4.35
@@ -55,12 +58,14 @@ function render(ctx, state, pids) {
                 .texture("jsblock:custom_directory/db_big_row.png")
                 .size(pids.width + 7, (pids.height / 18) + 1)
                 .pos(-3.5, rowY)
+                .zOrder(0)
                 .draw(ctx);
             if (x !== rows - 1) {
                 Texture.create("Background")
                     .texture("jsblock:custom_directory/db_big_row_black.png")
                     .size(pids.width, 1.3)
                     .pos(0, rowY + 3.7)
+                    .zOrder(0)
                     .draw(ctx);
             }
         }
@@ -71,6 +76,7 @@ function render(ctx, state, pids) {
                 .texture("jsblock:custom_directory/lrr_u_bahn.png")
                 .pos(15, rowY - 0.25)
                 .size(18, 3.33)
+                .zOrder(1)
                 .draw(ctx);
 
             Text.create("arrival Number Text")
@@ -79,6 +85,7 @@ function render(ctx, state, pids) {
             .size(14, 2.5)
             .scaleXY()
             .color(0x012f7b)
+                .zOrder(2)
             .draw(ctx);
 
             Text.create("arrival destination")
@@ -87,14 +94,16 @@ function render(ctx, state, pids) {
             .size(pids.width / 4, 4)
             .scaleXY()
             .color(0xFFFFFF)
+                .zOrder(1)
             .draw(ctx);
 
-            Text.create("arrival destination")
+            Text.create("arrival platform")
                 .text(TextUtil.cycleString(arrival.platformName()))
                 .pos(108, rowY)
                 .size(pids.width / 15, 4)
                 .scaleXY()
                 .color(0xFFFFFF)
+                .zOrder(1)
                 .draw(ctx);
 
             
@@ -125,6 +134,7 @@ function render(ctx, state, pids) {
                     .size(pids.width / 4, 4)
                     .scaleXY() // <----
                     .color(0xFFFFFF)
+                    .zOrder(1)
                     .draw(ctx);
             }
 
@@ -142,6 +152,7 @@ function render(ctx, state, pids) {
             .leftAlign()
             .size(20, 4)
             .scaleXY()
+                .zOrder(1)
             .draw(ctx);
 
             if (deviation > 270000) {
@@ -149,6 +160,7 @@ function render(ctx, state, pids) {
                     .texture("jsblock:custom_directory/lrr_u_bahn.png")
                     .pos(118, rowY - 0.25)
                     .size(18, 3.33)
+                    .zOrder(1)
                     .draw(ctx);
                 deviation = deviation / 60000
                 deviation = Math.round(deviation)
@@ -160,6 +172,7 @@ function render(ctx, state, pids) {
                     .size(pids.width / 2.5, 3.33)
                     .scale(0.275)
                     .marquee()
+                    .zOrder(2)
                     .draw(ctx);
             }
         }
@@ -168,6 +181,7 @@ function render(ctx, state, pids) {
         .texture("jsblock:custom_directory/db_big_row_dark_blue.png")
         .size(pids.width + 7, 1.3)
         .pos(-3.5, rowY + 5)
+        .zOrder(0)
         .draw(ctx);
 }
 
