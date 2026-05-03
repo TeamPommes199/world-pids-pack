@@ -300,7 +300,7 @@ function render(ctx, state, pids) {
 
             let icon_active = false
             let icon
-            if (arrival.routeNumber() != "") {
+            if (arrival.routeName() != "") {
                 for (let icon_obj of routes_for_icons) {
                     if (arrival.routeName().toLowerCase().includes(icon_obj.route.toLowerCase())) {
                         icon_active = true
