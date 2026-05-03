@@ -58,18 +58,20 @@ function render(ctx, state, pids) {
             .rightAlign()
             .draw(ctx);
 
-        for (let customMsg of customMsgs) {
-            if (customMsg.includes(arrival.routeNumber() + ":")) {
-                let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
-                Text.create("Custom Text")
-                    .text(TextUtil.cycleString(customMsg_r))
-                    .size(pids.width / 1.41, 20)
-                    .pos(90, 23)
-                    .centerAlign()
-                    .scale(1.41)
-                    .color(0xe43319)
-                    .wrapText()
-                    .draw(ctx);
+        if (arrival.routeNumber() != "") {
+            for (let customMsg of customMsgs) {
+                if (customMsg.includes(arrival.routeNumber() + ":")) {
+                    let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                    Text.create("Custom Text")
+                        .text(TextUtil.cycleString(customMsg_r))
+                        .size(pids.width / 1.41, 20)
+                        .pos(90, 23)
+                        .centerAlign()
+                        .scale(1.41)
+                        .color(0xe43319)
+                        .wrapText()
+                        .draw(ctx);
+                }
             }
         }
     } else {

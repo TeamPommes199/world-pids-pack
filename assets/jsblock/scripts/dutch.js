@@ -18,7 +18,7 @@ function render(ctx, state, pids) {
         let arrival_text = arrival_first.routeNumber()
 
         for(let customMsg of customMsgs) {
-            if(customMsg.includes(arrival_first.routeNumber(), ":")) {
+            if(customMsg.includes(arrival_first.routeNumber(), ":") && arrival_first.routeNumber() != "") {
                 arrival_text = customMsg.replace(arrival_first.routeNumber() + ":", "")
             }
             if(customMsg.includes("sign: yes")) {

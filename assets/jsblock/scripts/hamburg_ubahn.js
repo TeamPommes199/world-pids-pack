@@ -39,17 +39,19 @@ function render(ctx, state, pids) {
         .rightAlign()
         .draw(ctx);
 
-        for(let customMsg of customMsgs) {
-            if(customMsg.includes(arrival.routeNumber(), ":")) {
-              let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "") 
-              Text.create("Custom Text")
-              .text(TextUtil.cycleString(customMsg_r))
-              .size(pids.width, 20)
-              .pos(65, 37)
-              .color(0xa2440f)
-              .centerAlign()
-              .wrapText()
-              .draw(ctx);
+        if (arrival_first.routeNumber() != "") {
+            for (let customMsg of customMsgs) {
+                if (customMsg.includes(arrival.routeNumber(), ":")) {
+                    let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                    Text.create("Custom Text")
+                        .text(TextUtil.cycleString(customMsg_r))
+                        .size(pids.width, 20)
+                        .pos(65, 37)
+                        .color(0xa2440f)
+                        .centerAlign()
+                        .wrapText()
+                        .draw(ctx);
+                }
             }
         }
     } else {

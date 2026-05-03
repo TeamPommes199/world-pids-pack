@@ -16,9 +16,11 @@ function render(ctx, state, pids) {
     if (arrival_first != null) {
         let arrival_text = arrival_first.routeNumber()
 
-        for (let customMsg of customMsgs) {
-            if (customMsg.includes(arrival_first.routeNumber(), ":")) {
-                arrival_text = customMsg.replace(arrival_first.routeNumber() + ":", "")
+        if (arrival_first.routeNumber() != "") {
+            for (let customMsg of customMsgs) {
+                if (customMsg.includes(arrival_first.routeNumber(), ":")) {
+                    arrival_text = customMsg.replace(arrival_first.routeNumber() + ":", "")
+                }
             }
         }
 

@@ -61,18 +61,20 @@ function render(ctx, state, pids) {
         let destination = TextUtil.cycleString(arrival.destination())
         let customMsg_r = "#//#"
         if (new Date().getSeconds() < 15 || new Date().getSeconds() > 30 && new Date().getSeconds() < 45) {
-            for (let customMsg of customMsgs) {
-                if (customMsg.includes(arrival.routeNumber(), ":")) {
-                    customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
-                    destination = "Information"
-                    Text.create("Custom Text")
-                        .text(customMsg_r.replace("|", " "))
-                        .pos(pids.width / 2, 22)
-                        .color(0xffffff)
-                        .centerAlign()
-                        .size(pids.width - 30, 10)
-                        .wrapText()
-                        .draw(ctx);
+            if (arrival.routeNumber() != "") {
+                for (let customMsg of customMsgs) {
+                    if (customMsg.includes(arrival.routeNumber(), ":")) {
+                        customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                        destination = "Information"
+                        Text.create("Custom Text")
+                            .text(customMsg_r.replace("|", " "))
+                            .pos(pids.width / 2, 22)
+                            .color(0xffffff)
+                            .centerAlign()
+                            .size(pids.width - 30, 10)
+                            .wrapText()
+                            .draw(ctx);
+                    }
                 }
             }
 

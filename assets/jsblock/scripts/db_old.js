@@ -49,9 +49,11 @@ function render(ctx, state, pids) {
         .draw(ctx);
 
         let customMsg_r = false
-        for (let customMsg of customMsgs) {
-            if (customMsg.includes(arrival_first.routeNumber(), ":")) {
-                customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
+        if (arrival_first.routeNumber() != "") {
+            for (let customMsg of customMsgs) {
+                if (customMsg.includes(arrival_first.routeNumber(), ":")) {
+                    customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
+                }
             }
         }
 

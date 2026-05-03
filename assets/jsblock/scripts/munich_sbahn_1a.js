@@ -173,17 +173,19 @@ function render(ctx, state, pids) {
             .scale(0.75)
             .color(0xFFFFFF)
             .draw(ctx);
-        for (let customMsg of customMsgs) {
-          if (customMsg.includes(arrival_first.routeNumber(), ":")) {
-            let customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
-            Text.create("Custom Text")
-                .text(TextUtil.cycleString(customMsg_r))
-                .pos(45, 10)
-                .size(85, 4)
-                .scale(1)
-                .color(0xFFFF00)
-                .marquee()
-                .draw(ctx);
+        if (arrival_first.routeNumber() != "") {
+          for (let customMsg of customMsgs) {
+            if (customMsg.includes(arrival_first.routeNumber(), ":")) {
+              let customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
+              Text.create("Custom Text")
+                  .text(TextUtil.cycleString(customMsg_r))
+                  .pos(45, 10)
+                  .size(85, 4)
+                  .scale(1)
+                  .color(0xFFFF00)
+                  .marquee()
+                  .draw(ctx);
+            }
           }
         }
       }
@@ -303,20 +305,22 @@ function render(ctx, state, pids) {
           rowY = rowY + 13.3
           rows = rows + 1
 
-          for (let customMsg of customMsgs) {
-            if (rows < 5 || pids.getCustomMessage(2) == "") {
-              if (customMsg.includes(arrival.routeNumber(), ":")) {
-                let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
-                Text.create("Custom Text")
-                    .text(TextUtil.cycleString(customMsg_r))
-                    .scale(0.8)
-                    .size(pids.width * 1.20, 9)
-                    .pos(1, rowY - 1)
-                    .color(0xFFFF00)
-                    .marquee()
-                    .draw(ctx);
-                rowY = rowY + 13.3
-                rows = rows + 1
+          if (arrival_first.routeNumber() != "") {
+            for (let customMsg of customMsgs) {
+              if (rows < 5 || pids.getCustomMessage(2) == "") {
+                if (customMsg.includes(arrival.routeNumber(), ":")) {
+                  let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                  Text.create("Custom Text")
+                      .text(TextUtil.cycleString(customMsg_r))
+                      .scale(0.8)
+                      .size(pids.width * 1.20, 9)
+                      .pos(1, rowY - 1)
+                      .color(0xFFFF00)
+                      .marquee()
+                      .draw(ctx);
+                  rowY = rowY + 13.3
+                  rows = rows + 1
+                }
               }
             }
           }
