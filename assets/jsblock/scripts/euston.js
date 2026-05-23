@@ -42,6 +42,17 @@ function render(ctx, state, pids) {
         }
     }
 
+    let stations = []
+    for (let customMsg of customMsgs) {
+        if (customMsg.includes("stations:")) {
+            let stationMsg = customMsg.replace("stations:", "")
+            let stationArray = stationMsg.split(",")
+            for (let station of stationArray) {
+                stations.push(station.trim())
+            }
+        }
+    }
+
     Texture.create("Background")
         .texture("jsblock:custom_directory/euston/euston.png")
         .size(pids.height * 7.8, pids.height)
@@ -551,7 +562,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i)
         if (arrival != null && pids.station() && arrival.route()) {
             let stationClean = pids.station().getName().normalize("NFC").trim();
-            let stopping = arrival.route().getPlatforms().toArray().map(p => p.stationName);
+            let stopping = arrival.route().getPlatforms().toArray().map(p => p.stationName.normalize("NFC").trim());
             let currentIndex = stopping.findIndex(s => s.normalize("NFC").trim() === stationClean);
 
             let stops_of_arrival = stopping.slice(currentIndex + 1);
@@ -562,20 +573,22 @@ function render(ctx, state, pids) {
                 let destName = stops_of_arrival[x];
 
                 if (!stopsMap[destName] || arrivalTimestamp < stopsMap[destName].rawTime) {
-                    let late_eta = new Date(arrivalTimestamp)
-                    let late_time = late_eta.getHours().toString().padStart(2, '0') + ":" +
-                        late_eta.getMinutes().toString().padStart(2, '0');
-                    let plat = (eta < plat_announce_time) ? TextUtil.cycleString(arrival.platformName()) : "-";
-                    let color = (eta < plat_announce_time) ? 0x00D933 : 0x0080FF
+                    if (stations.includes(destName) || stations.length === 0) {
+                        let late_eta = new Date(arrivalTimestamp)
+                        let late_time = late_eta.getHours().toString().padStart(2, '0') + ":" +
+                            late_eta.getMinutes().toString().padStart(2, '0');
+                        let plat = (eta < plat_announce_time) ? TextUtil.cycleString(arrival.platformName()) : "-";
+                        let color = (eta < plat_announce_time) ? 0x00D933 : 0x0080FF
 
-                    stopsMap[destName] = {
-                        "destination": destName,
-                        "operator": arrival.routeNumber(),
-                        "plat": plat,
-                        "time": late_time,
-                        "rawTime": arrivalTimestamp,
-                        "color": color
-                    };
+                        stopsMap[destName] = {
+                            "destination": destName,
+                            "operator": arrival.routeNumber(),
+                            "plat": plat,
+                            "time": late_time,
+                            "rawTime": arrivalTimestamp,
+                            "color": color
+                        }
+                    }
                 }
             }
         }
