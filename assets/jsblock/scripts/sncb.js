@@ -84,7 +84,7 @@ function render(ctx, state, pids) {
             .size(60, 30)
             .draw(ctx);
 
-        if (arrival.routeNumber() != "") {
+        if (arrival_first.routeNumber() != "") {
             for (let customMsg of customMsgs) {
                 if (customMsg.includes(arrival_first.routeNumber(), ":")) {
                     let customMsg_r = customMsg.replace(arrival_first.routeNumber() + ":", "")
