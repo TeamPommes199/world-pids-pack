@@ -65,7 +65,7 @@ function render(ctx, state, pids) {
                     .texture("jsblock:custom_directory/db_big_row_black.png")
                     .size(pids.width, 1.3)
                     .pos(0, rowY + 3.7)
-                    .zOrder(0)
+                    .zOrder(1)
                     .draw(ctx);
             }
         }
