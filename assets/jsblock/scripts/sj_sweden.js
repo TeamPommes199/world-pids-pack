@@ -20,7 +20,7 @@ function render(ctx, state, pids) {
     if(arrival_first != null) {
         if (((arrival_first.arrivalTime() - Date.now()) / 60000) < 1.5) {
             Texture.create("Background")
-                .texture("jsblock:custom_directory/sj_sweden.png")
+                .texture("jsblock:assets/sj_sweden/sj_sweden.png")
                 .size(pids.width, pids.height)
                 .draw(ctx);
 
@@ -114,7 +114,7 @@ function render(ctx, state, pids) {
             }
         } else {
             Texture.create("Background")
-                .texture("jsblock:custom_directory/sj_sweden_depatures.png")
+                .texture("jsblock:assets/sj_sweden/sj_sweden_depatures.png")
                 .size(pids.width, pids.height)
                 .draw(ctx);
 
@@ -177,7 +177,7 @@ function render(ctx, state, pids) {
         }
     } else {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/sj_sweden_depatures.png")
+            .texture("jsblock:assets/sj_sweden/sj_sweden_depatures.png")
             .size(pids.width, pids.height)
             .draw(ctx);
     }

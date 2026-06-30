@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/hamburg.png")
+    .texture("jsblock:assets/hamburg_s_bahn/hamburg.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -18,13 +18,13 @@ function render(ctx, state, pids) {
     let arrival_t = pids.arrivals().get(2);
     if(arrival_first != null) {
         Texture.create("arrival_first Circle Colored Full")
-        .texture("jsblock:custom_directory/lrr_full.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(1, 26)
         .size(15, 5)
         .draw(ctx);
 
         Texture.create("arrival_first Circle Colored")
-        .texture("jsblock:custom_directory/lrr.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(1.25, 26.15)
         .size(14.5, 4.7)
         .color(arrival_first.routeColor())
@@ -52,33 +52,33 @@ function render(ctx, state, pids) {
         if (car_length > 3 && car_length < 7) {
             if (customMsgs.includes("icon: rear")) {
                 Texture.create("Car length")
-                    .texture("jsblock:custom_directory/hamburg_2_rear.png")
+                    .texture("jsblock:assets/hamburg_s_bahn/hamburg_2_rear.png")
                     .pos(32, 46)
                     .size(40, 8)
                     .draw(ctx);
             } else {
                 Texture.create("Car length")
-                    .texture("jsblock:custom_directory/hamburg_2_front.png")
+                    .texture("jsblock:assets/hamburg_s_bahn/hamburg_2_front.png")
                     .pos(32, 46)
                     .size(40, 8)
                     .draw(ctx);
             }
         } else if (car_length > 6) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/hamburg_3.png")
+            .texture("jsblock:assets/hamburg_s_bahn/hamburg_3.png")
             .pos(32, 46)
             .size(40, 8)
             .draw(ctx);
         } else if (car_length < 4) {
             if (customMsgs.includes("icon: rear")) {
                 Texture.create("Car length")
-                    .texture("jsblock:custom_directory/hamburg_1_rear.png")
+                    .texture("jsblock:assets/hamburg_s_bahn/hamburg_1_rear.png")
                     .pos(32, 46)
                     .size(40, 8)
                     .draw(ctx);
             } else {
                 Texture.create("Car length")
-                    .texture("jsblock:custom_directory/hamburg_1_front.png")
+                    .texture("jsblock:assets/hamburg_s_bahn/hamburg_1_front.png")
                     .pos(32, 46)
                     .size(40, 8)
                     .draw(ctx);
@@ -100,13 +100,13 @@ function render(ctx, state, pids) {
 
     if(arrival_s != null) {
         Texture.create("arrival_s Circle Colored Full")
-        .texture("jsblock:custom_directory/lrr_full.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(77, 28)
         .size(15, 5)
         .draw(ctx);
 
         Texture.create("arrival_s Circle Colored")
-        .texture("jsblock:custom_directory/lrr.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(77.25, 28.15)
         .size(14.5, 4.7)
         .color(arrival_s.routeColor())
@@ -146,13 +146,13 @@ function render(ctx, state, pids) {
 
     if(arrival_t != null) {
         Texture.create("arrival_t Circle Colored Full")
-        .texture("jsblock:custom_directory/lrr_full.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(77, 53)
         .size(15, 5)
         .draw(ctx);
 
         Texture.create("arrival_t Circle Colored")
-        .texture("jsblock:custom_directory/lrr.png")
+        .texture("jsblock:assets/general/long_circle_full.png")
         .pos(77.25, 53.15)
         .size(14.5, 4.7)
         .color(arrival_t.routeColor())

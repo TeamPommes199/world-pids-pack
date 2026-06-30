@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/nuremberg_subway.png")
+      .texture("jsblock:assets/nuremberg/nuremberg_subway.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -32,12 +32,12 @@ function render(ctx, state, pids) {
       let rowY = 16;
 
       Texture.create("Background")
-          .texture("jsblock:custom_directory/nuremberg_subway_arrival.png")
+          .texture("jsblock:assets/nuremberg/nuremberg_subway_arrival.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
       Texture.create("arrival_first Circle Colored")
-          .texture("jsblock:custom_directory/lrr_u_bahn.png")
+          .texture("jsblock:assets/general/long_quad_full.png")
           .pos(3, rowY -1)
           .size(28, 15.5)
           .color(first_arrival.routeColor())
@@ -99,7 +99,7 @@ function render(ctx, state, pids) {
 
         if (arrival != null) {
           Texture.create("arrival_first Circle Colored")
-              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .texture("jsblock:assets/general/long_quad_full.png")
               .pos(3, rowY - 1)
               .size(25, 14)
               .color(arrival.routeColor())
@@ -208,7 +208,7 @@ function render(ctx, state, pids) {
 
   if (pids.getCustomMessage(3) != "") {
     Texture.create("custom message")
-        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(0, pids.height - 10)
         .size(pids.width, 10)
         .color(0xc1cb28)

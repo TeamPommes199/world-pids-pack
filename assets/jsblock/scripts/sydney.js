@@ -10,7 +10,7 @@ function render(ctx, state, pids) {
     let hour = date.getHours();
 
     Texture.create("Background")
-    .texture("jsblock:custom_directory/sydney.png")
+    .texture("jsblock:assets/sydney.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -27,7 +27,7 @@ function render(ctx, state, pids) {
     let arrival_third = pids.arrivals().get(2);
     if(arrival_first != null) {
         Texture.create("arrival_first Circle Colored")
-        .texture("jsblock:custom_directory/quad.png")
+        .texture("jsblock:assets/general/quad.png")
         .pos(5.5, 12.2)
         .size(8, 8)
         .color(arrival_first.routeColor())
@@ -132,7 +132,7 @@ function render(ctx, state, pids) {
 
     if(arrival_second != null) {
         Texture.create("arrival_second Circle Colored")
-            .texture("jsblock:custom_directory/quad.png")
+            .texture("jsblock:assets/general/quad.png")
             .pos(100.5, 12.2)
             .size(8, 8)
             .color(arrival_second.routeColor())
@@ -206,7 +206,7 @@ function render(ctx, state, pids) {
 
     if(arrival_third != null) {
         Texture.create("arrival_third Circle Colored")
-            .texture("jsblock:custom_directory/quad.png")
+            .texture("jsblock:assets/general/quad.png")
             .pos(100.5, 33.2)
             .size(8, 8)
             .color(arrival_third.routeColor())

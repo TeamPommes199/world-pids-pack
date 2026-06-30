@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/sncb_board.png")
+      .texture("jsblock:assets/sncb/sncb_board.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -110,7 +110,7 @@ function render(ctx, state, pids) {
         }
 
         Texture.create("late_arrival ETA background")
-            .texture("jsblock:custom_directory/sncb_delay.png")
+            .texture("jsblock:assets/sncb/sncb_delay.png")
             .pos(12, rowY - 0.6)
             .size(21, 4.2)
             .draw(ctx);

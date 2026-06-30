@@ -6,7 +6,7 @@ function create(ctx, state, pids) {
 function render(ctx, state, pids) {
     // Hintergrund zeichnen
     Texture.create("Background")
-        .texture("jsblock:custom_directory/dutch_2.png")
+        .texture("jsblock:assets/dutch/dutch_2.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 

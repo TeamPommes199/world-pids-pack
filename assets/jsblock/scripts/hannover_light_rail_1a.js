@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/dot_matrix_1a.png")
+        .texture("jsblock:assets/general/dot_matrix_1a.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 
@@ -61,14 +61,14 @@ function render(ctx, state, pids) {
             let car_length = arrival_first.carCount();
             if (car_length > 2) {
                 Texture.create("arrival_first Car length")
-                    .texture("jsblock:custom_directory/hannover_light_rail_2.png")
+                    .texture("jsblock:assets/hannover_light_rail/hannover_light_rail_2.png")
                     .pos(40, 6.5)
                     .size(70, 16)
                     .color(0xff8c00)
                     .draw(ctx);
             } else {
                 Texture.create("arrival_first Car length")
-                    .texture("jsblock:custom_directory/hannover_light_rail_1.png")
+                    .texture("jsblock:assets/hannover_light_rail/hannover_light_rail_1.png")
                     .pos(40, 6.5)
                     .size(70, 16)
                     .color(0xff8c00)

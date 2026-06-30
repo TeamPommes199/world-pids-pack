@@ -39,19 +39,19 @@ function render(ctx, state, pids) {
       let rowY = 5;
 
       Texture.create("Background_Blank")
-          .texture("jsblock:custom_directory/blank.png")
+          .texture("jsblock:assets/general/blank.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
       if (arrival_first != null) {
-        Texture.create("arrival_first Circle Colored Full")
-            .texture("jsblock:custom_directory/lrr_full.png")
+        Texture.create("arrival_first Circle White")
+            .texture("jsblock:assets/general/long_circle_full.png")
             .pos(1, rowY)
             .size(33.5, 17)
             .draw(ctx);
 
         Texture.create("arrival_first Circle Colored")
-            .texture("jsblock:custom_directory/lrr.png")
+            .texture("jsblock:assets/general/long_circle_full.png")
             .pos(2, rowY + 1)
             .size(31.5, 15)
             .color(arrival_first.routeColor())
@@ -122,45 +122,45 @@ function render(ctx, state, pids) {
         if (car_length > 4 && car_length < 9) {
           if (customMsgs.includes("icon: front")) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_2_front.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_2_front.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
           } else if (customMsgs.includes("icon: rear")) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_2_rear.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_2_rear.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
           } else {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_2.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_2.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
           }
         } else if (car_length > 8) {
           Texture.create("arrival_first Car length")
-              .texture("jsblock:custom_directory/munich_3.png")
+              .texture("jsblock:assets/munich_s_bahn/munich_3.png")
               .pos(2, 42)
               .size(40, 6.67)
               .draw(ctx);
         } else if (car_length < 5) {
           if (customMsgs.includes("icon: front")) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_1_front.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_1_front.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
           } else if (customMsgs.includes("icon: rear")) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_1_rear.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_1_rear.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
           } else {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_1.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_1.png")
                 .pos(2, 42)
                 .size(40, 6.67)
                 .draw(ctx);
@@ -191,7 +191,7 @@ function render(ctx, state, pids) {
       }
     } else {
       Texture.create("Background")
-          .texture("jsblock:custom_directory/munich_1a.png")
+          .texture("jsblock:assets/munich_s_bahn/munich_1a.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
@@ -202,7 +202,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if (arrival != null && rows < 4) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(1, rowY - 2)
               .size(21, 10)
               .color(arrival.routeColor())
@@ -231,45 +231,45 @@ function render(ctx, state, pids) {
           if (car_length > 4 && car_length < 9) {
             if (customMsgs.includes("icon: front")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2_front.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2_front.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else if (customMsgs.includes("icon: rear")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2_rear.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2_rear.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             }
           } else if (car_length > 8) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_3.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_3.png")
                 .pos(140, rowY - 0.2)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 5) {
             if (customMsgs.includes("icon: front")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1_front.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1_front.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else if (customMsgs.includes("icon: rear")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1_rear.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1_rear.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
@@ -343,7 +343,7 @@ function render(ctx, state, pids) {
         if (arrival_extra != null) {
           let rowY = 11 + (3 * 13.3);
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(1, rowY - 2)
               .size(21, 10)
               .color(arrival_extra.routeColor())
@@ -372,45 +372,45 @@ function render(ctx, state, pids) {
           if (car_length > 4 && car_length < 9) {
             if (customMsgs.includes("icon: front")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2_front.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2_front.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else if (customMsgs.includes("icon: rear")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2_rear.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2_rear.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_2.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_2.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             }
           } else if (car_length > 8) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/munich_3.png")
+                .texture("jsblock:assets/munich_s_bahn/munich_3.png")
                 .pos(140, rowY - 0.2)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 5) {
             if (customMsgs.includes("icon: front")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1_front.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1_front.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else if (customMsgs.includes("icon: rear")) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1_rear.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1_rear.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
             } else {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/munich_1.png")
+                  .texture("jsblock:assets/munich_s_bahn/munich_1.png")
                   .pos(140, rowY - 0.2)
                   .size(30, 5)
                   .draw(ctx);
@@ -447,7 +447,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/munich_1a.png")
+        .texture("jsblock:assets/munich_s_bahn/munich_1a.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 

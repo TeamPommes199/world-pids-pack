@@ -5,14 +5,14 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/sbb.png")
+    .texture("jsblock:assets/sbb.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
     let arrival_first = pids.arrivals().get(0);
     if(arrival_first != null) {
         Texture.create("arrival_first Circle Colored")
-        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(3, 21)
         .size(18, 6)
         .color(arrival_first.routeColor())

@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/norway.png")
+    .texture("jsblock:assets/norway.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -42,7 +42,7 @@ function render(ctx, state, pids) {
         }
 
         Texture.create("arrival_first Circle Colored")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
+            .texture("jsblock:assets/general/long_quad_full.png")
             .pos(4, 3.5)
             .size(17, 8.5)
             .color(arrival_first.routeColor())
@@ -104,13 +104,13 @@ function render(ctx, state, pids) {
 
             if (i + 1 === car_length || i + 1 === 11) {
                 Texture.create("train_stopping_areas")
-                    .texture("jsblock:custom_directory/quad_right_missing.png")
+                    .texture("jsblock:assets/general/quad_right_missing.png")
                     .size(12, 8)
                     .pos(posX, pids.height - 12)
                     .draw(ctx);
             } else {
                 Texture.create("train_stopping_areas")
-                    .texture("jsblock:custom_directory/quad.png")
+                    .texture("jsblock:assets/general/quad.png")
                     .size(12, 8)
                     .pos(posX, pids.height - 12)
                     .draw(ctx);

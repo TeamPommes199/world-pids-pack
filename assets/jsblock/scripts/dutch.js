@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/dutch.png")
+    .texture("jsblock:assets/dutch/dutch.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -23,7 +23,7 @@ function render(ctx, state, pids) {
             }
             if(customMsg.includes("sign: yes")) {
                 Texture.create("Background")
-                    .texture("jsblock:custom_directory/dutch_sign.png")
+                    .texture("jsblock:assets/dutch/dutch_sign.png")
                     .size(20, 10)
                     .pos(pids.width - 21, 1)
                     .draw(ctx);
@@ -114,7 +114,7 @@ function render(ctx, state, pids) {
                 if (i === 0) {
                     end = true
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_1.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -124,7 +124,7 @@ function render(ctx, state, pids) {
                 if (i + 1 === cars.length) {
                     end = false
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_2.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -134,20 +134,20 @@ function render(ctx, state, pids) {
                 if (carTerms.some(term => car_id.includes(term)) && !end) {
                     end = true
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_1.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
                 } else if (carTerms.some(term => car_id.includes(term)) && end) {
                     end = false
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_2.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
                 } else {
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_trailer.png")
+                        .texture("jsblock:assets/dutch/dutch_trailer.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -161,7 +161,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
             Texture.create("Next Background")
-                .texture("jsblock:custom_directory/dutch_next.png")
+                .texture("jsblock:assets/dutch/dutch_next.png")
                 .size(pids.width, pids.height)
                 .draw(ctx);
 

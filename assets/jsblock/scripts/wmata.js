@@ -7,7 +7,7 @@ function render(ctx, state, pids) {
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/wmata.png")
+        .texture("jsblock:assets/wmata/wmata.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 
@@ -16,7 +16,7 @@ function render(ctx, state, pids) {
       let arrival = pids.arrivals().get(i);
       if (arrival != null) {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/circle.png")
+            .texture("jsblock:assets/general/circle_full.png")
             .size(11, 11)
             .pos(0.75, rowY + 0.75)
             .color(arrival.routeColor())
@@ -85,7 +85,7 @@ function render(ctx, state, pids) {
     let customMsg = pids.getCustomMessage(3);
     if(customMsg != "") {
       Texture.create("ETA background")
-          .texture("jsblock:custom_directory/wmata_custom_row.png")
+          .texture("jsblock:assets/wmata/wmata_custom_row.png")
           .pos(0, pids.height - 26)
           .size(pids.width, 26)
           .draw(ctx);
@@ -126,7 +126,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/wmata.png")
+        .texture("jsblock:assets/wmata/wmata.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }

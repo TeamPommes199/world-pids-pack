@@ -22,7 +22,7 @@ function render(ctx, state, pids) {
   }
 
   Texture.create("Background")
-      .texture("jsblock:custom_directory/karlsruhe_stadtbahn.png")
+      .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -30,7 +30,7 @@ function render(ctx, state, pids) {
   if (arrival_first != null) {
     if (((arrival_first.arrivalTime() - Date.now()) / 60000) < 0.5) {
       Texture.create("Background")
-          .texture("jsblock:custom_directory/karlsruhe_stadtbahn_arrival.png")
+          .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn_arrival.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
@@ -64,7 +64,7 @@ function render(ctx, state, pids) {
 
       let rowY = 16 + (0*10.3);
       Texture.create("Circle Colored")
-          .texture("jsblock:custom_directory/lrr.png")
+          .texture("jsblock:assets/general/long_circle_full.png")
           .pos(3, rowY - 2)
           .size(24, 14)
           .color(arrival_first.routeColor())
@@ -91,14 +91,14 @@ function render(ctx, state, pids) {
       let car_length = arrival_first.carCount();
       if (car_length > 3 && car_length < 7) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/karlsruhe_2_stadtbahn.png")
+            .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_2_stadtbahn.png")
             .pos(90, rowY - 0.2)
             .color(0x000000)
             .size(40, 6.7)
             .draw(ctx);
       } else if (car_length < 4) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/karlsruhe_1_stadtbahn.png")
+            .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_1_stadtbahn.png")
             .pos(90, rowY - 0.2)
             .color(0x000000)
             .size(40, 6.7)
@@ -109,7 +109,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(3, rowY - 2)
               .size(12, 7)
               .color(arrival.routeColor())
@@ -136,14 +136,14 @@ function render(ctx, state, pids) {
           let car_length = arrival.carCount();
           if (car_length > 3 && car_length < 7) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_2_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_2_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 4) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_1_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_1_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
@@ -176,7 +176,7 @@ function render(ctx, state, pids) {
       let arrival_extra = pids.arrivals().get(2);
       if(customMsg_extra != "") {
         Texture.create("ETA background")
-            .texture("jsblock:custom_directory/karlsruhe_stadtbahn_info.png")
+            .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn_info.png")
             .pos(0, 0)
             .size(pids.width, pids.height)
             .draw(ctx);
@@ -194,7 +194,7 @@ function render(ctx, state, pids) {
           let rowY = 16 + (5*10.3);
 
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(3, rowY - 2)
               .size(12, 7)
               .color(arrival_extra.routeColor())
@@ -221,14 +221,14 @@ function render(ctx, state, pids) {
           let car_length = arrival_extra.carCount();
           if (car_length > 3 && car_length < 7) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_2_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_2_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 4) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_1_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_1_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
@@ -292,7 +292,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(3, rowY - 2)
               .size(12, 7)
               .color(arrival.routeColor())
@@ -319,14 +319,14 @@ function render(ctx, state, pids) {
           let car_length = arrival.carCount();
           if (car_length > 3 && car_length < 7) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_2_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_2_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 4) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_1_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_1_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
@@ -358,7 +358,7 @@ function render(ctx, state, pids) {
       let arrival_extra = pids.arrivals().get(5);
       if(customMsg_extra != "") {
         Texture.create("ETA background")
-            .texture("jsblock:custom_directory/karlsruhe_stadtbahn_info.png")
+            .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn_info.png")
             .pos(0, 0)
             .size(pids.width, pids.height)
             .draw(ctx);
@@ -376,7 +376,7 @@ function render(ctx, state, pids) {
           let rowY = 16 + (5*10.3);
 
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr.png")
+              .texture("jsblock:assets/general/long_circle_full.png")
               .pos(3, rowY - 2)
               .size(12, 7)
               .color(arrival_extra.routeColor())
@@ -403,14 +403,14 @@ function render(ctx, state, pids) {
           let car_length = arrival_extra.carCount();
           if (car_length > 3 && car_length < 7) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_2_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_2_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
                 .draw(ctx);
           } else if (car_length < 4) {
             Texture.create("Car length")
-                .texture("jsblock:custom_directory/karlsruhe_1_stadtbahn.png")
+                .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_1_stadtbahn.png")
                 .pos(87.5, rowY - 0.2)
                 .color(0x000000)
                 .size(30, 5)
@@ -471,7 +471,7 @@ function render(ctx, state, pids) {
     let customMsg = pids.getCustomMessage(3);
     if(customMsg != "") {
       Texture.create("ETA background")
-          .texture("jsblock:custom_directory/karlsruhe_stadtbahn_info.png")
+          .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn_info.png")
           .pos(0, 6*9.3)
           .size(pids.width, 12)
           .color(0xFF0000)

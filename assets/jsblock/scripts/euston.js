@@ -54,7 +54,7 @@ function render(ctx, state, pids) {
     }
 
     Texture.create("Background")
-        .texture("jsblock:custom_directory/euston/euston.png")
+        .texture("jsblock:assets/euston/euston.png")
         .size(pids.height * 7.8, pids.height)
         .draw(ctx);
 
@@ -82,7 +82,7 @@ function render(ctx, state, pids) {
     clock_in_matrices.rotateZDegrees(clock_in_degree)
 
     Texture.create("clock in")
-        .texture("jsblock:custom_directory/euston/euston_clock_in.png")
+        .texture("jsblock:assets/euston/euston_clock_in.png")
         .pos(pids.height * 0.2, pids.height * 0.2)
         .size(pids.height * 0.6, pids.height * 0.6)
         .matrices(clock_in_matrices)
@@ -90,7 +90,7 @@ function render(ctx, state, pids) {
         .draw(ctx);
 
     Texture.create("clock out")
-        .texture("jsblock:custom_directory/euston/euston_clock_out.png")
+        .texture("jsblock:assets/euston/euston_clock_out.png")
         .pos(pids.height * 0.2, pids.height * 0.2)
         .size(pids.height * 0.6, pids.height * 0.6)
         .matrices(clock_out_matrices)
@@ -132,28 +132,28 @@ function render(ctx, state, pids) {
 
                 if (arrived_platform === "top") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_top.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "down") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_down.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "right") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_right.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_left.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
@@ -189,28 +189,28 @@ function render(ctx, state, pids) {
 
                 if (arrived_platform === "top") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_top.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "down") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_down.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else if (arrived_platform === "right") {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_right.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
                         .draw(ctx);
                 } else {
                     Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
+                        .texture("jsblock:assets/euston/euston_train_info_arrived_left.png")
                         .size(pids.height * 0.4, pids.height)
                         .pos(posX, 0)
                         .zOrder(1)
@@ -243,7 +243,7 @@ function render(ctx, state, pids) {
                     .draw(ctx);
             } else {
                 Texture.create("train info")
-                    .texture("jsblock:custom_directory/euston/euston_train_info.png")
+                    .texture("jsblock:assets/euston/euston_train_info.png")
                     .size(pids.height * 0.4, pids.height)
                     .pos(posX, 0)
                     .zOrder(1)
@@ -425,7 +425,7 @@ function render(ctx, state, pids) {
             }
         } else {
             Texture.create("train info")
-                .texture("jsblock:custom_directory/euston/euston_train_info.png")
+                .texture("jsblock:assets/euston/euston_train_info.png")
                 .size(pids.height * 0.4, pids.height)
                 .pos(posX, 0)
                 .zOrder(1)
@@ -436,7 +436,7 @@ function render(ctx, state, pids) {
     }
 
     Texture.create("train info")
-        .texture("jsblock:custom_directory/euston/euston_further_departures.png")
+        .texture("jsblock:assets/euston/euston_further_departures.png")
         .size(pids.height * 0.8, pids.height)
         .pos(posX, 0)
         .zOrder(1)
@@ -456,7 +456,7 @@ function render(ctx, state, pids) {
 
             if (eta < plat_announce_time) {
                 Texture.create("platform status")
-                    .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                    .texture("jsblock:assets/general/long_quad_full.png")
                     .size(pids.height * 0.79, 9.5)
                     .pos(posX, posY + 0.3)
                     .color(0x00D933)
@@ -473,7 +473,7 @@ function render(ctx, state, pids) {
                     .draw(ctx);
             } else {
                 Texture.create("platform status")
-                    .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                    .texture("jsblock:assets/general/long_quad_full.png")
                     .size(7, 3)
                     .pos(posX + 37.75, posY + 0.7)
                     .color(0x0080FF)
@@ -549,7 +549,7 @@ function render(ctx, state, pids) {
     posX += pids.height * 0.8
 
     Texture.create("fastest")
-        .texture("jsblock:custom_directory/euston/euston_fastest.png")
+        .texture("jsblock:assets/euston/euston_fastest.png")
         .size(pids.height * 0.8, pids.height)
         .pos(posX, 0)
         .zOrder(1)
@@ -616,7 +616,7 @@ function render(ctx, state, pids) {
         let posY = 16.2352 + ((pids.height - 12.5) / 17 * line)
 
         Texture.create("platform status")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
+            .texture("jsblock:assets/general/long_quad_full.png")
             .size(4.5, 3)
             .pos(posX + 43.4, posY - 0.8)
             .color(stop["color"])
@@ -667,7 +667,7 @@ function render(ctx, state, pids) {
     posX += pids.height * 0.8
 
     Texture.create("welcome")
-        .texture("jsblock:custom_directory/euston/euston_welcome.png")
+        .texture("jsblock:assets/euston/euston_welcome.png")
         .size(pids.height * 0.6, pids.height)
         .pos(posX, 0)
         .zOrder(1)
@@ -689,7 +689,7 @@ function render(ctx, state, pids) {
     posX += pids.height * 0.6
 
     Texture.create("arrivals")
-        .texture("jsblock:custom_directory/euston/euston_arrivals.png")
+        .texture("jsblock:assets/euston/euston_arrivals.png")
         .size(pids.height * 0.6, pids.height)
         .pos(posX, 0)
         .zOrder(1)

@@ -9,7 +9,7 @@ function render(ctx, state, pids) {
     customMsgs = customMsgs.map(item => item.trim());
 
     Texture.create("Background")
-    .texture("jsblock:custom_directory/db_old.png")
+    .texture("jsblock:assets/db/db_old.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -59,7 +59,7 @@ function render(ctx, state, pids) {
 
         if (deviation > 270000 || customMsg_r) {
             Texture.create("late_arrival ETA background")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
+            .texture("jsblock:assets/general/long_quad_full.png")
             .pos(27, 8)
             .size(pids.width - 65, 6)
             .draw(ctx);
@@ -124,7 +124,7 @@ function render(ctx, state, pids) {
 
             if (deviation > 270000) {
                 Texture.create("late_arrival ETA background")
-                .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                .texture("jsblock:assets/general/long_quad_full.png")
                 .pos(30, rowY - 1)
                 .size(18, 14)
                 .draw(ctx);

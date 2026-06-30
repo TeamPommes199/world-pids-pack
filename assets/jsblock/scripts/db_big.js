@@ -13,7 +13,7 @@ function render(ctx, state, pids) {
 
     if (pids.type == "pids_projector") {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/db_big_row_top_top.png")
+            .texture("jsblock:assets/db/db_big_row_top_top.png")
             .size(pids.width + 7, (pids.height / 18) + 4.55)
             .pos(-3.5, rowY - 9.5)
             .zOrder(0)
@@ -36,7 +36,7 @@ function render(ctx, state, pids) {
     }
 
     Texture.create("Background")
-        .texture("jsblock:custom_directory/db_big_row_top.png")
+        .texture("jsblock:assets/db/db_big_row_top.png")
         .size(pids.width + 7, (pids.height / 18) + 2)
         .pos(-3.5, rowY - 0.75)
         .zOrder(0)
@@ -47,7 +47,7 @@ function render(ctx, state, pids) {
         if (x / 2 !== Math.round(x / 2) - 0.5) {
             rowY += 5.7
             Texture.create("Background")
-                .texture("jsblock:custom_directory/db_big_row.png")
+                .texture("jsblock:assets/db/db_big_row.png")
                 .size(pids.width + 7, (pids.height / 18) + 2)
                 .pos(-3.5, rowY - 0.75)
                 .zOrder(0)
@@ -55,14 +55,14 @@ function render(ctx, state, pids) {
         } else {
             rowY += 4.35
             Texture.create("Background")
-                .texture("jsblock:custom_directory/db_big_row.png")
+                .texture("jsblock:assets/db/db_big_row.png")
                 .size(pids.width + 7, (pids.height / 18) + 1)
                 .pos(-3.5, rowY)
                 .zOrder(0)
                 .draw(ctx);
             if (x !== rows - 1) {
                 Texture.create("Background")
-                    .texture("jsblock:custom_directory/db_big_row_black.png")
+                    .texture("jsblock:assets/db/db_big_row_black.png")
                     .size(pids.width, 1.3)
                     .pos(0, rowY + 3.7)
                     .zOrder(1)
@@ -73,7 +73,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
             Texture.create("late_arrival ETA background")
-                .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                .texture("jsblock:assets/general/long_quad_full.png")
                 .pos(15, rowY - 0.25)
                 .size(18, 3.33)
                 .zOrder(1)
@@ -157,7 +157,7 @@ function render(ctx, state, pids) {
 
             if (deviation > 270000) {
                 Texture.create("late_arrival ETA background")
-                    .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                    .texture("jsblock:assets/general/long_quad_full.png")
                     .pos(118, rowY - 0.25)
                     .size(18, 3.33)
                     .zOrder(1)
@@ -178,7 +178,7 @@ function render(ctx, state, pids) {
         }
     }
     Texture.create("Background")
-        .texture("jsblock:custom_directory/db_big_row_dark_blue.png")
+        .texture("jsblock:assets/db/db_big_row_dark_blue.png")
         .size(pids.width + 7, 1.3)
         .pos(-3.5, rowY + 5)
         .zOrder(0)

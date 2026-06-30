@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/vienna_u_bahn.png")
+    .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -132,7 +132,7 @@ function render(ctx, state, pids) {
     }
 
     Texture.create("Second Layer")
-    .texture("jsblock:custom_directory/vienna_u_bahn_second_layer.png")
+    .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_second_layer.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 }

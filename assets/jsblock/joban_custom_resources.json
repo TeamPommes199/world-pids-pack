@@ -3,8 +3,8 @@
 		{
 			"id": "munich_s_bahn",
 			"name": "Munich S-Bahn",
-			"background": "jsblock:custom_directory/munich.png",
-			"thumbnail": "jsblock:custom_directory/munich.png",
+			"background": "jsblock:assets/munich_s_bahn/munich.png",
+			"thumbnail": "jsblock:assets/munich_s_bahn/munich.png",
 			"scriptFiles": ["jsblock:scripts/munich_sbahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -12,8 +12,8 @@
 		{
 			"id": "munich_s_bahn_1a",
 			"name": "Munich S-Bahn",
-			"background": "jsblock:custom_directory/munich.png",
-			"thumbnail": "jsblock:custom_directory/munich.png",
+			"background": "jsblock:assets/munich_s_bahn/munich.png",
+			"thumbnail": "jsblock:assets/munich_s_bahn/munich.png",
 			"scriptFiles": ["jsblock:scripts/munich_sbahn_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -21,8 +21,8 @@
 		{
 			"id": "munich_u_bahn",
 			"name": "Munich Subway",
-			"background": "jsblock:custom_directory/munich_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/munich_u_bahn.png",
+			"background": "jsblock:assets/munich_subway/munich_subway.png",
+			"thumbnail": "jsblock:assets/munich_subway/munich_subway.png",
 			"scriptFiles": ["jsblock:scripts/munich_ubahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -30,8 +30,8 @@
 		{
 			"id": "nuremberg",
 			"name": "Nuremberg S-Bahn",
-			"background": "jsblock:custom_directory/nuremberg.png",
-			"thumbnail": "jsblock:custom_directory/nuremberg.png",
+			"background": "jsblock:assets/nuremberg/nuremberg.png",
+			"thumbnail": "jsblock:assets/nuremberg/nuremberg.png",
 			"scriptFiles": ["jsblock:scripts/nuremberg.js"],
 			"blacklist": ["lcd_pids", "pids_1a"]
 		},
@@ -39,8 +39,8 @@
 		{
 			"id": "nuremberg_subway",
 			"name": "Nuremberg Subway",
-			"background": "jsblock:custom_directory/nuremberg_subway.png",
-			"thumbnail": "jsblock:custom_directory/nuremberg_subway.png",
+			"background": "jsblock:assets/nuremberg/nuremberg_subway.png",
+			"thumbnail": "jsblock:assets/nuremberg/nuremberg_subway.png",
 			"scriptFiles": ["jsblock:scripts/nuremberg_subway.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -48,8 +48,8 @@
 		{
 			"id": "hamburg_s_bahn",
 			"name": "Hamburg S-Bahn",
-			"background": "jsblock:custom_directory/hamburg.png",
-			"thumbnail": "jsblock:custom_directory/hamburg.png",
+			"background": "jsblock:assets/hamburg_s_bahn/hamburg.png",
+			"thumbnail": "jsblock:assets/hamburg_s_bahn/hamburg.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_sbahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -57,8 +57,8 @@
 		{
 			"id": "hamburg_u_bahn",
 			"name": "Hamburg (Subway)",
-			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"background": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png",
+			"thumbnail": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -66,8 +66,8 @@
 		{
 			"id": "hamburg_u_bahn_colored",
 			"name": "Hamburg (Subway - colored)",
-			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"background": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png",
+			"thumbnail": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -75,8 +75,8 @@
 		{
 			"id": "hamburg_u_bahn_1a",
 			"name": "Hamburg (Subway)",
-			"background": "jsblock:custom_directory/hamburg_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn.png",
+			"background": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png",
+			"thumbnail": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -84,8 +84,8 @@
 		{
 			"id": "hamburg_u_bahn_colored_1a",
 			"name": "Hamburg (Subway - colored)",
-			"background": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_u_bahn_colored.png",
+			"background": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png",
+			"thumbnail": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_ubahn_colored_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -93,8 +93,8 @@
 		{
 			"id": "hamburg_u_bahn_new",
 			"name": "Hamburg (Subway - New)",
-			"background": "jsblock:custom_directory/hamburg_subway_new.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_subway_new.png",
+			"background": "jsblock:assets/hamburg_u_bahn/hamburg_subway_new.png",
+			"thumbnail": "jsblock:assets/hamburg_u_bahn/hamburg_subway_new.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_subway_new.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -102,8 +102,8 @@
 		{
 			"id": "hamburg_bus_tram",
 			"name": "Hamburg (Bus/Tram)",
-			"background": "jsblock:custom_directory/hamburg_bus_tram.png",
-			"thumbnail": "jsblock:custom_directory/hamburg_bus_tram.png",
+			"background": "jsblock:assets/hamburg_bus_tram.png",
+			"thumbnail": "jsblock:assets/hamburg_bus_tram.png",
 			"scriptFiles": ["jsblock:scripts/hamburg_bus_tram.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -111,8 +111,8 @@
 		{
 			"id": "db_old",
 			"name": "DB PIDS (2016)",
-			"background": "jsblock:custom_directory/db_old.png",
-			"thumbnail": "jsblock:custom_directory/db_old.png",
+			"background": "jsblock:assets/db/db_old.png",
+			"thumbnail": "jsblock:assets/db/db_old.png",
 			"scriptFiles": ["jsblock:scripts/db_old.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -120,8 +120,8 @@
 		{
 			"id": "db_big",
 			"name": "DB PIDS (big)",
-			"background": "jsblock:custom_directory/blank.png",
-			"thumbnail": "jsblock:custom_directory/blank.png",
+			"background": "jsblock:assets/general/blank.png",
+			"thumbnail": "jsblock:assets/general/blank.png",
 			"scriptFiles": ["jsblock:scripts/db_big.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -129,8 +129,8 @@
 		{
 			"id": "obb",
 			"name": "ÖBB",
-			"background": "jsblock:custom_directory/obb.png",
-			"thumbnail": "jsblock:custom_directory/obb.png",
+			"background": "jsblock:assets/obb/obb.png",
+			"thumbnail": "jsblock:assets/obb/obb.png",
 			"scriptFiles": ["jsblock:scripts/obb.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -138,8 +138,8 @@
 		{
 			"id": "obb_1a",
 			"name": "ÖBB",
-			"background": "jsblock:custom_directory/obb.png",
-			"thumbnail": "jsblock:custom_directory/obb.png",
+			"background": "jsblock:assets/obb/obb.png",
+			"thumbnail": "jsblock:assets/obb/obb.png",
 			"scriptFiles": ["jsblock:scripts/obb_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -147,8 +147,8 @@
 		{
 			"id": "obb_2022",
 			"name": "ÖBB (2022)",
-			"background": "jsblock:custom_directory/obb_2022.png",
-			"thumbnail": "jsblock:custom_directory/obb_2022.png",
+			"background": "jsblock:assets/obb/obb_2022.png",
+			"thumbnail": "jsblock:assets/obb/obb_2022.png",
 			"scriptFiles": ["jsblock:scripts/obb_2022.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -156,8 +156,8 @@
 		{
 			"id": "obb_2022_1a",
 			"name": "ÖBB (2022)",
-			"background": "jsblock:custom_directory/obb_2022_1a.png",
-			"thumbnail": "jsblock:custom_directory/obb_2022_1a.png",
+			"background": "jsblock:assets/obb/obb_2022_1a.png",
+			"thumbnail": "jsblock:assets/obb/obb_2022_1a.png",
 			"scriptFiles": ["jsblock:scripts/obb_2022_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -165,8 +165,8 @@
 		{
 			"id": "obb_departure",
 			"name": "ÖBB (departure board)",
-			"background": "jsblock:custom_directory/obb_depature.png",
-			"thumbnail": "jsblock:custom_directory/obb_depature.png",
+			"background": "jsblock:assets/obb/obb_depature.png",
+			"thumbnail": "jsblock:assets/obb/obb_depature.png",
 			"scriptFiles": ["jsblock:scripts/obb_departure.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -174,8 +174,8 @@
 		{
 			"id": "obb_arrival",
 			"name": "ÖBB (arrival board)",
-			"background": "jsblock:custom_directory/obb_arrival.png",
-			"thumbnail": "jsblock:custom_directory/obb_arrival.png",
+			"background": "jsblock:assets/obb/obb_arrival.png",
+			"thumbnail": "jsblock:assets/obb/obb_arrival.png",
 			"scriptFiles": ["jsblock:scripts/obb_arrival.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -183,8 +183,8 @@
 		{
 			"id": "obb_old_1_1a",
 			"name": "ÖBB S-Bahn",
-			"background": "jsblock:custom_directory/obb_old_1_1a.png",
-			"thumbnail": "jsblock:custom_directory/obb_old_1_1a.png",
+			"background": "jsblock:assets/obb/obb_old_1_1a.png",
+			"thumbnail": "jsblock:assets/obb/obb_old_1_1a.png",
 			"scriptFiles": ["jsblock:scripts/obb_old_1_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -192,8 +192,8 @@
 		{
 			"id": "sbb",
 			"name": "SBB",
-			"background": "jsblock:custom_directory/sbb.png",
-			"thumbnail": "jsblock:custom_directory/sbb.png",
+			"background": "jsblock:assets/sbb.png",
+			"thumbnail": "jsblock:assets/sbb.png",
 			"scriptFiles": ["jsblock:scripts/sbb.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -201,8 +201,8 @@
 		{
 			"id": "vienna_u_bahn",
 			"name": "Vienna Subway ",
-			"background": "jsblock:custom_directory/vienna_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/vienna_u_bahn.png",
+			"background": "jsblock:assets/vienna_u_bahn/vienna_u_bahn.png",
+			"thumbnail": "jsblock:assets/vienna_u_bahn/vienna_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/vienna_u_bahn.js"],
 			"blacklist": ["lcd_pids", "pids_1a"]
 		},
@@ -210,8 +210,8 @@
 		{
 			"id": "vienna_u_bahn_1a",
 			"name": "Vienna Subway ",
-			"background": "jsblock:custom_directory/vienna_u_bahn_1a.png",
-			"thumbnail": "jsblock:custom_directory/vienna_u_bahn_1a.png",
+			"background": "jsblock:assets/vienna_u_bahn/vienna_u_bahn_1a.png",
+			"thumbnail": "jsblock:assets/vienna_u_bahn/vienna_u_bahn_1a.png",
 			"scriptFiles": ["jsblock:scripts/vienna_u_bahn_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -219,8 +219,8 @@
 		{
 			"id": "karlsruhe_stadtbahn",
 			"name": "Karlsruhe (Light Rail)",
-			"background": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
-			"thumbnail": "jsblock:custom_directory/karlsruhe_stadtbahn.png",
+			"background": "jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn.png",
+			"thumbnail": "jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn.png",
 			"scriptFiles": ["jsblock:scripts/karlsruhe_stadtbahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -228,8 +228,8 @@
 		{
 			"id": "rostock_tram",
 			"name": "Rostock Tram",
-			"background": "jsblock:custom_directory/rostock_tram.png",
-			"thumbnail": "jsblock:custom_directory/rostock_tram.png",
+			"background": "jsblock:assets/rostock_tram.png",
+			"thumbnail": "jsblock:assets/rostock_tram.png",
 			"scriptFiles": ["jsblock:scripts/rostock_tram.js"],
 			"blacklist": []
 		},
@@ -237,8 +237,8 @@
 		{
 			"id": "frankfurt_u_bahn",
 			"name": "Frankfurt Subway",
-			"background": "jsblock:custom_directory/black.png",
-			"thumbnail": "jsblock:custom_directory/black.png",
+			"background": "jsblock:assets/general/black.png",
+			"thumbnail": "jsblock:assets/general/black.png",
 			"scriptFiles": ["jsblock:scripts/frankfurt_ubahn.js"],
 			"blacklist": []
 		},
@@ -246,8 +246,8 @@
 		{
 			"id": "stockholm_u_bahn",
 			"name": "Stockholm Subway",
-			"background": "jsblock:custom_directory/stockholm_subway.png",
-			"thumbnail": "jsblock:custom_directory/stockholm_subway.png",
+			"background": "jsblock:assets/stockholm_subway.png",
+			"thumbnail": "jsblock:assets/stockholm_subway.png",
 			"scriptFiles": ["jsblock:scripts/stockholm_subway.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -255,8 +255,8 @@
 		{
 			"id": "sj_sweden",
 			"name": "SJ (Statens Järnväg)",
-			"background": "jsblock:custom_directory/sj_sweden_depatures.png",
-			"thumbnail": "jsblock:custom_directory/sj_sweden_depatures.png",
+			"background": "jsblock:assets/sj_sweden/sj_sweden_depatures.png",
+			"thumbnail": "jsblock:assets/sj_sweden/sj_sweden_depatures.png",
 			"scriptFiles": ["jsblock:scripts/sj_sweden.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -264,8 +264,8 @@
 		{
 			"id": "berlin_u_bahn_1a",
 			"name": "Berlin Subway",
-			"background": "jsblock:custom_directory/berlin_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/berlin_u_bahn.png",
+			"background": "jsblock:assets/berlin_u_bahn.png",
+			"thumbnail": "jsblock:assets/berlin_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/berlin_u_bahn_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -273,8 +273,8 @@
 		{
 			"id": "berlin_u_bahn",
 			"name": "Berlin Subway",
-			"background": "jsblock:custom_directory/berlin_u_bahn.png",
-			"thumbnail": "jsblock:custom_directory/berlin_u_bahn.png",
+			"background": "jsblock:assets/berlin_u_bahn.png",
+			"thumbnail": "jsblock:assets/berlin_u_bahn.png",
 			"scriptFiles": ["jsblock:scripts/berlin_u_bahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -282,8 +282,8 @@
 		{
 			"id": "berlin_s_bahn",
 			"name": "Berlin S-Bahn",
-			"background": "jsblock:custom_directory/berlin_s_bahn.png",
-			"thumbnail": "jsblock:custom_directory/berlin_s_bahn.png",
+			"background": "jsblock:assets/berlin_s_bahn/berlin_s_bahn.png",
+			"thumbnail": "jsblock:assets/berlin_s_bahn/berlin_s_bahn.png",
 			"scriptFiles": ["jsblock:scripts/berlin_s_bahn.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -291,8 +291,8 @@
 		{
 			"id": "sydney",
 			"name": "Sydney",
-			"background": "jsblock:custom_directory/sydney.png",
-			"thumbnail": "jsblock:custom_directory/sydney.png",
+			"background": "jsblock:assets/sydney.png",
+			"thumbnail": "jsblock:assets/sydney.png",
 			"scriptFiles": ["jsblock:scripts/sydney.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -300,8 +300,8 @@
 		{
 			"id": "dutch",
 			"name": "Dutch",
-			"background": "jsblock:custom_directory/dutch.png",
-			"thumbnail": "jsblock:custom_directory/dutch.png",
+			"background": "jsblock:assets/dutch/dutch.png",
+			"thumbnail": "jsblock:assets/dutch/dutch.png",
 			"scriptFiles": ["jsblock:scripts/dutch.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -309,8 +309,8 @@
 		{
 			"id": "dutch_2",
 			"name": "Dutch Arrivals",
-			"background": "jsblock:custom_directory/dutch_2.png",
-			"thumbnail": "jsblock:custom_directory/dutch_2.png",
+			"background": "jsblock:assets/dutch/dutch_2.png",
+			"thumbnail": "jsblock:assets/dutch/dutch_2.png",
 			"scriptFiles": ["jsblock:scripts/dutch_2.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -318,8 +318,8 @@
 		{
 			"id": "dutch_bus",
 			"name": "Dutch (Bus)",
-			"background": "jsblock:custom_directory/dutch_bus.png",
-			"thumbnail": "jsblock:custom_directory/dutch_bus.png",
+			"background": "jsblock:assets/dutch_bus_tram/dutch_bus.png",
+			"thumbnail": "jsblock:assets/dutch_bus_tram/dutch_bus.png",
 			"scriptFiles": ["jsblock:scripts/dutch_bus.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -327,8 +327,8 @@
 		{
 			"id": "dutch_tram",
 			"name": "Dutch (Tram)",
-			"background": "jsblock:custom_directory/dutch_tram.png",
-			"thumbnail": "jsblock:custom_directory/dutch_tram.png",
+			"background": "jsblock:assets/dutch_bus_tram/dutch_tram.png",
+			"thumbnail": "jsblock:assets/dutch_bus_tram/dutch_tram.png",
 			"scriptFiles": ["jsblock:scripts/dutch_tram.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -336,8 +336,8 @@
 		{
 			"id": "rotterdam_metro_1a",
 			"name": "Rotterdam (Metro)",
-			"background": "jsblock:custom_directory/rotterdam_metro.png",
-			"thumbnail": "jsblock:custom_directory/rotterdam_metro.png",
+			"background": "jsblock:assets/rotterdam_metro/rotterdam_metro.png",
+			"thumbnail": "jsblock:assets/rotterdam_metro/rotterdam_metro.png",
 			"scriptFiles": ["jsblock:scripts/rotterdam_metro.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -345,8 +345,8 @@
 		{
 			"id": "hungarian",
 			"name": "Hungarian",
-			"background": "jsblock:custom_directory/hungarian_depature.png",
-			"thumbnail": "jsblock:custom_directory/hungarian_depature.png",
+			"background": "jsblock:assets/hungarian_depature.png",
+			"thumbnail": "jsblock:assets/hungarian_depature.png",
 			"scriptFiles": ["jsblock:scripts/hungarian.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -354,8 +354,8 @@
 		{
 			"id": "izmir_metro",
 			"name": "Izmir Subway",
-			"background": "jsblock:custom_directory/izmir_metro.png",
-			"thumbnail": "jsblock:custom_directory/izmir_metro.png",
+			"background": "jsblock:assets/izmir_metro.png",
+			"thumbnail": "jsblock:assets/izmir_metro.png",
 			"scriptFiles": ["jsblock:scripts/izmir_metro.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -363,8 +363,8 @@
 		{
 			"id": "athen_suburban",
 			"name": "Athen (Suburban)",
-			"background": "jsblock:custom_directory/athen_suburban.png",
-			"thumbnail": "jsblock:custom_directory/athen_suburban.png",
+			"background": "jsblock:assets/athen_suburban.png",
+			"thumbnail": "jsblock:assets/athen_suburban.png",
 			"scriptFiles": ["jsblock:scripts/athen_suburban.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -372,8 +372,8 @@
 		{
 			"id": "thessaloniki_metro",
 			"name": "Thessaloniki (Metro)",
-			"background": "jsblock:custom_directory/thessaloniki_metro.png",
-			"thumbnail": "jsblock:custom_directory/thessaloniki_metro.png",
+			"background": "jsblock:assets/thessaloniki_metro.png",
+			"thumbnail": "jsblock:assets/thessaloniki_metro.png",
 			"scriptFiles": ["jsblock:scripts/thessaloniki_metro.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -381,8 +381,8 @@
 		{
 			"id": "portuguese_depature",
 			"name": "Portuguese (Depatures)",
-			"background": "jsblock:custom_directory/portuguese_depature.png",
-			"thumbnail": "jsblock:custom_directory/portuguese_depature.png",
+			"background": "jsblock:assets/portuguese_depature.png",
+			"thumbnail": "jsblock:assets/portuguese_depature.png",
 			"scriptFiles": ["jsblock:scripts/portuguese_depature.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -390,8 +390,8 @@
 		{
 			"id": "finish_vr",
 			"name": "Finish VR",
-			"background": "jsblock:custom_directory/blank.png",
-			"thumbnail": "jsblock:custom_directory/blank.png",
+			"background": "jsblock:assets/general/blank.png",
+			"thumbnail": "jsblock:assets/general/blank.png",
 			"scriptFiles": ["jsblock:scripts/finish_vr.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -399,8 +399,8 @@
 		{
 			"id": "wmata",
 			"name": "WMATA",
-			"background": "jsblock:custom_directory/wmata.png",
-			"thumbnail": "jsblock:custom_directory/wmata.png",
+			"background": "jsblock:assets/wmata/wmata.png",
+			"thumbnail": "jsblock:assets/wmata/wmata.png",
 			"scriptFiles": ["jsblock:scripts/wmata.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -408,8 +408,8 @@
 		{
 			"id": "sncb",
 			"name": "SNCB (single line)",
-			"background": "jsblock:custom_directory/sncb.png",
-			"thumbnail": "jsblock:custom_directory/sncb.png",
+			"background": "jsblock:assets/sncb/sncb.png",
+			"thumbnail": "jsblock:assets/sncb/sncb.png",
 			"scriptFiles": ["jsblock:scripts/sncb.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -417,8 +417,8 @@
 		{
 			"id": "sncb_old",
 			"name": "SNCB (single line - old)",
-			"background": "jsblock:custom_directory/sncb_old.png",
-			"thumbnail": "jsblock:custom_directory/sncb_old.png",
+			"background": "jsblock:assets/sncb/sncb_old.png",
+			"thumbnail": "jsblock:assets/sncb/sncb_old.png",
 			"scriptFiles": ["jsblock:scripts/sncb_old.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -426,8 +426,8 @@
 		{
 			"id": "sncb_board",
 			"name": "SNCB (board)",
-			"background": "jsblock:custom_directory/sncb_board.png",
-			"thumbnail": "jsblock:custom_directory/sncb_board.png",
+			"background": "jsblock:assets/sncb/sncb_board.png",
+			"thumbnail": "jsblock:assets/sncb/sncb_board.png",
 			"scriptFiles": ["jsblock:scripts/sncb_board.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -435,8 +435,8 @@
 		{
 			"id": "polish_pkp",
 			"name": "Polish (PKP-Style)",
-			"background": "jsblock:custom_directory/polish_pkp.png",
-			"thumbnail": "jsblock:custom_directory/polish_pkp.png",
+			"background": "jsblock:assets/polish_pkp.png",
+			"thumbnail": "jsblock:assets/polish_pkp.png",
 			"scriptFiles": ["jsblock:scripts/polish_pkp.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -444,8 +444,8 @@
 		{
 			"id": "bremen_regio_train_1a",
 			"name": "DB DSA+",
-			"background": "jsblock:custom_directory/dot_matrix_1a.png",
-			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"background": "jsblock:assets/general/dot_matrix_1a.png",
+			"thumbnail": "jsblock:assets/general/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/bremen_regio_train.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -453,8 +453,8 @@
 		{
 			"id": "hannover_light_rail_1a",
 			"name": "Hannover (Light Rail)",
-			"background": "jsblock:custom_directory/dot_matrix_1a.png",
-			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"background": "jsblock:assets/general/dot_matrix_1a.png",
+			"thumbnail": "jsblock:assets/general/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/hannover_light_rail_1a.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -462,8 +462,8 @@
 		{
 			"id": "copenhagen_metro",
 			"name": "Copenhagen (Metro)",
-			"background": "jsblock:custom_directory/copenhagen_metro.png",
-			"thumbnail": "jsblock:custom_directory/copenhagen_metro.png",
+			"background": "jsblock:assets/copenhagen_metro/copenhagen_metro.png",
+			"thumbnail": "jsblock:assets/copenhagen_metro/copenhagen_metro.png",
 			"scriptFiles": ["jsblock:scripts/copenhagen_metro.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -471,8 +471,8 @@
 		{
 			"id": "norway",
 			"name": "Norway",
-			"background": "jsblock:custom_directory/norway.png",
-			"thumbnail": "jsblock:custom_directory/norway.png",
+			"background": "jsblock:assets/norway.png",
+			"thumbnail": "jsblock:assets/norway.png",
 			"scriptFiles": ["jsblock:scripts/norway.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -480,8 +480,8 @@
 		{
 			"id": "euston",
 			"name": "Euston",
-			"background": "jsblock:custom_directory/euston.png",
-			"thumbnail": "jsblock:custom_directory/euston.png",
+			"background": "jsblock:assets/euston/euston.png",
+			"thumbnail": "jsblock:assets/euston/euston.png",
 			"scriptFiles": ["jsblock:scripts/euston.js"],
 			"blacklist": ["pids_1a", "lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2"]
 		},
@@ -489,8 +489,8 @@
 		{
 			"id": "trenitalia",
 			"name": "Trenitalia",
-			"background": "jsblock:custom_directory/trenitalia.png",
-			"thumbnail": "jsblock:custom_directory/trenitalia.png",
+			"background": "jsblock:assets/trenitalia/trenitalia.png",
+			"thumbnail": "jsblock:assets/trenitalia/trenitalia.png",
 			"scriptFiles": ["jsblock:scripts/trenitalia.js"],
 			"blacklist": ["pids_1a"]
 		},
@@ -498,8 +498,8 @@
 		{
 			"id": "london_bus_1a",
 			"name": "London (Bus)",
-			"background": "jsblock:custom_directory/dot_matrix_1a.png",
-			"thumbnail": "jsblock:custom_directory/dot_matrix_1a.png",
+			"background": "jsblock:assets/general/dot_matrix_1a.png",
+			"thumbnail": "jsblock:assets/general/dot_matrix_1a.png",
 			"scriptFiles": ["jsblock:scripts/london_bus.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
@@ -507,8 +507,8 @@
 		{
 			"id": "north_east_line",
 			"name": "North East Line",
-			"background": "jsblock:custom_directory/north_east_line.png",
-			"thumbnail": "jsblock:custom_directory/north_east_line.png",
+			"background": "jsblock:assets/north_east_line/north_east_line.png",
+			"thumbnail": "jsblock:assets/north_east_line/north_east_line.png",
 			"scriptFiles": ["jsblock:scripts/north_east_line.js"],
 			"blacklist": ["pids_1a"]
 		}

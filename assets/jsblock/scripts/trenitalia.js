@@ -6,7 +6,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/trenitalia.png")
+    .texture("jsblock:assets/trenitalia/trenitalia.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -56,13 +56,13 @@ function render(ctx, state, pids) {
                 if (counter[pids_pos] > 150) {counter[pids_pos] = 0}
 
                 Texture.create("light_1")
-                    .texture("jsblock:custom_directory/trenitalia_light.png")
+                    .texture("jsblock:assets/trenitalia/trenitalia_light.png")
                     .pos(82.475, 6)
                     .size(3, 3)
                     .draw(ctx);
             } else {
                 Texture.create("light_2")
-                    .texture("jsblock:custom_directory/trenitalia_light.png")
+                    .texture("jsblock:assets/trenitalia/trenitalia_light.png")
                     .pos(87.8, 6)
                     .size(3, 3)
                     .draw(ctx);

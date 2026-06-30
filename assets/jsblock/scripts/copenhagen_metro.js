@@ -10,12 +10,12 @@ function render(ctx, state, pids) {
 
   if (customMsgs.find(item => item.includes("color:")) === "color: dark blue") {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/copenhagen_metro_dark-blue.png")
+        .texture("jsblock:assets/copenhagen_metro/copenhagen_metro_dark-blue.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/copenhagen_metro.png")
+        .texture("jsblock:assets/copenhagen_metro/copenhagen_metro.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }
@@ -35,7 +35,7 @@ function render(ctx, state, pids) {
       let arrival = pids.arrivals().get(i);
       if(arrival != null && i !== 2) {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/circle.png")
+            .texture("jsblock:assets/general/circle_full.png")
             .size(12.5, 12.5)
             .pos(1.5, rowY + 5.25)
             .color(arrival.routeColor())
@@ -94,7 +94,7 @@ function render(ctx, state, pids) {
               .draw(ctx);
         } else if (arrival !== null) {
           Texture.create("Background")
-              .texture("jsblock:custom_directory/circle.png")
+              .texture("jsblock:assets/general/circle_full.png")
               .size(12.5, 12.5)
               .pos(1.5, rowY + 5.25)
               .color(arrival.routeColor())

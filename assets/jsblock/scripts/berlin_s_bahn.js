@@ -27,12 +27,12 @@ function render(ctx, state, pids) {
       let rowY = 3;
 
       Texture.create("Background_Blank")
-          .texture("jsblock:custom_directory/berlin_s_bahn_arrive.png")
+          .texture("jsblock:assets/berlin_s_bahn/berlin_s_bahn_arrive.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
       Texture.create("arrival_first Circle Colored Full")
-          .texture("jsblock:custom_directory/lrr_full.png")
+          .texture("jsblock:assets/general/long_circle_full.png")
           .pos(1, rowY)
           .size(25, 13)
           .color(arrival_first.routeColor())
@@ -112,25 +112,25 @@ function render(ctx, state, pids) {
       let car_length = arrival_first.carCount();
       if (car_length > 2 && car_length < 5) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
+            .texture("jsblock:assets/berlin_s_bahn/berlin_2_s_bahn.png")
             .pos(2, rowY + 17)
             .size(23, 4)
             .draw(ctx);
       } else if (car_length > 7) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
+            .texture("jsblock:assets/berlin_s_bahn/berlin_4_s_bahn.png")
             .pos(2, rowY + 17)
             .size(23, 4)
             .draw(ctx);
       } else if (car_length > 5 && car_length < 8) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
+            .texture("jsblock:assets/berlin_s_bahn/berlin_3_s_bahn.png")
             .pos(2, rowY + 17)
             .size(23, 4)
             .draw(ctx);
       } else if (car_length < 3) {
         Texture.create("Car length")
-            .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
+            .texture("jsblock:assets/berlin_s_bahn/berlin_1_s_bahn.png")
             .pos(2, rowY + 17)
             .size(23, 4)
             .draw(ctx);
@@ -139,7 +139,7 @@ function render(ctx, state, pids) {
         rowY = 38.5 + (13.3 * i)
         if (pids.getCustomMessage(3) != "" && i == 2) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .texture("jsblock:assets/general/long_quad_full.png")
               .pos(0, rowY - 2)
               .size(pids.width, 10)
               .draw(ctx);
@@ -156,7 +156,7 @@ function render(ctx, state, pids) {
           let arrival = pids.arrivals().get(i);
           if (arrival != null) {
             Texture.create("Circle Colored")
-                .texture("jsblock:custom_directory/lrr.png")
+                .texture("jsblock:assets/general/long_circle_full.png")
                 .pos(2.5, rowY - 2)
                 .size(21, 10)
                 .color(arrival.routeColor())
@@ -184,25 +184,25 @@ function render(ctx, state, pids) {
             let car_length = arrival.carCount();
             if (car_length > 2 && car_length < 5) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_2_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length > 7) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_4_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length > 5 && car_length < 8) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_3_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length < 3) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_1_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
@@ -230,7 +230,7 @@ function render(ctx, state, pids) {
       }
     } else {
       Texture.create("Background")
-          .texture("jsblock:custom_directory/berlin_s_bahn.png")
+          .texture("jsblock:assets/berlin_s_bahn/berlin_s_bahn.png")
           .size(pids.width, pids.height)
           .draw(ctx);
 
@@ -238,7 +238,7 @@ function render(ctx, state, pids) {
       for (let i = rows * (page - 1); i < rows * page; i++) {
         if (pids.getCustomMessage(3) != "" && i == rows * page - 1) {
           Texture.create("Circle Colored")
-              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .texture("jsblock:assets/general/long_quad_full.png")
               .pos(0, rowY - 2)
               .size(pids.width, 10)
               .draw(ctx);
@@ -255,7 +255,7 @@ function render(ctx, state, pids) {
           let arrival = pids.arrivals().get(i);
           if (arrival != null) {
             Texture.create("Circle Colored")
-                .texture("jsblock:custom_directory/lrr.png")
+                .texture("jsblock:assets/general/long_circle_full.png")
                 .pos(2.5, rowY - 2)
                 .size(21, 10)
                 .color(arrival.routeColor())
@@ -283,25 +283,25 @@ function render(ctx, state, pids) {
             let car_length = arrival.carCount();
             if (car_length > 2 && car_length < 5) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_2_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_2_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length > 7) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_4_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_4_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length > 5 && car_length < 8) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_3_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_3_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
             } else if (car_length < 3) {
               Texture.create("Car length")
-                  .texture("jsblock:custom_directory/berlin_1_s_bahn.png")
+                  .texture("jsblock:assets/berlin_s_bahn/berlin_1_s_bahn.png")
                   .pos(79, rowY)
                   .size(30, 5)
                   .draw(ctx);
@@ -330,7 +330,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/berlin_s_bahn.png")
+        .texture("jsblock:assets/berlin_s_bahn/berlin_s_bahn.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }

@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/blank.png")
+    .texture("jsblock:assets/general/blank.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -37,13 +37,13 @@ function render(ctx, state, pids) {
 
                 if (stop == pids.station().getName()) {
                     Texture.create("Background")
-                        .texture("jsblock:custom_directory/full_round.png")
+                        .texture("jsblock:assets/general/full_round.png")
                         .pos(95, 13 + 5.2 * line)
                         .size(5.2, 5.2)
                         .draw(ctx);
                 } else {
                     Texture.create("Background")
-                        .texture("jsblock:custom_directory/not_full_round.png")
+                        .texture("jsblock:assets/general/not_full_round.png")
                         .pos(95, 13 + 5.2 * line)
                         .size(5.2, 5.2)
                         .draw(ctx);
@@ -95,7 +95,7 @@ function render(ctx, state, pids) {
             .draw(ctx);
 
         Texture.create("train_stopping_areas")
-            .texture("jsblock:custom_directory/finish_vr_stop_area.png")
+            .texture("jsblock:assets/finish_vr_stop_area.png")
             .size(pids.width, 11.5)
             .pos(0, pids.height - 11.5)
             .draw(ctx);
@@ -106,13 +106,13 @@ function render(ctx, state, pids) {
 
             if (i + 1 === 1) {
                 Texture.create("train_stopping_areas")
-                    .texture("jsblock:custom_directory/quad_left_missing.png")
+                    .texture("jsblock:assets/general/quad_left_missing.png")
                     .size(9.25, 9.25)
                     .pos(posX, pids.height - 21)
                     .draw(ctx);
             } else {
                 Texture.create("train_stopping_areas")
-                    .texture("jsblock:custom_directory/quad.png")
+                    .texture("jsblock:assets/general/quad.png")
                     .size(9.25, 9.25)
                     .pos(posX, pids.height - 21)
                     .draw(ctx);
