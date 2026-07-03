@@ -244,6 +244,15 @@
 		},
 
 		{
+			"id": "dynamic_frankfurt_bus",
+			"name": "Frankfurt (Bus)",
+			"background": "jsblock:assets/dynamic_frankfurt/head.png",
+			"thumbnail": "jsblock:assets/dynamic_frankfurt/head.png",
+			"scriptFiles": ["jsblock:scripts/dynamic_frankfurt_bus.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_1a"]
+		},
+
+		{
 			"id": "stockholm_u_bahn",
 			"name": "Stockholm Subway",
 			"background": "jsblock:assets/stockholm_subway.png",
