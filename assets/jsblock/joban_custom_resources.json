@@ -520,6 +520,15 @@
 			"thumbnail": "jsblock:assets/north_east_line/north_east_line.png",
 			"scriptFiles": ["jsblock:scripts/north_east_line.js"],
 			"blacklist": ["pids_1a"]
+		},
+
+		{
+			"id": "blackbox_landscape_lcd_1a",
+			"name": "Blackbox Landscape LCD",
+			"background": "jsblock:assets/general/black.png",
+			"thumbnail": "jsblock:assets/general/black.png",
+			"scriptFiles": ["jsblock:scripts/blackbox_landscape_lcd_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		}
 	]
 }
