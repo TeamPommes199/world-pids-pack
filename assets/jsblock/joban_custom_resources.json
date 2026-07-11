@@ -415,6 +415,15 @@
 		},
 
 		{
+			"id": "bart",
+			"name": "BART",
+			"background": "jsblock:assets/bart.png",
+			"thumbnail": "jsblock:assets/bart.png",
+			"scriptFiles": ["jsblock:scripts/bart.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "sncb",
 			"name": "SNCB (single line)",
 			"background": "jsblock:assets/sncb/sncb.png",
