@@ -128,7 +128,7 @@ function render(ctx, state, pids) {
             .draw(ctx);
 
         let etas = arrivalList[i].departureTime()
-        let deviation = arrival_first.deviation()
+        let deviation = arrivalList[i].deviation()
         let late_eta = etas - deviation
         late_eta = new Date(late_eta)
         let late_hours = late_eta.getHours()
