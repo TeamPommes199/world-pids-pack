@@ -66,7 +66,7 @@ function render(ctx, state, pids) {
             .rightAlign()
             .scale(1.1)
             .pos(arrival_number_pos, -10)
-            .size(75, 30)
+            .size(60, 30)
             .scaleXY()
             .color(0x002b6d)
             .draw(ctx);
@@ -92,6 +92,14 @@ function render(ctx, state, pids) {
             .scale(1.1)
             .color(0x002b6d)
             .pos(4, 3)
+            .size(60, 30)
+            .draw(ctx);
+
+        Text.create("arrival_first ETA")
+            .text("+" + Math.round(deviation / 300000) * 5)
+            .scale(0.85)
+            .color(0xff0000)
+            .pos(33, 4.5)
             .size(60, 30)
             .draw(ctx);
 
@@ -184,8 +192,8 @@ function render(ctx, state, pids) {
 
             Text.create("arrival")
             .text(arrival.routeNumber() + " " + TextUtil.cycleString(arrival.destination()))
-            .pos(56, rowY)
-            .size(pids.width - 57, 5)
+            .pos(59, rowY)
+            .size(pids.width - 60, 5)
             .scaleXY()
             .color(0xFFFFFF)
             .draw(ctx);
@@ -198,7 +206,7 @@ function render(ctx, state, pids) {
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
             Text.create("arrival ETA")
-            .text(late_time)
+            .text(late_time + " +" + Math.round(deviation / 300000) * 5)
             .color(0xFFFFFF)
             .pos(38, rowY)
             .leftAlign()
