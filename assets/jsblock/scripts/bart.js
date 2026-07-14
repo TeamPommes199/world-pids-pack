@@ -35,7 +35,7 @@ function render(ctx, state, pids) {
             .scale(1.8)
             .scaleXY()
             .centerAlign()
-            .color(0xDDCD00)
+            .color(0xFF2211)
             .draw(ctx);
       }
     } else {
@@ -87,7 +87,7 @@ function render(ctx, state, pids) {
               .size(pids.width / 2 - 5, 22)
               .scale(1.3)
               .scaleXY()
-              .color(0xDDCD00)
+              .color(0xFF2211)
               .draw(ctx);
 
           let eta;
