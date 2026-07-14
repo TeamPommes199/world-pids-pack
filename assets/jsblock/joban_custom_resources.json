@@ -226,6 +226,15 @@
 		},
 
 		{
+			"id": "ruhr",
+			"name": "Ruhr",
+			"background": "jsblock:assets/ruhr/background.png",
+			"thumbnail": "jsblock:assets/ruhr/background.png",
+			"scriptFiles": ["jsblock:scripts/ruhr.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "rostock_tram",
 			"name": "Rostock Tram",
 			"background": "jsblock:assets/rostock_tram.png",
