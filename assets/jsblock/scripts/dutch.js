@@ -95,13 +95,15 @@ function render(ctx, state, pids) {
             .size(60, 30)
             .draw(ctx);
 
-        Text.create("arrival_first ETA")
-            .text("+" + Math.round(deviation / 300000) * 5)
-            .scale(0.85)
-            .color(0xff0000)
-            .pos(33, 4.5)
-            .size(60, 30)
-            .draw(ctx);
+        if (Math.round(deviation / 300000) * 5 > 0) {
+            Text.create("arrival_first delay")
+                .text("+" + Math.round(deviation / 300000) * 5)
+                .scale(0.85)
+                .color(0xff0000)
+                .pos(33, 4.5)
+                .size(60, 30)
+                .draw(ctx);
+        }
 
         if (train) {
             let cars = arrival_first.cars()
@@ -205,8 +207,12 @@ function render(ctx, state, pids) {
             let late_hours = late_eta.getHours()
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
+            let delay = ""
+            if (Math.round(deviation / 300000) * 5 > 0) {
+                delay = " +" + Math.round(deviation / 300000) * 5
+            }
             Text.create("arrival ETA")
-            .text(late_time + " +" + Math.round(deviation / 300000) * 5)
+            .text(late_time + delay)
             .color(0xFFFFFF)
             .pos(38, rowY)
             .leftAlign()
