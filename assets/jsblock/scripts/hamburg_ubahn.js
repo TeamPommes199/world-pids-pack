@@ -39,7 +39,7 @@ function render(ctx, state, pids) {
         .rightAlign()
         .draw(ctx);
 
-        if (arrival_first.routeNumber() != "") {
+        if (arrival.routeNumber() != "") {
             for (let customMsg of customMsgs) {
                 if (customMsg.includes(arrival.routeNumber(), ":")) {
                     let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
