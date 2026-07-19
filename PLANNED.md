@@ -2,7 +2,6 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Ulm (Bus/Tram) [v2.0.0]
 - Vienna (departure board) [v2.0.0]
 - Vienna Subway (second version) [v2.1.0]
 - Frankfurt (S-Bahn) [v2.1.0]

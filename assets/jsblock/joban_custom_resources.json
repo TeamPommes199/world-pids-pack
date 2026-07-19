@@ -109,6 +109,15 @@
 		},
 
 		{
+			"id": "ulm_bus_tram",
+			"name": "Ulm (Bus/Tram)",
+			"background": "jsblock:assets/general/dark_grey.png",
+			"thumbnail": "jsblock:assets/general/dark_grey.png",
+			"scriptFiles": ["jsblock:scripts/ulm_bus_tram.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "db_old",
 			"name": "DB PIDS (2016)",
 			"background": "jsblock:assets/db/db_old.png",
