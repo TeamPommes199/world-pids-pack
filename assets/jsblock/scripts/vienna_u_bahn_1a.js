@@ -4,10 +4,27 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-    Texture.create("Background")
-    .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_1a.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
+    let customMsgs = pids.getCustomMessage(0);
+    customMsgs = customMsgs.split(';');
+    customMsgs = customMsgs.map(item => item.trim());
+
+    let secondVersion = false
+    let secondVersionMsg = customMsgs.find(item => item.includes("second_version"))
+    if (secondVersionMsg) {
+        secondVersion = true
+    }
+
+    if (!secondVersion) {
+        Texture.create("Background")
+            .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_1a.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    } else {
+        Texture.create("Background")
+            .texture("jsblock:assets/vienna_u_bahn/second_background.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    }
 
     let arrival_first = pids.arrivals().get(0);
     if(arrival_first != null) {
@@ -131,10 +148,12 @@ function render(ctx, state, pids) {
         .draw(ctx);
     }
 
-    Texture.create("Second Layer")
-    .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_second_layer_1a.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
+    if (!secondVersion) {
+        Texture.create("Second Layer")
+            .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_second_layer_1a.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    }
 }
 
 function dispose(ctx, state, pids) {
