@@ -423,6 +423,42 @@ function render(ctx, state, pids) {
                     .zOrder(2)
                     .draw(ctx);
             }
+
+            for (let x = 0; x < arrival.cars().length; x++) {
+                if (x === 0) {
+                    Texture.create("train cab")
+                        .texture("jsblock:assets/euston/train_cab.png")
+                        .size(1.8, 2)
+                        .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                        .zOrder(2)
+                        .draw(ctx);
+                } else if (x === arrival.cars().length - 1 || x === 13) {
+                    Texture.create("train trailer")
+                        .texture("jsblock:assets/euston/train_trailer.png")
+                        .size(1.8, 2)
+                        .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                        .zOrder(2)
+                        .draw(ctx);
+
+                    Text.create("train coaches")
+                        .text("x" + arrival.cars().length)
+                        .pos(posX + (x + 1.75) * 1.8, pids.height - 5.5)
+                        .scale(0.15)
+                        .size(pids.height * 1.5, 10)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+
+                    x = 2147483646 // 32-bit integer limit - 1
+                } else if (x <= 13) {
+                    Texture.create("train trailer")
+                        .texture("jsblock:assets/euston/train_trailer.png")
+                        .size(1.8, 2)
+                        .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                        .zOrder(2)
+                        .draw(ctx);
+                }
+            }
         } else {
             Texture.create("train info")
                 .texture("jsblock:assets/euston/euston_train_info.png")
