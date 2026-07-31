@@ -4,6 +4,16 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1);
+    customMsgs = customMsgs.split(';');
+    customMsgs = customMsgs.map(item => item.trim());
+
+    let showEtaMsg = customMsgs.find(item => item.includes("show_minutes"))
+    let show_minutes = false
+    if (showEtaMsg) {
+        show_minutes = true
+    }
+
     Texture.create("Background")
         .texture("jsblock:assets/general/black.png")
         .size(pids.width, pids.height)
@@ -48,6 +58,14 @@ function render(ctx, state, pids) {
         let hours = eta.getHours()
         let minutes = eta.getMinutes()
         let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+
+        if (show_minutes) {
+            if ((arrival_first.departureTime() - Date.now()) / 60000 > 0.5) {
+                late_time = Math.round((arrival_first.departureTime() - Date.now()) / 60000) + " min"
+            } else {
+                late_time = ""
+            }
+        }
 
         Text.create("arrival ETA")
             .text(late_time)
@@ -138,6 +156,14 @@ function render(ctx, state, pids) {
         let hours = eta.getHours()
         let minutes = eta.getMinutes()
         let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+
+        if (show_minutes) {
+            if ((arrivalList[i].departureTime() - Date.now()) / 60000 > 0.5) {
+                late_time = Math.round((arrivalList[i].departureTime() - Date.now()) / 60000) + " min"
+            } else {
+                late_time = ""
+            }
+        }
 
         Text.create("arrival ETA")
             .text(late_time)
