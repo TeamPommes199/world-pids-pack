@@ -21,6 +21,12 @@ function render(ctx, state, pids) {
     show_minutes = true
   }
 
+  let showEtaMsg2 = customMsgs.find(item => item.includes("show_hh_mm"))
+  let show_hh_mm = false
+  if (showEtaMsg2) {
+    show_hh_mm = true
+  }
+
   Texture.create("Background")
       .texture("jsblock:assets/karlsruhe_stadtbahn/karlsruhe_stadtbahn.png")
       .size(pids.width, pids.height)
@@ -152,7 +158,16 @@ function render(ctx, state, pids) {
 
           let eta = (arrival.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if (show_hh_mm) {
+            let etas = arrival.arrivalTime()
+            eta = new Date(etas)
+            let hours = eta.getHours()
+            let minutes = eta.getMinutes()
+            let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+            eta = time
+          } else if (eta < 9 || show_minutes) {
+            eta = "in " + Math.round(eta) + " min"; sizeX = 21
+          } else {
             let etas = arrival.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
@@ -237,7 +252,16 @@ function render(ctx, state, pids) {
 
           let eta = (arrival_extra.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if (show_hh_mm) {
+            let etas = arrival_extra.arrivalTime()
+            eta = new Date(etas)
+            let hours = eta.getHours()
+            let minutes = eta.getMinutes()
+            let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+            eta = time
+          } else if (eta < 9 || show_minutes) {
+            eta = "in " + Math.round(eta) + " min"; sizeX = 21
+          } else {
             let etas = arrival_extra.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
@@ -335,12 +359,22 @@ function render(ctx, state, pids) {
 
           let eta = (arrival.arrivalTime() - Date.now()) / 60000;
           let sizeX = 16
-          if(eta < 9 || show_minutes) {eta = "in " + Math.round(eta) + " min"; sizeX = 21} else {
+          if (show_hh_mm) {
             let etas = arrival.arrivalTime()
             eta = new Date(etas)
             let hours = eta.getHours()
             let minutes = eta.getMinutes()
-            eta = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0')
+            let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+            eta = time
+          } else if (eta < 9 || show_minutes) {
+            eta = "in " + Math.round(eta) + " min"; sizeX = 21
+          } else {
+            let etas = arrival.arrivalTime()
+            eta = new Date(etas)
+            let hours = eta.getHours()
+            let minutes = eta.getMinutes()
+            let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+            eta = time
           }
           Text.create("Arrival ETA")
               .text(eta)
