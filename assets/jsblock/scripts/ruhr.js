@@ -138,9 +138,9 @@ function render(ctx, state, pids) {
       .zOrder(1)
       .draw(ctx);
 
-  for (let i = 0; i < rows; i++) {
+  for (let i = rows * (page - 1); i < rows * page; i++) {
     let arrival = pids.arrivals().get(i);
-    let rowY = 16.8 + ((pids.height - 16.8) / rows) * i
+    let rowY = 16.8 + ((pids.height - 16.8) / rows) * (i - rows * (page - 1));
     let extraY = 55 / rows * 0.318181818 - (0.075 * rows) - 0.375
 
     Texture.create("Top White")
@@ -188,7 +188,7 @@ function render(ctx, state, pids) {
       let eta
       if (etas - Date.now() < 30000) {
         eta = "sofort"
-      } else if (etas - Date.now() < 600000) {
+      } else if (etas - Date.now() < 600000 || show_minutes) {
         eta = Math.round((etas - Date.now()) / 60000) + " Min"
       } else {
         eta = new Date(etas)
