@@ -8,6 +8,12 @@ function render(ctx, state, pids) {
   customMsgs = customMsgs.split(';');
   customMsgs = customMsgs.map(item => item.trim());
 
+  let showEtaMsg = customMsgs.find(item => item.includes("show_hh_mm"))
+  let show_hh_mm = false
+  if (showEtaMsg) {
+    show_hh_mm = true
+  }
+
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     Texture.create("Background")
@@ -91,10 +97,27 @@ function render(ctx, state, pids) {
               .draw(ctx);
 
           let eta;
-          if (arrival.secondETA != null) {
+          if (arrival.secondETA != null && !show_hh_mm) {
             eta = Math.round((arrival.firstETA - Date.now()) / 60000) + ", " + Math.round((arrival.secondETA - Date.now()) / 60000) + " MIN"
-          } else {
+          } else if (arrival.secondETA != null && show_hh_mm) {
+            let date = new Date(arrival.firstETA)
+            let hours = date.getHours()
+            let minutes = date.getMinutes()
+            let date_2 = new Date(arrival.secondETA)
+            let hours_2 = date_2.getHours()
+            let minutes_2 = date_2.getMinutes()
+            eta =
+                hours.toString().padStart(2, '0') + ":" +
+                minutes.toString().padStart(2, '0') + ", " +
+                hours_2.toString().padStart(2, '0') + ":" +
+                minutes_2.toString().padStart(2, '0');
+          } else if (!show_hh_mm) {
             eta = Math.round((arrival.firstETA - Date.now()) / 60000) + " MIN"
+          } else {
+            let date = new Date(arrival.firstETA)
+            let hours = date.getHours()
+            let minutes = date.getMinutes()
+            eta = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
           }
           Text.create("Arrival ETA")
               .text(eta)
