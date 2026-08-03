@@ -4,7 +4,7 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-    let customMsgs = pids.getCustomMessage(0);
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1);
     customMsgs = customMsgs.split(';');
     customMsgs = customMsgs.map(item => item.trim());
 
@@ -42,34 +42,47 @@ function render(ctx, state, pids) {
         text = String(text);
         text = text.toUpperCase();
 
-        let xOffset = 0
-        let posX = 28.5
+        if (secondVersion) {
+            Text.create("arrival_first destination")
+                .text(text)
+                .pos(28.5, 15)
+                .size(55, 6)
+                .scale(2.4)
+                .scaleXY()
+                .color(0xE2FF7A)
+                .draw(ctx);
+        }
 
-        for (let i = 0; i < text.length; i++) {
-            if (text[i] === 'I') {
-                xOffset += 1.2
+        if (!secondVersion) {
+            let xOffset = 0
+            let posX = 28.5
 
-                Text.create("arrival_first destination " + i)
-                    .text('I')
-                    .pos(posX + xOffset, 15)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === 'I') {
+                    xOffset += 1.2
 
-                xOffset += 7.85
-            } else {
-                Text.create("arrival_first destination " + i)
-                    .text(text[i])
-                    .pos(posX + xOffset, 15)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+                    Text.create("arrival_first destination " + i)
+                        .text('I')
+                        .pos(posX + xOffset, 15)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
 
-                xOffset += 9.3
+                    xOffset += 7.85
+                } else {
+                    Text.create("arrival_first destination " + i)
+                        .text(text[i])
+                        .pos(posX + xOffset, 15)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
+
+                    xOffset += 9.3
+                }
             }
         }
 
@@ -103,34 +116,47 @@ function render(ctx, state, pids) {
         text = String(text);
         text = text.toUpperCase();
 
-        let xOffset = 0
-        let posX = 28.5
+        if (secondVersion) {
+            Text.create("arrival_second destination")
+                .text(text)
+                .pos(28.5, 34.5)
+                .size(55, 6)
+                .scale(2.4)
+                .scaleXY()
+                .color(0xE2FF7A)
+                .draw(ctx);
+        }
 
-        for (let i = 0; i < text.length; i++) {
-            if (text[i] === 'I') {
-                xOffset += 1.2
+        if (!secondVersion) {
+            let xOffset = 0
+            let posX = 28.5
 
-                Text.create("arrival_second destination " + i)
-                    .text('I')
-                    .pos(posX + xOffset, 34.5)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === 'I') {
+                    xOffset += 1.2
 
-                xOffset += 7.85
-            } else {
-                Text.create("arrival_second destination " + i)
-                    .text(text[i])
-                    .pos(posX + xOffset, 34.5)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+                    Text.create("arrival_second destination " + i)
+                        .text('I')
+                        .pos(posX + xOffset, 34.5)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
 
-                xOffset += 9.3
+                    xOffset += 7.85
+                } else {
+                    Text.create("arrival_second destination " + i)
+                        .text(text[i])
+                        .pos(posX + xOffset, 34.5)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
+
+                    xOffset += 9.3
+                }
             }
         }
 
