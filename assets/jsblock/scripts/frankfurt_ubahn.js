@@ -4,8 +4,10 @@ function create(ctx, state, pids) {
 function render(ctx, state, pids) {
   Texture.create("Black")
       .texture("jsblock:assets/general/black.png")
-      .size(pids.width, pids.height)
+      .pos(0, 15)
+      .size(pids.width, pids.height - 30)
       .draw(ctx);
+
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     if (((arrival_first.arrivalTime() - Date.now()) / 60000) < 0.5) {
