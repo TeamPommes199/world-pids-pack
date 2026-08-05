@@ -55,6 +55,15 @@
 		},
 
 		{
+			"id": "hamburg_s_bahn_1a",
+			"name": "Hamburg S-Bahn",
+			"background": "jsblock:assets/hamburg_s_bahn/hamburg.png",
+			"thumbnail": "jsblock:assets/hamburg_s_bahn/hamburg.png",
+			"scriptFiles": ["jsblock:scripts/hamburg_sbahn_1a.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
 			"id": "hamburg_u_bahn",
 			"name": "Hamburg (Subway)",
 			"background": "jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png",
