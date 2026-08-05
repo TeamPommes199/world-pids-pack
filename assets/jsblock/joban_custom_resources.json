@@ -325,6 +325,15 @@
 		},
 
 		{
+			"id": "sydney_pp",
+			"name": "Sydney",
+			"background": "jsblock:assets/sydney.png",
+			"thumbnail": "jsblock:assets/sydney.png",
+			"scriptFiles": ["jsblock:scripts/sydney_pp.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "sydney",
 			"name": "Sydney",
 			"background": "jsblock:assets/sydney.png",
