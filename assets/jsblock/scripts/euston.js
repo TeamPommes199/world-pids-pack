@@ -353,8 +353,7 @@ function render(ctx, state, pids) {
                 if (!icon_active) {
                     Text.create("arrival routeNumber")
                         .text(arrival.routeNumber())
-                        .pos(posX + (pids.height * 0.4 / 2), 18)
-                        .centerAlign()
+                        .pos(posX + 0.5, 18)
                         .scale(0.5)
                         .size(pids.height * 0.75, 10)
                         .scaleXY()
