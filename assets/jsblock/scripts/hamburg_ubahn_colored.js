@@ -15,7 +15,7 @@ function render(ctx, state, pids) {
         }
 
         Texture.create("Background")
-            .texture("jsblock:custom_directory/hamburg_u_bahn_colored.png")
+            .texture("jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png")
             .size(pids.width, pids.height)
             .color(color)
             .draw(ctx);
@@ -72,7 +72,7 @@ function render(ctx, state, pids) {
         }
     } else {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/hamburg_u_bahn_colored.png")
+            .texture("jsblock:assets/hamburg_u_bahn/hamburg_u_bahn_colored.png")
             .size(pids.width, pids.height)
             .color(0xe2331b)
             .draw(ctx);

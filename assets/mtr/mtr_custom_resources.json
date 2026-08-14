@@ -1,0 +1,44 @@
+{
+  "objects": [
+    {
+      "id": "wpp_pidspole_1",
+      "name": "[ND] Display Frame (Black Slim)",
+      "modelResource": "mtr:objects/pidspole_1.obj",
+      "textureResource": "mtr:objects/pidspole_1.png",
+      "color": "0000FF",
+      "flipTextureV": true
+    },
+    {
+      "id": "wpp_pidspole_2",
+      "name": "[ND] Display Frame (Black Thick)",
+      "modelResource": "mtr:objects/pidspole_2.obj",
+      "textureResource": "mtr:objects/pidspole_2.png",
+      "color": "0000FF",
+      "flipTextureV": true
+    },
+    {
+      "id": "wpp_hvv_pids_normal",
+      "name": "[ND] HVV PIDS Normal",
+      "modelResource": "mtr:objects/hvv_pids_normal.obj",
+      "textureResource": "mtr:objects/hvv_pids_normal.png",
+      "color": "0000FF",
+      "flipTextureV": true
+    },
+    {
+      "id": "wpp_hvv_pids_info",
+      "name": "[ND] HVV PIDS Info",
+      "modelResource": "mtr:objects/hvv_pids_info.obj",
+      "textureResource": "mtr:objects/hvv_pids_info.png",
+      "color": "0000FF",
+      "flipTextureV": true
+    },
+    {
+      "id": "wpp_akn_pids_normal",
+      "name": "[ND] AKN PIDS Normal",
+      "modelResource": "mtr:objects/akn_pids_normal.obj",
+      "textureResource": "mtr:objects/hvv_pids_akn.png",
+      "color": "0000FF",
+      "flipTextureV": true
+    }
+  ]
+}

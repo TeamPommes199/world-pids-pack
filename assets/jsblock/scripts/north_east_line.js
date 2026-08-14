@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/north_east_line.png")
+    .texture("jsblock:assets/north_east_line/north_east_line.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 

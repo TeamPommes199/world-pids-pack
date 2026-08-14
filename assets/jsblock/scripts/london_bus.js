@@ -48,7 +48,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/dot_matrix_1a.png")
+        .texture("jsblock:assets/general/dot_matrix_1a.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 
@@ -100,7 +100,7 @@ function render(ctx, state, pids) {
                     .draw(ctx);
 
                 Texture.create("Background")
-                    .texture("jsblock:custom_directory/dot_matrix_10.png")
+                    .texture("jsblock:assets/general/dot_matrix_10.png")
                     .size(pids.width, pids.height / (720 / 106))
                     .pos(0, 8.5 + (11 * (i + 1) - 0.1))
                     .draw(ctx);
@@ -153,7 +153,7 @@ function render(ctx, state, pids) {
                     .draw(ctx);
 
                 Texture.create("Background")
-                    .texture("jsblock:custom_directory/dot_matrix_10.png")
+                    .texture("jsblock:assets/general/dot_matrix_10.png")
                     .size(pids.width, pids.height / (720 / 106))
                     .pos(0, 8.5 + (11 * (i + 1) - 0.1))
                     .draw(ctx);

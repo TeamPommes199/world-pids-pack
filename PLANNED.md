@@ -1,1 +1,18 @@
-see the PLANNED.md file on the v2-branch
+# Plannings
+Here, you can see all the planned PIDs and features.
+
+## PIDs
+- Frankfurt (S-Bahn) [v2.1.0]
+- RER B (vertical) [v2.1.0]
+- Sofia Metro [v2.1.0]
+- Bucharest Metro
+- Muni
+- SBB (departure board)
+- Manchester
+- Thomson-East Coast Line
+- Elizabeth-Line Heathrow
+- North Melbourne
+- Nuremberg Central
+- Finland (big)
+- Rheinbahn (Light Rail)
+- Doha (Metro)

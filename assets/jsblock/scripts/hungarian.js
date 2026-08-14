@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/hungarian_depature.png")
+      .texture("jsblock:assets/hungarian_depature.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -90,7 +90,7 @@ function render(ctx, state, pids) {
 
       if (deviation > 60000 || deviation < -60000) {
         Texture.create("late_arrival ETA background")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
+            .texture("jsblock:assets/general/long_quad_full.png")
             .pos(18, rowY - 1)
             .size(16, 6.65)
             .color(0xff0000)

@@ -3,9 +3,11 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Black")
-      .texture("jsblock:custom_directory/black.png")
-      .size(pids.width, pids.height)
+      .texture("jsblock:assets/general/black.png")
+      .pos(0, 15)
+      .size(pids.width, pids.height - 30)
       .draw(ctx);
+
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     if (((arrival_first.arrivalTime() - Date.now()) / 60000) < 0.5) {
@@ -71,28 +73,28 @@ function render(ctx, state, pids) {
         let car_length = arrival_first.carCount();
         if (car_length > 2 && car_length < 5) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/frankfurt_2_u_bahn.png")
+            .texture("jsblock:assets/frankfurt_u_bahn/frankfurt_2_u_bahn.png")
             .pos(pids.width - 40, rowY + 20)
             .size(35, 7)
             .color(0xff8c00)
             .draw(ctx);
         } else if (car_length > 4 && car_length < 7) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/frankfurt_3_u_bahn.png")
+            .texture("jsblock:assets/frankfurt_u_bahn/frankfurt_3_u_bahn.png")
             .pos(pids.width - 40, rowY + 20)
             .size(35, 7)
             .color(0xff8c00)
             .draw(ctx);
         } else if (car_length > 6) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/frankfurt_4_u_bahn.png")
+            .texture("jsblock:assets/frankfurt_u_bahn/frankfurt_4_u_bahn.png")
             .pos(pids.width - 40, rowY + 20)
             .size(35, 7)
             .color(0xff8c00)
             .draw(ctx);
         } else if (car_length < 3) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/frankfurt_1_u_bahn.png")
+            .texture("jsblock:assets/frankfurt_u_bahn/frankfurt_1_u_bahn.png")
             .pos(pids.width - 40, rowY + 20)
             .size(35, 7)
             .color(0xff8c00)

@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/thessaloniki_metro.png")
+      .texture("jsblock:assets/thessaloniki_metro.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 

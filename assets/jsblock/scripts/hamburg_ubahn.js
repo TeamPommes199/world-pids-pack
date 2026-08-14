@@ -3,7 +3,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/hamburg_u_bahn.png")
+    .texture("jsblock:assets/hamburg_u_bahn/hamburg_u_bahn.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -39,7 +39,7 @@ function render(ctx, state, pids) {
         .rightAlign()
         .draw(ctx);
 
-        if (arrival_first.routeNumber() != "") {
+        if (arrival.routeNumber() != "") {
             for (let customMsg of customMsgs) {
                 if (customMsg.includes(arrival.routeNumber(), ":")) {
                     let customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")

@@ -23,12 +23,12 @@ function render(ctx, state, pids) {
 
   if (logo) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/obb_depature.png")
+        .texture("jsblock:assets/obb/obb_depature.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/obb_depature_w_obb.png")
+        .texture("jsblock:assets/obb/obb_depature_w_obb.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }

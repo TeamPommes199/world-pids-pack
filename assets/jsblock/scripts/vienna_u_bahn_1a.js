@@ -4,10 +4,27 @@ function create(ctx, state, pids) {
 }
 
 function render(ctx, state, pids) {
-    Texture.create("Background")
-    .texture("jsblock:custom_directory/vienna_u_bahn_1a.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
+    let customMsgs = pids.getCustomMessage(0) + ";" + pids.getCustomMessage(1);
+    customMsgs = customMsgs.split(';');
+    customMsgs = customMsgs.map(item => item.trim());
+
+    let secondVersion = false
+    let secondVersionMsg = customMsgs.find(item => item.includes("second_version"))
+    if (secondVersionMsg) {
+        secondVersion = true
+    }
+
+    if (!secondVersion) {
+        Texture.create("Background")
+            .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_1a.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    } else {
+        Texture.create("Background")
+            .texture("jsblock:assets/vienna_u_bahn/second_background.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    }
 
     let arrival_first = pids.arrivals().get(0);
     if(arrival_first != null) {
@@ -25,34 +42,47 @@ function render(ctx, state, pids) {
         text = String(text);
         text = text.toUpperCase();
 
-        let xOffset = 0
-        let posX = 28.5
+        if (secondVersion) {
+            Text.create("arrival_first destination")
+                .text(text)
+                .pos(28.5, 15)
+                .size(55, 6)
+                .scale(2.4)
+                .scaleXY()
+                .color(0xE2FF7A)
+                .draw(ctx);
+        }
 
-        for (let i = 0; i < text.length; i++) {
-            if (text[i] === 'I') {
-                xOffset += 1.2
+        if (!secondVersion) {
+            let xOffset = 0
+            let posX = 28.5
 
-                Text.create("arrival_first destination " + i)
-                    .text('I')
-                    .pos(posX + xOffset, 15)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === 'I') {
+                    xOffset += 1.2
 
-                xOffset += 7.85
-            } else {
-                Text.create("arrival_first destination " + i)
-                    .text(text[i])
-                    .pos(posX + xOffset, 15)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+                    Text.create("arrival_first destination " + i)
+                        .text('I')
+                        .pos(posX + xOffset, 15)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
 
-                xOffset += 9.3
+                    xOffset += 7.85
+                } else {
+                    Text.create("arrival_first destination " + i)
+                        .text(text[i])
+                        .pos(posX + xOffset, 15)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
+
+                    xOffset += 9.3
+                }
             }
         }
 
@@ -86,34 +116,47 @@ function render(ctx, state, pids) {
         text = String(text);
         text = text.toUpperCase();
 
-        let xOffset = 0
-        let posX = 28.5
+        if (secondVersion) {
+            Text.create("arrival_second destination")
+                .text(text)
+                .pos(28.5, 34.5)
+                .size(55, 6)
+                .scale(2.4)
+                .scaleXY()
+                .color(0xE2FF7A)
+                .draw(ctx);
+        }
 
-        for (let i = 0; i < text.length; i++) {
-            if (text[i] === 'I') {
-                xOffset += 1.2
+        if (!secondVersion) {
+            let xOffset = 0
+            let posX = 28.5
 
-                Text.create("arrival_second destination " + i)
-                    .text('I')
-                    .pos(posX + xOffset, 34.5)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+            for (let i = 0; i < text.length; i++) {
+                if (text[i] === 'I') {
+                    xOffset += 1.2
 
-                xOffset += 7.85
-            } else {
-                Text.create("arrival_second destination " + i)
-                    .text(text[i])
-                    .pos(posX + xOffset, 34.5)
-                    .size(45, 6)
-                    .scale(2.4)
-                    .scaleXY()
-                    .color(0xE2FF7A)
-                    .draw(ctx);
+                    Text.create("arrival_second destination " + i)
+                        .text('I')
+                        .pos(posX + xOffset, 34.5)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
 
-                xOffset += 9.3
+                    xOffset += 7.85
+                } else {
+                    Text.create("arrival_second destination " + i)
+                        .text(text[i])
+                        .pos(posX + xOffset, 34.5)
+                        .size(45, 6)
+                        .scale(2.4)
+                        .scaleXY()
+                        .color(0xE2FF7A)
+                        .draw(ctx);
+
+                    xOffset += 9.3
+                }
             }
         }
 
@@ -131,10 +174,12 @@ function render(ctx, state, pids) {
         .draw(ctx);
     }
 
-    Texture.create("Second Layer")
-    .texture("jsblock:custom_directory/vienna_u_bahn_second_layer_1a.png")
-    .size(pids.width, pids.height)
-    .draw(ctx);
+    if (!secondVersion) {
+        Texture.create("Second Layer")
+            .texture("jsblock:assets/vienna_u_bahn/vienna_u_bahn_second_layer_1a.png")
+            .size(pids.width, pids.height)
+            .draw(ctx);
+    }
 }
 
 function dispose(ctx, state, pids) {

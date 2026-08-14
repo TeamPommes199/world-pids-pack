@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/dutch.png")
+    .texture("jsblock:assets/dutch/dutch.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -23,7 +23,7 @@ function render(ctx, state, pids) {
             }
             if(customMsg.includes("sign: yes")) {
                 Texture.create("Background")
-                    .texture("jsblock:custom_directory/dutch_sign.png")
+                    .texture("jsblock:assets/dutch/dutch_sign.png")
                     .size(20, 10)
                     .pos(pids.width - 21, 1)
                     .draw(ctx);
@@ -66,7 +66,7 @@ function render(ctx, state, pids) {
             .rightAlign()
             .scale(1.1)
             .pos(arrival_number_pos, -10)
-            .size(75, 30)
+            .size(60, 30)
             .scaleXY()
             .color(0x002b6d)
             .draw(ctx);
@@ -95,6 +95,16 @@ function render(ctx, state, pids) {
             .size(60, 30)
             .draw(ctx);
 
+        if (Math.round(deviation / 300000) * 5 > 0) {
+            Text.create("arrival_first delay")
+                .text("+" + Math.round(deviation / 300000) * 5)
+                .scale(0.85)
+                .color(0xff0000)
+                .pos(33, 4.5)
+                .size(60, 30)
+                .draw(ctx);
+        }
+
         if (train) {
             let cars = arrival_first.cars()
             let end = false
@@ -114,7 +124,7 @@ function render(ctx, state, pids) {
                 if (i === 0) {
                     end = true
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_1.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -124,7 +134,7 @@ function render(ctx, state, pids) {
                 if (i + 1 === cars.length) {
                     end = false
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_2.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -134,20 +144,20 @@ function render(ctx, state, pids) {
                 if (carTerms.some(term => car_id.includes(term)) && !end) {
                     end = true
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_1.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_1.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
                 } else if (carTerms.some(term => car_id.includes(term)) && end) {
                     end = false
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_cab_2.png")
+                        .texture("jsblock:assets/dutch/dutch_cab_2.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
                 } else {
                     Texture.create("Next Background")
-                        .texture("jsblock:custom_directory/dutch_trailer.png")
+                        .texture("jsblock:assets/dutch/dutch_trailer.png")
                         .size(sizeX, sizeY)
                         .pos(position, pids.height - 22)
                         .draw(ctx);
@@ -161,7 +171,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
             Texture.create("Next Background")
-                .texture("jsblock:custom_directory/dutch_next.png")
+                .texture("jsblock:assets/dutch/dutch_next.png")
                 .size(pids.width, pids.height)
                 .draw(ctx);
 
@@ -184,8 +194,8 @@ function render(ctx, state, pids) {
 
             Text.create("arrival")
             .text(arrival.routeNumber() + " " + TextUtil.cycleString(arrival.destination()))
-            .pos(56, rowY)
-            .size(pids.width - 57, 5)
+            .pos(59, rowY)
+            .size(pids.width - 60, 5)
             .scaleXY()
             .color(0xFFFFFF)
             .draw(ctx);
@@ -197,8 +207,12 @@ function render(ctx, state, pids) {
             let late_hours = late_eta.getHours()
             let late_minutes = late_eta.getMinutes()
             let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
+            let delay = ""
+            if (Math.round(deviation / 300000) * 5 > 0) {
+                delay = " +" + Math.round(deviation / 300000) * 5
+            }
             Text.create("arrival ETA")
-            .text(late_time)
+            .text(late_time + delay)
             .color(0xFFFFFF)
             .pos(38, rowY)
             .leftAlign()

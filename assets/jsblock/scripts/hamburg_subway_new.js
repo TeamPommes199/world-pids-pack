@@ -3,7 +3,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/hamburg_subway_new.png")
+        .texture("jsblock:assets/hamburg_u_bahn/hamburg_subway_new.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 
@@ -25,7 +25,7 @@ function render(ctx, state, pids) {
     let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2)];
     if (arrival != null) {
         Texture.create("route color")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
+            .texture("jsblock:assets/general/long_quad_full.png")
             .pos(3.5, 2.5)
             .color(arrival.routeColor())
             .size(30, 12)

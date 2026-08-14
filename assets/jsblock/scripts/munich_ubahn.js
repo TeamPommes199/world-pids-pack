@@ -8,19 +8,19 @@ function render(ctx, state, pids) {
       let rowY = 13;
 
       Texture.create("Background_Blank")
-      .texture("jsblock:custom_directory/munich_u_bahn_arrive.png")
+      .texture("jsblock:assets/munich_subway/munich_subway_arrive.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
       if(arrival_first != null) {
         Texture.create("arrival_first Circle Colored Full")
-        .texture("jsblock:custom_directory/lrr_full_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(5, rowY - 8)
         .size(33.5, 17)
         .draw(ctx);
 
         Texture.create("arrival_first Circle Colored")
-        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(6, rowY - 7)
         .size(31.5, 15)
         .color(arrival_first.routeColor())
@@ -58,13 +58,13 @@ function render(ctx, state, pids) {
         let car_length = arrival_first.carCount();
         if (car_length > 2 && car_length < 5) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/munich_2_ubahn.png")
+            .texture("jsblock:assets/munich_subway/munich_2_subway.png")
             .pos(45, rowY - 5)
             .size(80, 13.33)
             .draw(ctx);
         } else if (car_length < 3) {
           Texture.create("arrival_first Car length")
-            .texture("jsblock:custom_directory/munich_1_ubahn.png")
+            .texture("jsblock:assets/munich_subway/munich_1_subway.png")
             .pos(45, rowY - 5)
             .size(80, 13.33)
             .draw(ctx);
@@ -75,13 +75,13 @@ function render(ctx, state, pids) {
     let arrival_third = pids.arrivals().get(2);
     if(arrival_second != null) {
       Texture.create("arrival_second Circle Colored Full")
-      .texture("jsblock:custom_directory/lrr_full_u_bahn.png")
+      .texture("jsblock:assets/general/long_quad_full.png")
       .pos(5, 51)
       .size(16.75, 8.5)
       .draw(ctx);
 
       Texture.create("Circle Colored")
-      .texture("jsblock:custom_directory/lrr_u_bahn.png")
+      .texture("jsblock:assets/general/long_quad_full.png")
       .pos(5.5, 51.5)
       .size(15.75, 7.5)
       .color(arrival_second.routeColor())
@@ -120,13 +120,13 @@ function render(ctx, state, pids) {
     }
     if(arrival_third != null) {
       Texture.create("arrival_third Circle Colored Full")
-      .texture("jsblock:custom_directory/lrr_full_u_bahn.png")
+      .texture("jsblock:assets/general/long_quad_full.png")
       .pos(5, 61)
       .size(16.75, 8.5)
       .draw(ctx);
 
       Texture.create("Circle Colored")
-      .texture("jsblock:custom_directory/lrr_u_bahn.png")
+      .texture("jsblock:assets/general/long_quad_full.png")
       .pos(5.5, 61.5)
       .size(15.75, 7.5)
       .color(arrival_third.routeColor())
@@ -166,7 +166,7 @@ function render(ctx, state, pids) {
     
     } else {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/munich_u_bahn.png")
+    .texture("jsblock:assets/munich_subway/munich_subway.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -176,13 +176,13 @@ function render(ctx, state, pids) {
       let arrival = pids.arrivals().get(i);
       if(arrival != null) {
         Texture.create("arrival Circle Colored Full")
-        .texture("jsblock:custom_directory/lrr_full_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(5, rowY)
         .size(25, 11.25)
         .draw(ctx);
   
         Texture.create("Circle Colored")
-        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+        .texture("jsblock:assets/general/long_quad_full.png")
         .pos(5.5, rowY + 0.5)
         .size(23.9, 10.25)
         .color(arrival.routeColor())
@@ -222,7 +222,7 @@ function render(ctx, state, pids) {
       }
       if (pids.getCustomMessage(3) != "") {
         Texture.create("arrival Circle Colored Full")
-        .texture("jsblock:custom_directory/munich_ubahn_info.png")
+        .texture("jsblock:assets/munich_subway/munich_subway_info.png")
         .pos(0, pids.height - 11)
         .size(pids.width, 11)
         .draw(ctx);
@@ -239,7 +239,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/munich_u_bahn.png")
+    .texture("jsblock:assets/munich_subway/munich_subway.png")
     .size(pids.width, pids.height)
     .draw(ctx);
   }

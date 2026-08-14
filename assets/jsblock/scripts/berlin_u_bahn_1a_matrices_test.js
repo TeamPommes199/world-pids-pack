@@ -7,7 +7,7 @@ function render(ctx, state, pids) {
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/berlin_u_bahn.png")
+    .texture("jsblock:assets/berlin_u_bahn.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -21,7 +21,7 @@ function render(ctx, state, pids) {
     matrices.popPose();
 
     Texture.create("Background")
-        .texture("jsblock:custom_directory/db_big_row_black.png")
+        .texture("jsblock:assets/db/db_big_row_black.png")
         .size(16, 2)
         .pos(pids.width / 2, pids.height / 2)
         .draw(ctx);
@@ -67,7 +67,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/berlin_u_bahn.png")
+        .texture("jsblock:assets/berlin_u_bahn.png")
         .size(pids.width, pids.height)
         .draw(ctx)
   }

@@ -8,7 +8,7 @@ function render(ctx, state, pids) {
   if (arrival_first != null) {
     `if (((arrival_first.arrivalTime() - Date.now()) / 60000) < 0.5) {
       Texture.create("Background")
-      .texture("jsblock:custom_directory/rostock_tram.png")
+      .texture("jsblock:assets/rostock_tram.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -142,7 +142,7 @@ function render(ctx, state, pids) {
       }
     } else {`
       Texture.create("Background")
-      .texture("jsblock:custom_directory/rostock_tram.png")
+      .texture("jsblock:assets/rostock_tram.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -258,7 +258,7 @@ function render(ctx, state, pids) {
     `}`
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/rostock_tram.png")
+        .texture("jsblock:assets/rostock_tram.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 

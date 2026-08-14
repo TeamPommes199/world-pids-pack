@@ -14,6 +14,7 @@ function render(ctx, state, pids) {
 
     let plat_announce_time = 0.5
     let icons = ["awc", "lnr"]
+    let active_parts = ["clock", "departures", "further_d", "fastest", "welcome", "arrivals"]
 
     for (let customMsg of customMsgs) {
         if (customMsg.includes("active_icons:")) {
@@ -26,6 +27,16 @@ function render(ctx, state, pids) {
 
         if (customMsg.includes("plat_announce_time:")) {
             plat_announce_time = parseFloat(customMsg.replace("plat_announce_time:", "") / 60)
+        }
+
+        if (customMsg.includes("active_parts:")) {
+            active_parts = []
+
+            let partsMsg = customMsg.replace("active_parts:", "")
+            let partsArray = partsMsg.split(",")
+            for (let part of partsArray) {
+                active_parts.push(part.trim());
+            }
         }
     }
 
@@ -53,691 +64,743 @@ function render(ctx, state, pids) {
         }
     }
 
-    Texture.create("Background")
-        .texture("jsblock:custom_directory/euston/euston.png")
-        .size(pids.height * 7.8, pids.height)
-        .draw(ctx);
+    let posX = 0
+    if (active_parts.includes("clock")) {
+        let date = new Date;
+        let minutes = date.getMinutes();
+        let hours = date.getHours();
+        let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
 
-    let date = new Date;
-    let minutes = date.getMinutes();
-    let hours = date.getHours();
-    let time = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0');
+        let clock_out_degree = -6 * date.getSeconds() - 102
+        let clock_out_matrices = new Matrices();
+        clock_out_matrices.translate(
+            0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
+            0.395 * (Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.395,
+            0
+        )
+        clock_out_matrices.rotateZDegrees(clock_out_degree)
 
-    let clock_out_degree = -6 * date.getSeconds() - 102
-    let clock_out_matrices = new Matrices();
-    clock_out_matrices.translate(
-        0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
-        0.395 * (Math.cos(clock_out_degree * Math.PI / 180)) - 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.395,
-        0
-    )
-    clock_out_matrices.rotateZDegrees(clock_out_degree)
+        let clock_in_degree = 6 * date.getSeconds() + 102
+        let clock_in_matrices = new Matrices();
+        clock_in_matrices.translate(
+            0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
+            0.395 * (1 + Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.79,
+            0
+        )
+        clock_in_matrices.rotateZDegrees(clock_in_degree)
 
-    let clock_in_degree = 6 * date.getSeconds() + 102
-    let clock_in_matrices = new Matrices();
-    clock_in_matrices.translate(
-        0.395 * (1 - Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180),
-        0.395 * (1 + Math.cos(clock_out_degree * Math.PI / 180)) + 0.395 * Math.sin(clock_out_degree * Math.PI / 180) - 0.79,
-        0
-    )
-    clock_in_matrices.rotateZDegrees(clock_in_degree)
+        Texture.create("clock in")
+            .texture("jsblock:assets/euston/euston_clock_in.png")
+            .pos(pids.height * 0.2, pids.height * 0.2)
+            .size(pids.height * 0.6, pids.height * 0.6)
+            .matrices(clock_in_matrices)
+            .zOrder(1)
+            .draw(ctx);
 
-    Texture.create("clock in")
-        .texture("jsblock:custom_directory/euston/euston_clock_in.png")
-        .pos(pids.height * 0.2, pids.height * 0.2)
-        .size(pids.height * 0.6, pids.height * 0.6)
-        .matrices(clock_in_matrices)
-        .zOrder(1)
-        .draw(ctx);
+        Texture.create("clock out")
+            .texture("jsblock:assets/euston/euston_clock_out.png")
+            .pos(pids.height * 0.2, pids.height * 0.2)
+            .size(pids.height * 0.6, pids.height * 0.6)
+            .matrices(clock_out_matrices)
+            .zOrder(1)
+            .draw(ctx);
 
-    Texture.create("clock out")
-        .texture("jsblock:custom_directory/euston/euston_clock_out.png")
-        .pos(pids.height * 0.2, pids.height * 0.2)
-        .size(pids.height * 0.6, pids.height * 0.6)
-        .matrices(clock_out_matrices)
-        .zOrder(1)
-        .draw(ctx);
+        Text.create("Clock")
+            .text(time)
+            .color(0xFFFFFF)
+            .pos(pids.height * 0.5, pids.height / 2 - 4)
+            .centerAlign()
+            .zOrder(1)
+            .draw(ctx);
 
-    Text.create("Clock")
-        .text(time)
-        .color(0xFFFFFF)
-        .pos(pids.height * 0.5, pids.height / 2 - 4)
-        .centerAlign()
-        .zOrder(1)
-        .draw(ctx);
+        posX += pids.height * 0.8
+    }
 
-    let posX = pids.height * 0.8
-    for (let i = 0; i < 10; i++) {
-        let arrival = pids.arrivals().get(i);
+    if (active_parts.includes("departures")) {
+        for (let i = 0; i < 10; i++) {
+            let arrival = pids.arrivals().get(i);
 
-        if (arrival != null) {
-            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-            let etas = arrival.departureTime()
-            let deviation = arrival.deviation()
-            let late_eta = new Date(etas)
-            let late_hours = late_eta.getHours()
-            let late_minutes = late_eta.getMinutes()
-            let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
+            if (arrival != null) {
+                let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+                let etas = arrival.departureTime()
+                let deviation = arrival.deviation()
+                let late_eta = new Date(etas)
+                let late_hours = late_eta.getHours()
+                let late_minutes = late_eta.getMinutes()
+                let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
 
-            if (eta < plat_announce_time && eta > 0.04) {
-                let arrived_platform = "left"
-                for (let msg of customMsgs) {
-                    if (msg.includes("platform_top:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "top"
-                    } else if (msg.includes("platform_down:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "down"
-                    } else if (msg.includes("platform_right:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "right"
+                if (eta < plat_announce_time && eta > 0.04) {
+                    let arrived_platform = "left"
+                    for (let msg of customMsgs) {
+                        if (msg.includes("platform_top:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "top"
+                        } else if (msg.includes("platform_down:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "down"
+                        } else if (msg.includes("platform_right:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "right"
+                        }
                     }
-                }
 
-                if (arrived_platform === "top") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                } else if (arrived_platform === "down") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                } else if (arrived_platform === "right") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                } else {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                }
-
-                Text.create("platform text")
-                    .text("Platform")
-                    .pos(posX + 1.5, 9.5333)
-                    .scale(0.2)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-
-                Text.create("platform")
-                    .text(TextUtil.cycleString(arrival.platformName()))
-                    .pos(posX + 1.5, 11.8)
-                    .scale(0.4)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-            } else if (eta < 0.05) {
-                let arrived_platform = "left"
-                for (let msg of customMsgs) {
-                    if (msg.includes("platform_top:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "top"
-                    } else if (msg.includes("platform_down:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "down"
-                    } else if (msg.includes("platform_right:") && msg.includes(" " + arrival.platformName() + ",")) {
-                        arrived_platform = "right"
+                    if (arrived_platform === "top") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_top.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else if (arrived_platform === "down") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_down.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else if (arrived_platform === "right") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_right.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_left.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
                     }
-                }
 
-                if (arrived_platform === "top") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_top.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
+                    Text.create("platform text")
+                        .text("Platform")
+                        .pos(posX + 1.5, 9.5333)
+                        .scale(0.2)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
                         .draw(ctx);
-                } else if (arrived_platform === "down") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_down.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
+
+                    Text.create("platform")
+                        .text(TextUtil.cycleString(arrival.platformName()))
+                        .pos(posX + 1.5, 11.8)
+                        .scale(0.4)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
                         .draw(ctx);
-                } else if (arrived_platform === "right") {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_right.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                } else {
-                    Texture.create("train info")
-                        .texture("jsblock:custom_directory/euston/euston_train_info_arrived_left.png")
-                        .size(pids.height * 0.4, pids.height)
-                        .pos(posX, 0)
-                        .zOrder(1)
-                        .draw(ctx);
-                }
+                } else if (eta < 0.05) {
+                    let arrived_platform = "left"
+                    for (let msg of customMsgs) {
+                        if (msg.includes("platform_top:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "top"
+                        } else if (msg.includes("platform_down:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "down"
+                        } else if (msg.includes("platform_right:") && msg.includes(" " + arrival.platformName() + ",")) {
+                            arrived_platform = "right"
+                        }
+                    }
 
-                Text.create("boarding")
-                    .text("Boarding")
-                    .pos(posX + 28.9, 1)
-                    .scale(0.3)
-                    .color(0xFFFFFF)
-                    .rightAlign()
-                    .zOrder(2)
-                    .draw(ctx);
+                    if (arrived_platform === "top") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_top.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else if (arrived_platform === "down") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_down.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else if (arrived_platform === "right") {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_right.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    } else {
+                        Texture.create("train info")
+                            .texture("jsblock:assets/euston/euston_train_info_arrived_left.png")
+                            .size(pids.height * 0.4, pids.height)
+                            .pos(posX, 0)
+                            .zOrder(1)
+                            .draw(ctx);
+                    }
 
-                Text.create("platform text")
-                    .text("Platform")
-                    .pos(posX + 1.5, 9.5333)
-                    .scale(0.2)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-
-                Text.create("platform")
-                    .text(TextUtil.cycleString(arrival.platformName()))
-                    .pos(posX + 1.5, 11.8)
-                    .scale(0.4)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-            } else {
-                Texture.create("train info")
-                    .texture("jsblock:custom_directory/euston/euston_train_info.png")
-                    .size(pids.height * 0.4, pids.height)
-                    .pos(posX, 0)
-                    .zOrder(1)
-                    .draw(ctx);
-
-                Text.create("platform text")
-                    .text("Please wait")
-                    .pos(posX + 1.5, 12)
-                    .scale(0.2)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-
-                if (deviation > 285000) {
                     Text.create("boarding")
-                        .text("Delayed")
+                        .text("Boarding")
                         .pos(posX + 28.9, 1)
                         .scale(0.3)
                         .color(0xFFFFFF)
                         .rightAlign()
                         .zOrder(2)
                         .draw(ctx);
-                }
-            }
 
-            Text.create("eta")
-                .text(late_time)
-                .pos(posX + 1.5, 1)
-                .scale(0.3)
-                .color(0xFFFFFF)
-                .zOrder(2)
-                .draw(ctx);
+                    Text.create("platform text")
+                        .text("Platform")
+                        .pos(posX + 1.5, 9.5333)
+                        .scale(0.2)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
 
-            Text.create("arrival destination")
-                .text(TextUtil.cycleString(arrival.destination()))
-                .pos(posX + 1.5, 4.2)
-                .size(pids.height * 1.2, 10)
-                .scaleXY()
-                .scale(0.3)
-                .color(0xFFFFFF)
-                .zOrder(2)
-                .draw(ctx);
+                    Text.create("platform")
+                        .text(TextUtil.cycleString(arrival.platformName()))
+                        .pos(posX + 1.5, 11.8)
+                        .scale(0.4)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+                } else {
+                    Texture.create("train info")
+                        .texture("jsblock:assets/euston/euston_train_info.png")
+                        .size(pids.height * 0.4, pids.height)
+                        .pos(posX, 0)
+                        .zOrder(1)
+                        .draw(ctx);
 
-            if (pids.station() && arrival.route()) {
-                let stops = arrival.route().getPlatforms().toArray().map((platform) => platform.stationName);
-                let stops_at = ""
-                let stationClean = pids.station().getName().normalize("NFC").trim();
-                let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 3;
+                    Text.create("platform text")
+                        .text("Please wait")
+                        .pos(posX + 1.5, 12)
+                        .scale(0.2)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
 
-                if (stops[i] != null && stops[i] != arrival.destination()) {
-                    stops_at = "via "
-                    stops_at = stops_at + stops[i].replace("|", " ")
-                }
-
-                Text.create("arrival stop 1")
-                    .text(stops_at)
-                    .pos(posX + 1.5, 7.4)
-                    .scale(0.2)
-                    .size(pids.height * 1.5, 10)
-                    .scaleXY()
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-            }
-
-            let icon_active = false
-            let icon
-            if (arrival.routeName() != "") {
-                for (let icon_obj of routes_for_icons) {
-                    if (arrival.routeName().toLowerCase().includes(icon_obj.route.toLowerCase())) {
-                        icon_active = true
-                        Texture.create("arrival icon")
-                            .texture(`wpp:euston/${icon_obj.icon}.png`)
-                            .size(pids.height * 0.3925, pids.height * 0.0611)
-                            .pos(posX, 17.6)
+                    if (deviation > 285000) {
+                        Text.create("boarding")
+                            .text("Delayed")
+                            .pos(posX + 28.9, 1)
+                            .scale(0.3)
+                            .color(0xFFFFFF)
+                            .rightAlign()
                             .zOrder(2)
                             .draw(ctx);
                     }
                 }
 
-                if (!icon_active) {
-                    for (icon of icons) {
-                        if (arrival.routeName().toLowerCase().includes(icon.toLowerCase())) {
+                Text.create("eta")
+                    .text(late_time)
+                    .pos(posX + 1.5, 1)
+                    .scale(0.3)
+                    .color(0xFFFFFF)
+                    .zOrder(2)
+                    .draw(ctx);
+
+                Text.create("arrival destination")
+                    .text(TextUtil.cycleString(arrival.destination()))
+                    .pos(posX + 1.5, 4.2)
+                    .size(pids.height * 1.2, 10)
+                    .scaleXY()
+                    .scale(0.3)
+                    .color(0xFFFFFF)
+                    .zOrder(2)
+                    .draw(ctx);
+
+                if (pids.station() && arrival.route()) {
+                    let stops = arrival.route().getPlatforms().toArray().map((platform) => platform.stationName);
+                    let stops_at = ""
+                    let stationClean = pids.station().getName().normalize("NFC").trim();
+                    let i = stops.findIndex(s => s.normalize("NFC").trim() === stationClean) + 3;
+
+                    if (stops[i] != null && stops[i] != arrival.destination()) {
+                        stops_at = "via "
+                        stops_at = stops_at + stops[i].replace("|", " ")
+                    }
+
+                    Text.create("arrival stop 1")
+                        .text(stops_at)
+                        .pos(posX + 1.5, 7.4)
+                        .scale(0.2)
+                        .size(pids.height * 1.5, 10)
+                        .scaleXY()
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+                }
+
+                let icon_active = false
+                let icon
+                if (arrival.routeName() != "") {
+                    for (let icon_obj of routes_for_icons) {
+                        if (arrival.routeName().toLowerCase().includes(icon_obj.route.toLowerCase())) {
                             icon_active = true
                             Texture.create("arrival icon")
-                                .texture(`wpp:euston/${icon}.png`)
+                                .texture(`wpp:euston/${icon_obj.icon}.png`)
                                 .size(pids.height * 0.3925, pids.height * 0.0611)
                                 .pos(posX, 17.6)
                                 .zOrder(2)
                                 .draw(ctx);
                         }
                     }
-                }
-            }
 
-            if (!icon_active) {
-                Text.create("arrival routeNumber")
-                    .text(arrival.routeNumber())
-                    .pos(posX + (pids.height * 0.4 / 2), 18)
-                    .centerAlign()
-                    .scale(0.5)
-                    .size(pids.height * 0.75, 10)
-                    .scaleXY()
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
-            }
-
-            if (pids.station() && arrival.route()) {
-                let stationClean = pids.station().getName().normalize("NFC").trim();
-                let stops = arrival.route().getPlatforms().toArray().map(p => p.stationName);
-                let currentIndex = stops.findIndex(s => s.normalize("NFC").trim() === stationClean);
-                let nextStops = stops.slice(currentIndex + 1);
-                let displayStops = [];
-
-                if (nextStops.length <= 12) {
-                    displayStops = nextStops;
-                } else {
-                    let step = (nextStops.length - 1) / 11;
-                    for (let i = 0; i < 11; i++) {
-                        let index = Math.round(i * step);
-                        displayStops.push(nextStops[index].replace("|", " "));
+                    if (!icon_active) {
+                        for (icon of icons) {
+                            if (arrival.routeName().toLowerCase().includes(icon.toLowerCase())) {
+                                icon_active = true
+                                Texture.create("arrival icon")
+                                    .texture(`wpp:euston/${icon}.png`)
+                                    .size(pids.height * 0.3925, pids.height * 0.0611)
+                                    .pos(posX, 17.6)
+                                    .zOrder(2)
+                                    .draw(ctx);
+                            }
+                        }
                     }
-                    displayStops.push(nextStops[nextStops.length - 1]);
                 }
 
-                if (displayStops.length > 0) {
-                    Text.create("calling at")
-                        .text("Calling at:")
-                        .pos(posX + 1.5, 24)
-                        .scale(0.2)
-                        .color(0xFFFF00)
-                        .zOrder(2)
-                        .draw(ctx);
-                }
-
-                for (let line = 0; line < displayStops.length; line++) {
-                    let stop = TextUtil.cycleString(displayStops[line].normalize("NFC").trim());
-
-                    Text.create("stop_line_" + line)
-                        .text(stop)
-                        .pos(posX + 1.5, 26.25 + 3 * line)
-                        .scale(0.25)
-                        .size(pids.height * 1.4, 10)
+                if (!icon_active) {
+                    Text.create("arrival routeNumber")
+                        .text(arrival.routeNumber())
+                        .pos(posX + 0.5, 18)
+                        .scale(0.5)
+                        .size(pids.height * 0.75, 10)
                         .scaleXY()
                         .color(0xFFFFFF)
                         .zOrder(2)
                         .draw(ctx);
                 }
-            }
 
-            let customMsg_r = ""
-            for (let customMsg of customMsgs) {
-                if (customMsg.includes(arrival.routeNumber() + ":")) {
-                    customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                if (pids.station() && arrival.route()) {
+                    let stationClean = pids.station().getName().normalize("NFC").trim();
+                    let stops = arrival.route().getPlatforms().toArray().map(p => p.stationName);
+                    let currentIndex = stops.findIndex(s => s.normalize("NFC").trim() === stationClean);
+                    let nextStops = stops.slice(currentIndex + 1);
+                    let displayStops = [];
+
+                    if (nextStops.length <= 12) {
+                        displayStops = nextStops;
+                    } else {
+                        let step = (nextStops.length - 1) / 11;
+                        for (let i = 0; i < 11; i++) {
+                            let index = Math.round(i * step);
+                            displayStops.push(nextStops[index].replace("|", " "));
+                        }
+                        displayStops.push(nextStops[nextStops.length - 1]);
+                    }
+
+                    if (displayStops.length > 0) {
+                        Text.create("calling at")
+                            .text("Calling at:")
+                            .pos(posX + 1.5, 24)
+                            .scale(0.2)
+                            .color(0xFFFF00)
+                            .zOrder(2)
+                            .draw(ctx);
+                    }
+
+                    for (let line = 0; line < displayStops.length; line++) {
+                        let stop = TextUtil.cycleString(displayStops[line].normalize("NFC").trim());
+
+                        Text.create("stop_line_" + line)
+                            .text(stop)
+                            .pos(posX + 1.5, 26.25 + 3 * line)
+                            .scale(0.25)
+                            .size(pids.height * 1.4, 10)
+                            .scaleXY()
+                            .color(0xFFFFFF)
+                            .zOrder(2)
+                            .draw(ctx);
+                    }
                 }
-            }
 
-            if (customMsg_r === "" || arrival.routeNumber() == "") {
-                Text.create("coaches")
-                    .text("This train has " + arrival.cars().length + " coaches")
-                    .pos(posX + 4.5, pids.height - 9)
-                    .scale(0.2)
-                    .size(pids.height * 1.5, 10)
-                    .marquee()
-                    .color(0xFFFF00)
-                    .zOrder(2)
-                    .draw(ctx);
-            } else {
-                Text.create("information")
-                    .text(customMsg_r)
-                    .pos(posX + 4.5, pids.height - 9)
-                    .scale(0.2)
-                    .size(pids.height * 1.5, 10)
-                    .marquee()
-                    .color(0xFFFF00)
-                    .zOrder(2)
-                    .draw(ctx);
-            }
-        } else {
-            Texture.create("train info")
-                .texture("jsblock:custom_directory/euston/euston_train_info.png")
-                .size(pids.height * 0.4, pids.height)
-                .pos(posX, 0)
-                .zOrder(1)
-                .draw(ctx);
-        }
+                let customMsg_r = ""
+                for (let customMsg of customMsgs) {
+                    if (customMsg.includes(arrival.routeNumber() + ":")) {
+                        customMsg_r = customMsg.replace(arrival.routeNumber() + ":", "")
+                    }
+                }
 
-        posX += pids.height * 0.4
-    }
-
-    Texture.create("train info")
-        .texture("jsblock:custom_directory/euston/euston_further_departures.png")
-        .size(pids.height * 0.8, pids.height)
-        .pos(posX, 0)
-        .zOrder(1)
-        .draw(ctx);
-
-    for (let i = 10; i < 17; i++) {
-        let arrival = pids.arrivals().get(i);
-
-        if (arrival != null) {
-            let posY = 5.4889 + (i - 10) * 10.1333
-            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-            let etas = arrival.departureTime()
-            let late_eta = new Date(etas)
-            let late_hours = late_eta.getHours()
-            let late_minutes = late_eta.getMinutes()
-            let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
-
-            if (eta < plat_announce_time) {
-                Texture.create("platform status")
-                    .texture("jsblock:custom_directory/lrr_u_bahn.png")
-                    .size(pids.height * 0.79, 9.5)
-                    .pos(posX, posY + 0.3)
-                    .color(0x00D933)
-                    .zOrder(2)
-                    .draw(ctx);
-
-                Text.create("platform")
-                    .text("Plat " + TextUtil.cycleString(arrival.platformName()))
-                    .pos(posX + 41.25, posY + 1.5)
-                    .centerAlign()
-                    .scale(0.2)
-                    .color(0xFFFFFF)
-                    .zOrder(3)
-                    .draw(ctx);
-            } else {
-                Texture.create("platform status")
-                    .texture("jsblock:custom_directory/lrr_u_bahn.png")
-                    .size(7, 3)
-                    .pos(posX + 37.75, posY + 0.7)
-                    .color(0x0080FF)
-                    .zOrder(2)
-                    .draw(ctx);
-
-                Text.create("wait")
-                    .text("wait")
-                    .pos(posX + 41.25, posY + 1.5)
-                    .centerAlign()
-                    .scale(0.2)
-                    .color(0xFFFFFF)
-                    .zOrder(3)
-                    .draw(ctx);
-            }
-
-            Text.create("eta")
-                .text(late_time)
-                .pos(posX + 2, posY + 1.5)
-                .scale(0.2333)
-                .color(0xFFFFFF)
-                .zOrder(2)
-                .draw(ctx);
-
-            Text.create("arrival destination")
-                .text(TextUtil.cycleString(arrival.destination()))
-                .pos(posX + 10, posY + 1.5)
-                .scale(0.2333)
-                .size(pids.height * 1.4, 10)
-                .scaleXY()
-                .color(0xFFFFFF)
-                .zOrder(2)
-                .draw(ctx);
-
-            if (pids.station() && arrival.route()) {
-                let stationClean = pids.station().getName().normalize("NFC").trim();
-                let stops = arrival.route().getPlatforms().toArray().map(p => p.stationName);
-                let currentIndex = stops.findIndex(s => s.normalize("NFC").trim() === stationClean);
-                let nextStops = stops.slice(currentIndex + 1);
-
-                if (nextStops.length > 0) {
-                    Text.create("calling at")
-                        .text("Calling at:")
-                        .pos(posX + 10, posY + 4.5)
-                        .scale(0.2333)
+                if (customMsg_r === "" || arrival.routeNumber() == "") {
+                    Text.create("coaches")
+                        .text("This train has " + arrival.cars().length + " coaches")
+                        .pos(posX + 4.5, pids.height - 9)
+                        .scale(0.2)
+                        .size(pids.height * 1.5, 10)
+                        .marquee()
+                        .color(0xFFFF00)
+                        .zOrder(2)
+                        .draw(ctx);
+                } else {
+                    Text.create("information")
+                        .text(customMsg_r)
+                        .pos(posX + 4.5, pids.height - 9)
+                        .scale(0.2)
+                        .size(pids.height * 1.5, 10)
+                        .marquee()
                         .color(0xFFFF00)
                         .zOrder(2)
                         .draw(ctx);
                 }
 
-                let stop = ""
-                if (nextStops[0]) {stop = TextUtil.cycleString(nextStops[0].normalize("NFC").trim());}
-                if (nextStops.length === 1) {
-                    stop += " only"
-                } else {
-                    for (let line = 1; line < nextStops.length; line++) {
-                        stop = stop + ", " + TextUtil.cycleString(nextStops[line].normalize("NFC").trim());
+                for (let x = 0; x < arrival.cars().length; x++) {
+                    if (x === 0) {
+                        Texture.create("train cab")
+                            .texture("jsblock:assets/euston/train_cab.png")
+                            .size(1.8, 2)
+                            .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                            .zOrder(2)
+                            .draw(ctx);
+                    } else if (x === arrival.cars().length - 1 || x === 13) {
+                        Texture.create("train trailer")
+                            .texture("jsblock:assets/euston/train_trailer.png")
+                            .size(1.8, 2)
+                            .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                            .zOrder(2)
+                            .draw(ctx);
+
+                        Text.create("train coaches")
+                            .text("x" + arrival.cars().length)
+                            .pos(posX + (x + 1.75) * 1.8, pids.height - 5.5)
+                            .scale(0.15)
+                            .size(pids.height * 1.5, 10)
+                            .color(0xFFFFFF)
+                            .zOrder(2)
+                            .draw(ctx);
+
+                        x = 2147483646 // 32-bit integer limit - 1
+                    } else if (x <= 13) {
+                        Texture.create("train trailer")
+                            .texture("jsblock:assets/euston/train_trailer.png")
+                            .size(1.8, 2)
+                            .pos(posX + (x + 0.5) * 1.8, pids.height - 6)
+                            .zOrder(2)
+                            .draw(ctx);
                     }
                 }
-
-                Text.create("stops")
-                    .text(stop)
-                    .pos(posX + 22, posY + 4.5)
-                    .scale(0.2333)
-                    .color(0xFFFFFF)
-                    .marquee()
-                    .zOrder(2)
+            } else {
+                Texture.create("train info")
+                    .texture("jsblock:assets/euston/euston_train_info.png")
+                    .size(pids.height * 0.4, pids.height)
+                    .pos(posX, 0)
+                    .zOrder(1)
                     .draw(ctx);
             }
+
+            posX += pids.height * 0.4
         }
     }
 
-    posX += pids.height * 0.8
+    if (active_parts.includes("further_d")) {
+        Texture.create("train info")
+            .texture("jsblock:assets/euston/euston_further_departures.png")
+            .size(pids.height * 0.8, pids.height)
+            .pos(posX, 0)
+            .zOrder(1)
+            .draw(ctx);
 
-    Texture.create("fastest")
-        .texture("jsblock:custom_directory/euston/euston_fastest.png")
-        .size(pids.height * 0.8, pids.height)
-        .pos(posX, 0)
-        .zOrder(1)
-        .draw(ctx);
+        for (let i = 10; i < 17; i++) {
+            let arrival = pids.arrivals().get(i);
 
-    let platforms = pids.arrivals().platforms()
-    let stopsMap = {}
+            if (arrival != null) {
+                let posY = 5.4889 + (i - 10) * 10.1333
+                let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+                let etas = arrival.departureTime()
+                let late_eta = new Date(etas)
+                let late_hours = late_eta.getHours()
+                let late_minutes = late_eta.getMinutes()
+                let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
 
-    for (let i = 0; i < platforms.length * 10; i++) {
-        let arrival = pids.arrivals().get(i)
-        if (arrival != null && pids.station() && arrival.route()) {
-            let stationClean = pids.station().getName().normalize("NFC").trim();
-            let stopping = arrival.route().getPlatforms().toArray().map(p => p.stationName.normalize("NFC").trim());
-            let currentIndex = stopping.findIndex(s => s.normalize("NFC").trim() === stationClean);
+                if (eta < plat_announce_time) {
+                    Texture.create("platform status")
+                        .texture("jsblock:assets/general/long_quad_full.png")
+                        .size(pids.height * 0.79, 9.5)
+                        .pos(posX, posY + 0.3)
+                        .color(0x00D933)
+                        .zOrder(2)
+                        .draw(ctx);
 
-            let stops_of_arrival = stopping.slice(currentIndex + 1);
-            let arrivalTimestamp = arrival.departureTime();
-            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+                    Text.create("platform")
+                        .text("Plat " + TextUtil.cycleString(arrival.platformName()))
+                        .pos(posX + 41.25, posY + 1.5)
+                        .centerAlign()
+                        .scale(0.2)
+                        .color(0xFFFFFF)
+                        .zOrder(3)
+                        .draw(ctx);
+                } else {
+                    Texture.create("platform status")
+                        .texture("jsblock:assets/general/long_quad_full.png")
+                        .size(7, 3)
+                        .pos(posX + 37.75, posY + 0.7)
+                        .color(0x0080FF)
+                        .zOrder(2)
+                        .draw(ctx);
 
-            for (let x = 0; x < stops_of_arrival.length; x++) {
-                let destName = stops_of_arrival[x];
-
-                if (!stopsMap[destName] || arrivalTimestamp < stopsMap[destName].rawTime) {
-                    if (stations.includes(destName) || stations.length === 0) {
-                        let late_eta = new Date(arrivalTimestamp)
-                        let late_time = late_eta.getHours().toString().padStart(2, '0') + ":" +
-                            late_eta.getMinutes().toString().padStart(2, '0');
-                        let plat = (eta < plat_announce_time) ? TextUtil.cycleString(arrival.platformName()) : "-";
-                        let color = (eta < plat_announce_time) ? 0x00D933 : 0x0080FF
-
-                        stopsMap[destName] = {
-                            "destination": destName,
-                            "operator": arrival.routeNumber(),
-                            "plat": plat,
-                            "time": late_time,
-                            "rawTime": arrivalTimestamp,
-                            "color": color
-                        }
-                    }
+                    Text.create("wait")
+                        .text("wait")
+                        .pos(posX + 41.25, posY + 1.5)
+                        .centerAlign()
+                        .scale(0.2)
+                        .color(0xFFFFFF)
+                        .zOrder(3)
+                        .draw(ctx);
                 }
-            }
-        }
-    }
 
-    let stops = Object.values(stopsMap);
-    stops.sort((a, b) => a["destination"].localeCompare(b["destination"]))
-    let displayStops = []
+                Text.create("eta")
+                    .text(late_time)
+                    .pos(posX + 2, posY + 1.5)
+                    .scale(0.2333)
+                    .color(0xFFFFFF)
+                    .zOrder(2)
+                    .draw(ctx);
 
-    if (stops.length <= 16) {
-        displayStops = stops
-    } else {
-        let step = (stops.length - 1) / 15;
-        for (let i = 0; i < 15; i++) {
-            let index = Math.round(i * step);
-            displayStops.push(stops[index]);
-        }
-        displayStops.push(stops[stops.length - 1]);
-    }
-
-    for (let line = 0; line < displayStops.length; line++) {
-        let stop = displayStops[line];
-        let rawDestination = displayStops[line]["destination"] || "";
-        let stopName = TextUtil.cycleString(rawDestination.replace("|", " ").normalize("NFC").trim());
-        let posY = 16.2352 + ((pids.height - 12.5) / 17 * line)
-
-        Texture.create("platform status")
-            .texture("jsblock:custom_directory/lrr_u_bahn.png")
-            .size(4.5, 3)
-            .pos(posX + 43.4, posY - 0.8)
-            .color(stop["color"])
-            .zOrder(2)
-            .draw(ctx);
-
-        Text.create("stop_destination_" + line)
-            .text(stopName)
-            .pos(posX + 1.5, posY)
-            .scale(0.25)
-            .size(pids.height, 10)
-            .scaleXY()
-            .color(0xFFFFFF)
-            .zOrder(2)
-            .draw(ctx);
-
-        Text.create("stop_operator_" + line)
-            .text(stop["operator"])
-            .pos(posX + 22.5, posY)
-            .scale(0.25)
-            .size(pids.height, 10)
-            .scaleXY()
-            .color(0xFFFFFF)
-            .zOrder(2)
-            .draw(ctx);
-
-        Text.create("stop_plat_" + line)
-            .text(stop["plat"])
-            .pos(posX + 47.5, posY)
-            .rightAlign()
-            .scale(0.25)
-            .size(pids.height * 0.2, 10)
-            .scaleXY()
-            .color(0xFFFFFF)
-            .zOrder(3)
-            .draw(ctx);
-
-        Text.create("stop_time_" + line)
-            .text(stop["time"])
-            .pos(posX + pids.height * 0.8 - 1.5, posY)
-            .rightAlign()
-            .scale(0.25)
-            .color(0xFFFFFF)
-            .zOrder(2)
-            .draw(ctx);
-    }
-
-    posX += pids.height * 0.8
-
-    Texture.create("welcome")
-        .texture("jsblock:custom_directory/euston/euston_welcome.png")
-        .size(pids.height * 0.6, pids.height)
-        .pos(posX, 0)
-        .zOrder(1)
-        .draw(ctx);
-
-    if (pids.station() != null) {
-        Text.create("station name")
-            .pos(posX + pids.height * 0.3, 32)
-            .text(pids.station().getName().replace("|", " "))
-            .color(0xFFFFFF)
-            .scale(0.7)
-            .size(pids.height * 0.75, 10)
-            .scaleXY()
-            .centerAlign()
-            .zOrder(2)
-            .draw(ctx)
-    }
-
-    posX += pids.height * 0.6
-
-    Texture.create("arrivals")
-        .texture("jsblock:custom_directory/euston/euston_arrivals.png")
-        .size(pids.height * 0.6, pids.height)
-        .pos(posX, 0)
-        .zOrder(1)
-        .draw(ctx);
-
-    for (let i = 0; i < 17; i++) {
-        let arrival = pids.arrivals().get(i);
-
-        if (arrival != null && pids.station() && arrival.route()) {
-            let posY = 16.2352 + ((pids.height - 12.5) / 17 * i)
-            let eta = (arrival.arrivalTime() - Date.now()) / 60000;
-            let etas = arrival.arrivalTime()
-            let late_eta = new Date(etas)
-            let late_hours = late_eta.getHours()
-            let late_minutes = late_eta.getMinutes()
-            let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
-
-            if (eta < plat_announce_time) {
-                Text.create("stop_from_station_" + i)
-                    .text(TextUtil.cycleString(arrival.route().getPlatforms().toArray().map(p => p.stationName)[0]))
-                    .pos(posX + 1.5, posY)
-                    .scale(0.25)
-                    .size(pids.height * 1.2, 10)
+                Text.create("arrival destination")
+                    .text(TextUtil.cycleString(arrival.destination()))
+                    .pos(posX + 10, posY + 1.5)
+                    .scale(0.2333)
+                    .size(pids.height * 1.4, 10)
                     .scaleXY()
                     .color(0xFFFFFF)
                     .zOrder(2)
                     .draw(ctx);
 
-                Text.create("stop_plat_" + i)
-                    .text(TextUtil.cycleString(arrival.platformName()))
-                    .pos(posX + 33, posY)
-                    .rightAlign()
-                    .scale(0.25)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
+                if (pids.station() && arrival.route()) {
+                    let stationClean = pids.station().getName().normalize("NFC").trim();
+                    let stops = arrival.route().getPlatforms().toArray().map(p => p.stationName);
+                    let currentIndex = stops.findIndex(s => s.normalize("NFC").trim() === stationClean);
+                    let nextStops = stops.slice(currentIndex + 1);
 
-                Text.create("stop_time_" + i)
-                    .text(late_time)
-                    .pos(posX + pids.height * 0.6 - 1.5, posY)
-                    .rightAlign()
-                    .scale(0.25)
-                    .color(0xFFFFFF)
-                    .zOrder(2)
-                    .draw(ctx);
+                    if (nextStops.length > 0) {
+                        Text.create("calling at")
+                            .text("Calling at:")
+                            .pos(posX + 10, posY + 4.5)
+                            .scale(0.2333)
+                            .color(0xFFFF00)
+                            .zOrder(2)
+                            .draw(ctx);
+                    }
+
+                    let stop = ""
+                    if (nextStops[0]) {
+                        stop = TextUtil.cycleString(nextStops[0].normalize("NFC").trim());
+                    }
+                    if (nextStops.length === 1) {
+                        stop += " only"
+                    } else {
+                        for (let line = 1; line < nextStops.length; line++) {
+                            stop = stop + ", " + TextUtil.cycleString(nextStops[line].normalize("NFC").trim());
+                        }
+                    }
+
+                    Text.create("stops")
+                        .text(stop)
+                        .pos(posX + 22, posY + 4.5)
+                        .scale(0.2333)
+                        .color(0xFFFFFF)
+                        .marquee()
+                        .zOrder(2)
+                        .draw(ctx);
+                }
+            }
+        }
+
+        posX += pids.height * 0.8
+    }
+
+    if (active_parts.includes("fastest")) {
+        Texture.create("fastest")
+            .texture("jsblock:assets/euston/euston_fastest.png")
+            .size(pids.height * 0.8, pids.height)
+            .pos(posX, 0)
+            .zOrder(1)
+            .draw(ctx);
+
+        let platforms = pids.arrivals().platforms()
+        let stopsMap = {}
+
+        for (let i = 0; i < platforms.length * 10; i++) {
+            let arrival = pids.arrivals().get(i)
+            if (arrival != null && pids.station() && arrival.route()) {
+                let stationClean = pids.station().getName().normalize("NFC").trim();
+                let stopping = arrival.route().getPlatforms().toArray().map(p => p.stationName.normalize("NFC").trim());
+                let currentIndex = stopping.findIndex(s => s.normalize("NFC").trim() === stationClean);
+
+                let stops_of_arrival = stopping.slice(currentIndex + 1);
+                let arrivalTimestamp = arrival.departureTime();
+                let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+
+                for (let x = 0; x < stops_of_arrival.length; x++) {
+                    let destName = stops_of_arrival[x];
+
+                    if (!stopsMap[destName] || arrivalTimestamp < stopsMap[destName].rawTime) {
+                        if (stations.includes(destName) || stations.length === 0) {
+                            let late_eta = new Date(arrivalTimestamp)
+                            let late_time = late_eta.getHours().toString().padStart(2, '0') + ":" +
+                                late_eta.getMinutes().toString().padStart(2, '0');
+                            let plat = (eta < plat_announce_time) ? TextUtil.cycleString(arrival.platformName()) : "-";
+                            let color = (eta < plat_announce_time) ? 0x00D933 : 0x0080FF
+
+                            stopsMap[destName] = {
+                                "destination": destName,
+                                "operator": arrival.routeNumber(),
+                                "plat": plat,
+                                "time": late_time,
+                                "rawTime": arrivalTimestamp,
+                                "color": color
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        let stops = Object.values(stopsMap);
+        stops.sort((a, b) => a["destination"].localeCompare(b["destination"]))
+        let displayStops = []
+
+        if (stops.length <= 16) {
+            displayStops = stops
+        } else {
+            let step = (stops.length - 1) / 15;
+            for (let i = 0; i < 15; i++) {
+                let index = Math.round(i * step);
+                displayStops.push(stops[index]);
+            }
+            displayStops.push(stops[stops.length - 1]);
+        }
+
+        for (let line = 0; line < displayStops.length; line++) {
+            let stop = displayStops[line];
+            let rawDestination = displayStops[line]["destination"] || "";
+            let stopName = TextUtil.cycleString(rawDestination.replace("|", " ").normalize("NFC").trim());
+            let posY = 16.2352 + ((pids.height - 12.5) / 17 * line)
+
+            Texture.create("platform status")
+                .texture("jsblock:assets/general/long_quad_full.png")
+                .size(4.5, 3)
+                .pos(posX + 43.4, posY - 0.8)
+                .color(stop["color"])
+                .zOrder(2)
+                .draw(ctx);
+
+            Text.create("stop_destination_" + line)
+                .text(stopName)
+                .pos(posX + 1.5, posY)
+                .scale(0.25)
+                .size(pids.height, 10)
+                .scaleXY()
+                .color(0xFFFFFF)
+                .zOrder(2)
+                .draw(ctx);
+
+            Text.create("stop_operator_" + line)
+                .text(stop["operator"])
+                .pos(posX + 22.5, posY)
+                .scale(0.25)
+                .size(pids.height, 10)
+                .scaleXY()
+                .color(0xFFFFFF)
+                .zOrder(2)
+                .draw(ctx);
+
+            Text.create("stop_plat_" + line)
+                .text(stop["plat"])
+                .pos(posX + 47.5, posY)
+                .rightAlign()
+                .scale(0.25)
+                .size(pids.height * 0.2, 10)
+                .scaleXY()
+                .color(0xFFFFFF)
+                .zOrder(3)
+                .draw(ctx);
+
+            Text.create("stop_time_" + line)
+                .text(stop["time"])
+                .pos(posX + pids.height * 0.8 - 1.5, posY)
+                .rightAlign()
+                .scale(0.25)
+                .color(0xFFFFFF)
+                .zOrder(2)
+                .draw(ctx);
+        }
+
+        posX += pids.height * 0.8
+    }
+
+    if (active_parts.includes("welcome")) {
+        Texture.create("welcome")
+            .texture("jsblock:assets/euston/euston_welcome.png")
+            .size(pids.height * 0.6, pids.height)
+            .pos(posX, 0)
+            .zOrder(1)
+            .draw(ctx);
+
+        if (pids.station() != null) {
+            Text.create("station name")
+                .pos(posX + pids.height * 0.3, 32)
+                .text(pids.station().getName().replace("|", " "))
+                .color(0xFFFFFF)
+                .scale(0.7)
+                .size(pids.height * 0.75, 10)
+                .scaleXY()
+                .centerAlign()
+                .zOrder(2)
+                .draw(ctx)
+        }
+
+        posX += pids.height * 0.6
+    }
+
+    if (active_parts.includes("arrivals")) {
+        Texture.create("arrivals")
+            .texture("jsblock:assets/euston/euston_arrivals.png")
+            .size(pids.height * 0.6, pids.height)
+            .pos(posX, 0)
+            .zOrder(1)
+            .draw(ctx);
+
+        for (let i = 0; i < 17; i++) {
+            let arrival = pids.arrivals().get(i);
+
+            if (arrival != null && pids.station() && arrival.route()) {
+                let posY = 16.2352 + ((pids.height - 12.5) / 17 * i)
+                let eta = (arrival.arrivalTime() - Date.now()) / 60000;
+                let etas = arrival.arrivalTime()
+                let late_eta = new Date(etas)
+                let late_hours = late_eta.getHours()
+                let late_minutes = late_eta.getMinutes()
+                let late_time = late_hours.toString().padStart(2, '0') + ":" + late_minutes.toString().padStart(2, '0');
+
+                if (eta < plat_announce_time) {
+                    Text.create("stop_from_station_" + i)
+                        .text(TextUtil.cycleString(arrival.route().getPlatforms().toArray().map(p => p.stationName)[0]))
+                        .pos(posX + 1.5, posY)
+                        .scale(0.25)
+                        .size(pids.height * 1.2, 10)
+                        .scaleXY()
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+
+                    Text.create("stop_plat_" + i)
+                        .text(TextUtil.cycleString(arrival.platformName()))
+                        .pos(posX + 33, posY)
+                        .rightAlign()
+                        .scale(0.25)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+
+                    Text.create("stop_time_" + i)
+                        .text(late_time)
+                        .pos(posX + pids.height * 0.6 - 1.5, posY)
+                        .rightAlign()
+                        .scale(0.25)
+                        .color(0xFFFFFF)
+                        .zOrder(2)
+                        .draw(ctx);
+                }
             }
         }
     }
+
+    Texture.create("Background")
+        .texture("jsblock:assets/euston/euston.png")
+        .size(posX + pids.height * 0.6, pids.height)
+        .zOrder(0)
+        .draw(ctx);
 }
 
 function dispose(ctx, state, pids) {}

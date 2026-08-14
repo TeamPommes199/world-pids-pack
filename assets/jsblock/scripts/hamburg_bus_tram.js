@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/hamburg_bus_tram.png")
+        .texture("jsblock:assets/hamburg_bus_tram.png")
         .size(pids.width, pids.height)
         .draw(ctx);
 

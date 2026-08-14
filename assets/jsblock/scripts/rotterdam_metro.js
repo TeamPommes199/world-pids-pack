@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/rotterdam_metro.png")
+      .texture("jsblock:assets/rotterdam_metro/rotterdam_metro.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -68,7 +68,7 @@ function render(ctx, state, pids) {
       let posX = 35 + pids.station().getName().replace("|", " ").length() * 3 + i * 5.5
 
       Texture.create("Background")
-          .texture("jsblock:custom_directory/lrr_u_bahn.png")
+          .texture("jsblock:assets/general/long_quad_full.png")
           .pos(posX, 0.5)
           .size(5, 5)
           .color(platform_list[i].color)
@@ -90,7 +90,7 @@ function render(ctx, state, pids) {
     if (i === 3 * page - 1 && pids.getCustomMessage(2) != "") {
       let rowY = 5 + ((i - 3 * (page - 1)) * 14);
       Texture.create("Background")
-          .texture("jsblock:custom_directory/rotterdam_background.png")
+          .texture("jsblock:assets/rotterdam_metro/rotterdam_background.png")
           .pos(10, rowY + 10)
           .size(pids.width, pids.height)
           .draw(ctx);
@@ -115,20 +115,20 @@ function render(ctx, state, pids) {
       if (eta != null) {
         if (eta < 0.5) {
           Texture.create("Background")
-              .texture("jsblock:custom_directory/rotterdam_background_arrive.png")
+              .texture("jsblock:assets/rotterdam_metro/rotterdam_background_arrive.png")
               .pos(10, rowY + 10)
               .size(pids.width, pids.height)
               .draw(ctx);
         } else {
           Texture.create("Background")
-              .texture("jsblock:custom_directory/rotterdam_background.png")
+              .texture("jsblock:assets/rotterdam_metro/rotterdam_background.png")
               .pos(10, rowY + 10)
               .size(pids.width, pids.height)
               .draw(ctx);
         }
       } else {
         Texture.create("Background")
-            .texture("jsblock:custom_directory/rotterdam_background.png")
+            .texture("jsblock:assets/rotterdam_metro/rotterdam_background.png")
             .pos(10, rowY + 10)
             .size(pids.width, pids.height)
             .draw(ctx);

@@ -5,7 +5,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   Texture.create("Background")
-      .texture("jsblock:custom_directory/stockholm_subway.png")
+      .texture("jsblock:assets/stockholm_subway.png")
       .size(pids.width, pids.height)
       .draw(ctx);
 
@@ -17,7 +17,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
           Texture.create("arrival_first Circle Colored")
-          .texture("jsblock:custom_directory/lrr_u_bahn.png")
+          .texture("jsblock:assets/general/long_quad_full.png")
           .pos(3, rowY - 1.2)
           .size(16, 9)
           .color(arrival_first.routeColor())
@@ -86,7 +86,7 @@ function render(ctx, state, pids) {
         } else {
           if (arrival != null) {
             Texture.create("arrival_first Circle Colored")
-                .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                .texture("jsblock:assets/general/long_quad_full.png")
                 .pos(3, rowY - 1.2)
                 .size(16, 9)
                 .color(arrival.routeColor())
@@ -144,7 +144,7 @@ function render(ctx, state, pids) {
         let arrival = pids.arrivals().get(i);
         if(arrival != null) {
           Texture.create("arrival_first Circle Colored")
-              .texture("jsblock:custom_directory/lrr_u_bahn.png")
+              .texture("jsblock:assets/general/long_quad_full.png")
               .pos(3, rowY - 1.2)
               .size(16, 9)
               .color(arrival.routeColor())

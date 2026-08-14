@@ -22,7 +22,7 @@ function render(ctx, state, pids) {
     }
 
     Texture.create("Background")
-    .texture("jsblock:custom_directory/dot_matrix_1a.png")
+    .texture("jsblock:assets/general/dot_matrix_1a.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -71,7 +71,7 @@ function render(ctx, state, pids) {
             if (!show_minutes) {
                 if (deviation > 120000 || deviation < -120000) {
                     Texture.create("late_arrival ETA background")
-                        .texture("jsblock:custom_directory/lrr_u_bahn.png")
+                        .texture("jsblock:assets/general/long_quad_full.png")
                         .pos(34, rowY)
                         .size(27, 14.4)
                         .draw(ctx);

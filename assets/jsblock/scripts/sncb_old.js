@@ -6,7 +6,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/sncb_old.png")
+    .texture("jsblock:assets/sncb/sncb_old.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 

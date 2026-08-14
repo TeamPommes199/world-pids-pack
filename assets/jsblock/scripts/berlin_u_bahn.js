@@ -19,7 +19,7 @@ function render(ctx, state, pids) {
 
   if (arrival_first != null) {
     Texture.create("Background")
-    .texture("jsblock:custom_directory/berlin_u_bahn.png")
+    .texture("jsblock:assets/berlin_u_bahn.png")
     .size(pids.width, pids.height)
     .draw(ctx);
 
@@ -111,7 +111,7 @@ function render(ctx, state, pids) {
     }
   } else {
     Texture.create("Background")
-        .texture("jsblock:custom_directory/berlin_u_bahn.png")
+        .texture("jsblock:assets/berlin_u_bahn.png")
         .size(pids.width, pids.height)
         .draw(ctx);
   }
