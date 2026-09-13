@@ -145,6 +145,15 @@
 		},
 
 		{
+			"id": "db_s_bahn",
+			"name": "DB S-Bahn",
+			"background": "jsblock:assets/db_s_bahn/db_s_bahn.png",
+			"thumbnail": "jsblock:assets/db_s_bahn/db_s_bahn.png",
+			"scriptFiles": ["jsblock:scripts/db_s_bahn.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "obb",
 			"name": "ÖBB",
 			"background": "jsblock:assets/obb/obb.png",

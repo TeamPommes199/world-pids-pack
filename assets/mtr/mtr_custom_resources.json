@@ -39,6 +39,40 @@
       "textureResource": "mtr:objects/hvv_pids_akn.png",
       "color": "0000FF",
       "flipTextureV": true
+    },
+    {
+      "id": "seoul_line_2",
+      "name": "Seoul Line 2",
+      "modelResource": "mtr:objects/seoul_line_2.obj",
+      "textureResource": "mtr:objects/seoul_line_2.png",
+      "color": "EEEEEE",
+      "flipTextureV": true
+    },
+    {
+      "id": "vienna_subway_plat_1",
+      "name": "Vienna Subway (Platform 1)",
+      "modelResource": "mtr:objects/vienna-subway-pid1.obj",
+      "textureResource": "mtr:objects/vienna-subway-pid1.png",
+      "color": "33FF33",
+      "flipTextureV": true,
+      "rotation": [
+        0,
+        90,
+        0
+      ]
+    },
+    {
+      "id": "vienna_subway_plat_2",
+      "name": "Vienna Subway (Platform 2)",
+      "modelResource": "mtr:objects/vienna-subway-pid2.obj",
+      "textureResource": "mtr:objects/vienna-subway-pid2.png",
+      "color": "33FF33",
+      "flipTextureV": true,
+      "rotation": [
+        0,
+        90,
+        0
+      ]
     }
   ]
 }
