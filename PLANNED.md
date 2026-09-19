@@ -6,9 +6,10 @@ Here, you can see all the planned PIDs and features.
 - Sofia Metro [v2.1.0]
 - Vienna Subway (3rd version, black - very dark green) [v2.1.0]
 - Bucharest Metro [v2.1.0]
-- Muni
-- SBB (departure board)
-- RNV (Bus/Tram)
+- Muni [v2.2.0]
+- SBB (departure board) [v2.2.0]
+- RNV (Bus/Tram) [v2.2.0]
+- Old Dutch CTA [v2.2.0]
 - Manchester
 - Thomson-East Coast Line
 - Elizabeth-Line Heathrow
@@ -19,7 +20,6 @@ Here, you can see all the planned PIDs and features.
 - Rheinbahn (Light Rail)
 - Doha (Metro)
 - Malaysia MRT
-- Old Dutch CTA
 - Seoul Subway Line 2
 - Finish VR (departure board)
 - Sydney (vertical)
