@@ -9,7 +9,7 @@ function create(ctx, state, pids) {
 
 function render(ctx, state, pids) {
   let customMsgs = [pids.getCustomMessage(0), pids.getCustomMessage(1), pids.getCustomMessage(2), pids.getCustomMessage(3)];
-  let height = 113.77
+  let height = 31
 
   for (let customMsg of customMsgs) {
     if (customMsg.includes("height:")) {
@@ -39,7 +39,7 @@ function render(ctx, state, pids) {
     for (let i = 0; x === true; i++) {
       let arrival = pids.arrivals().get(i);
 
-      if (arrival != null) {
+      if (arrival != null && arrival.route()) {
         let route = arrival.routeNumber() + " - " + arrival.destination()
 
         if (Object.keys(routes).length < 3) {
@@ -319,6 +319,10 @@ function render(ctx, state, pids) {
               .draw(ctx);
 
           if (name.normalize("NFC").trim() === pids.station().getName().normalize("NFC").trim()) {
+            let x_extra = 2.2 * TextUtil.cycleString(name).length()
+            if (2.2 * TextUtil.cycleString(name).length() > 26) {
+              x_extra = 26
+            }
             Texture.create("Background")
                 .texture("jsblock:assets/general/circle_full.png")
                 .size(4, 4)
@@ -329,7 +333,7 @@ function render(ctx, state, pids) {
 
             Texture.create("Background")
                 .texture("jsblock:assets/general/long_quad_full.png")
-                .size(2.2 * TextUtil.cycleString(name).length(), 4)
+                .size(x_extra, 4)
                 .pos(posX + 2.2, posY - 0.25)
                 .zOrder(3)
                 .color(0x01138f)
@@ -338,7 +342,7 @@ function render(ctx, state, pids) {
             Texture.create("Background")
                 .texture("jsblock:assets/general/circle_full.png")
                 .size(4, 4)
-                .pos(posX + 2.2 * TextUtil.cycleString(name).length(), posY - 0.25)
+                .pos(posX + x_extra, posY - 0.25)
                 .zOrder(3)
                 .color(0x01138f)
                 .draw(ctx);
