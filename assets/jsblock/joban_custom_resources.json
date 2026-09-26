@@ -541,6 +541,15 @@
 		},
 
 		{
+			"id": "sofia_metro",
+			"name": "Sofia (Metro)",
+			"background": "jsblock:assets/sofia_metro.png",
+			"thumbnail": "jsblock:assets/sofia_metro.png",
+			"scriptFiles": ["jsblock:scripts/sofia_metro.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "norway",
 			"name": "Norway",
 			"background": "jsblock:assets/norway.png",
