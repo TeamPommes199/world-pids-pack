@@ -2,8 +2,6 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- Vienna Subway (3rd version, black - very dark green) [v2.1.0]
-- Bucharest Metro [v2.1.0]
 - Muni [v2.2.0]
 - SBB (departure board) [v2.2.0]
 - RNV (Bus/Tram) [v2.2.0]

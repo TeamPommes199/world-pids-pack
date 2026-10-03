@@ -610,6 +610,15 @@
 			"thumbnail": "jsblock:assets/rer_vertical/rer_vertical.png",
 			"scriptFiles": ["jsblock:scripts/rer_vertical.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_1a"]
+		},
+
+		{
+			"id": "bucharest_metro",
+			"name": "Bucharest (Metro)",
+			"background": "jsblock:assets/bucharest_metro/grid.png",
+			"thumbnail": "jsblock:assets/bucharest_metro/grid.png",
+			"scriptFiles": ["jsblock:scripts/bucharest_metro.js"],
+			"blacklist": ["pids_1a"]
 		}
 	]
 }
