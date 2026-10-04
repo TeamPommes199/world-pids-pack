@@ -518,8 +518,17 @@
 			"name": "DB DSA+",
 			"background": "jsblock:assets/general/dot_matrix_1a.png",
 			"thumbnail": "jsblock:assets/general/dot_matrix_1a.png",
-			"scriptFiles": ["jsblock:scripts/bremen_regio_train.js"],
+			"scriptFiles": ["jsblock:scripts/db_dsa.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "db_dsa_pp",
+			"name": "DB DSA+",
+			"background": "jsblock:assets/general/dot_matrix_1a.png",
+			"thumbnail": "jsblock:assets/general/dot_matrix_1a.png",
+			"scriptFiles": ["jsblock:scripts/db_dsa_pp.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_1a"]
 		},
 
 		{
