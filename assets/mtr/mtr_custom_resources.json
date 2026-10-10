@@ -41,38 +41,51 @@
       "flipTextureV": true
     },
     {
-      "id": "seoul_line_2",
-      "name": "Seoul Line 2",
-      "modelResource": "mtr:objects/seoul_line_2.obj",
-      "textureResource": "mtr:objects/seoul_line_2.png",
-      "color": "EEEEEE",
+      "id": "wpp_ns_pids",
+      "name": "[ND] NS PIDS",
+      "modelResource": "mtr:objects/ns_pids.obj",
+      "textureResource": "mtr:objects/ns_pids.png",
+      "color": "0000FF",
       "flipTextureV": true
     },
     {
-      "id": "vienna_subway_plat_1",
-      "name": "Vienna Subway (Platform 1)",
+      "id": "wpp_db_multi",
+      "name": "[ND] DB PIDS (2026)",
+      "modelResource": "mtr:objects/db_multi.obj",
+      "textureResource": "mtr:objects/db_multi.png",
+      "color": "0000FF",
+      "flipTextureV": true,
+      "rotation": {
+        "x": 0,
+        "y": 90,
+        "z": 0
+      }
+    },
+    {
+      "id": "wpp_vienna_subway_plat_1",
+      "name": "[AC] Vienna Subway",
       "modelResource": "mtr:objects/vienna-subway-pid1.obj",
       "textureResource": "mtr:objects/vienna-subway-pid1.png",
       "color": "33FF33",
       "flipTextureV": true,
-      "rotation": [
-        0,
-        90,
-        0
-      ]
+      "translation": {
+        "x": -0.68125,
+        "y": -0.3,
+        "z": 0
+      },
+      "rotation": {
+        "x": 0,
+        "y": 90,
+        "z": 0
+      }
     },
     {
-      "id": "vienna_subway_plat_2",
-      "name": "Vienna Subway (Platform 2)",
-      "modelResource": "mtr:objects/vienna-subway-pid2.obj",
-      "textureResource": "mtr:objects/vienna-subway-pid2.png",
-      "color": "33FF33",
-      "flipTextureV": true,
-      "rotation": [
-        0,
-        90,
-        0
-      ]
+      "id": "wpp_seoul_line_2",
+      "name": "[LX] Seoul Line 2",
+      "modelResource": "mtr:objects/seoul_line_2.obj",
+      "textureResource": "mtr:objects/seoul_line_2.png",
+      "color": "EEEEEE",
+      "flipTextureV": true
     }
   ]
 }
