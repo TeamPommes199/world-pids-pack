@@ -397,6 +397,15 @@
 		},
 
 		{
+			"id": "dutch_cta_old",
+			"name": "Dutch CTA (old)",
+			"background": "jsblock:assets/dutch_cta_old/background.png",
+			"thumbnail": "jsblock:assets/dutch_cta_old/background.png",
+			"scriptFiles": ["jsblock:scripts/dutch_cta_old.js"],
+			"blacklist": ["pids_1a"]
+		},
+
+		{
 			"id": "rotterdam_metro_1a",
 			"name": "Rotterdam (Metro)",
 			"background": "jsblock:assets/rotterdam_metro/rotterdam_metro.png",
@@ -429,6 +438,15 @@
 			"background": "jsblock:assets/athen_suburban.png",
 			"thumbnail": "jsblock:assets/athen_suburban.png",
 			"scriptFiles": ["jsblock:scripts/athen_suburban.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
+		},
+
+		{
+			"id": "athen_tram",
+			"name": "Athen (Tram)",
+			"background": "jsblock:assets/athen_tram.png",
+			"thumbnail": "jsblock:assets/athen_tram.png",
+			"scriptFiles": ["jsblock:scripts/athen_tram.js"],
 			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_projector"]
 		},
 

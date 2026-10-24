@@ -5,7 +5,6 @@ Here, you can see all the planned PIDs and features.
 - Muni [v2.2.0]
 - SBB (departure board) [v2.2.0]
 - RNV (Bus/Tram) [v2.2.0]
-- Old Dutch CTA [v2.2.0]
 - Manchester
 - Thomson-East Coast Line
 - Elizabeth-Line Heathrow
