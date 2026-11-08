@@ -11,7 +11,7 @@ function render(ctx, state, pids) {
   let arrival_first = pids.arrivals().get(0);
   if (arrival_first != null) {
     let arrivalList = []
-    for (let x = 0; x < 10; x++) {
+    for (let x = 0; x < 20; x++) {
       let arrival = pids.arrivals().get(x);
       if (arrival != null) {
         let eta = arrival.arrivalTime()
@@ -25,6 +25,8 @@ function render(ctx, state, pids) {
           ) {
             addArrival = false
             arrivalList[y].secondETA = eta
+          } else if (arrivalList[y].destination == arrival.destination()) {
+            addArrival = false
           }
         }
 
@@ -37,10 +39,18 @@ function render(ctx, state, pids) {
             "secondETA": null
           })
         }
+      } else {
+        x = 20
       }
     }
 
-    arrivalList.sort((a, b) => a["routeNumber"].localeCompare(b["routeNumber"]))
+    arrivalList.sort((a, b) => {
+      const routeCompare = a["routeNumber"].localeCompare(b["routeNumber"]);
+      if (routeCompare === 0) {
+        return a["destination"].localeCompare(b["destination"]);
+      }
+      return routeCompare;
+    });
 
     Texture.create("route_circle")
         .texture("jsblock:assets/general/circle_full.png")
