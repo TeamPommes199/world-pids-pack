@@ -235,6 +235,15 @@
 		},
 
 		{
+			"id": "sbb_big",
+			"name": "SBB (big)",
+			"background": "jsblock:assets/general/black.png",
+			"thumbnail": "jsblock:assets/general/black.png",
+			"scriptFiles": ["jsblock:scripts/sbb_big.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_1a"]
+		},
+
+		{
 			"id": "vienna_u_bahn",
 			"name": "Vienna Subway ",
 			"background": "jsblock:assets/vienna_u_bahn/vienna_u_bahn.png",
