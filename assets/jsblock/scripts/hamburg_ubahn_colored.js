@@ -1,3 +1,17 @@
+function isDark(hexColor) {
+    const r = (hexColor >> 16) & 0xff;
+    const g = (hexColor >> 8) & 0xff;
+    const b = hexColor & 0xff;
+
+    const hsp = Math.sqrt(
+        0.299 * (r * r) +
+        0.587 * (g * g) +
+        0.114 * (b * b)
+    );
+
+    return hsp < 150;
+}
+
 function create(ctx, state, pids) {
 }
 
@@ -26,7 +40,7 @@ function render(ctx, state, pids) {
             .pos(11, 2.5)
             .size(22, 50)
             .scaleXY()
-            .color(0x000000)
+            .color(isDark(color) ? 0xFFFFFF : 0x000000)
             .draw(ctx);
 
         Text.create("Arrival destination")
