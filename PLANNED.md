@@ -2,8 +2,7 @@
 Here, you can see all the planned PIDs and features.
 
 ## PIDs
-- SBB (departure board) [v2.2.0]
-- RNV (Bus/Tram) [v2.2.0]
+- RNV (Bus/Tram) [v2.3.0]
 - Manchester
 - Thomson-East Coast Line
 - Elizabeth-Line Heathrow

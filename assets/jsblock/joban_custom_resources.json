@@ -28,6 +28,15 @@
 		},
 
 		{
+			"id": "mvv_bus_sign",
+			"name": "MVV (Bus)",
+			"background": "jsblock:assets/mvv_bus_sign/bottom.png",
+			"thumbnail": "jsblock:assets/mvv_bus_sign/bottom.png",
+			"scriptFiles": ["jsblock:scripts/mvv_bus_sign.js"],
+			"blacklist": ["lcd_pids", "rv_pids", "rv_pids_sil_1", "rv_pids_sil_2", "pids_1a"]
+		},
+
+		{
 			"id": "nuremberg",
 			"name": "Nuremberg S-Bahn",
 			"background": "jsblock:assets/nuremberg/nuremberg.png",
