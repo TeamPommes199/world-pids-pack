@@ -24,8 +24,21 @@ function render(ctx, state, pids) {
     }
   }
 
+  let variant = ""
+  let color = false
+  let variantMsg = customMsgs.find(item => item.includes("variant:"))
+  if (variantMsg) {
+    variant = "_" + variantMsg.replace("variant:", "").trim()
+    if (variant.includes("#")) {
+      let rawColor = variant.split("#")[1]
+      color = parseInt(rawColor, 16)
+
+      variant = variant.split("#")[0]
+    }
+  }
+
   Texture.create("Background")
-      .texture("jsblock:assets/mvv_bus_sign/bottom.png")
+      .texture(`jsblock:assets/mvv_bus_sign/bottom${variant}.png`)
       .size(sizeX, sizeY(600, 1269))
       .pos(0, 80 - sizeY(600, 369))
       .zOrder(0)
@@ -58,10 +71,22 @@ function render(ctx, state, pids) {
 
     platform_list.sort((a, b) => a["route"].localeCompare(b["route"]))
 
+    if (platform_list.length < 5) {
+      for (let i = 0; i < 5 - platform_list.length - departures / 2; i++) {
+        let rowY = 80 - sizeY(600, 369) - 12 * (i + 1 + departures / 2)
+        Texture.create("Background")
+            .texture(`jsblock:assets/mvv_bus_sign/linie${variant}.png`)
+            .pos(0, rowY)
+            .size(sizeX, sizeY(600, 150))
+            .zOrder(0)
+            .draw(ctx);
+      }
+    }
+
     for (let i = 0; i < platform_list.length; i++) {
-      let rowY = 80 - sizeY(600, 369) - 12 * (i + 1 + departures / 2)
+      let rowY = 80 - sizeY(600, 369) - 12 * (i + 1 + departures / 2 + Math.max(0, 5 - platform_list.length - departures / 2))
       Texture.create("Background")
-          .texture("jsblock:assets/mvv_bus_sign/linie.png")
+          .texture(`jsblock:assets/mvv_bus_sign/linie${variant}.png`)
           .pos(0, rowY)
           .size(sizeX, sizeY(600, 150))
           .zOrder(0)
@@ -73,7 +98,7 @@ function render(ctx, state, pids) {
           .size(16, 10)
           .scaleXY()
           .scale(0.8)
-          .color(0xffffff)
+          .color(color ? color : 0xffffff)
           .zOrder(1)
           .draw(ctx)
 
@@ -84,7 +109,7 @@ function render(ctx, state, pids) {
             .size(80, 10)
             .scaleXY()
             .scale(0.32)
-            .color(0xffffff)
+            .color(color ? color : 0xffffff)
             .zOrder(1)
             .draw(ctx)
 
@@ -94,7 +119,7 @@ function render(ctx, state, pids) {
             .size(80, 10)
             .scaleXY()
             .scale(0.32)
-            .color(0xffffff)
+            .color(color ? color : 0xffffff)
             .zOrder(1)
             .draw(ctx)
       } else {
@@ -104,65 +129,68 @@ function render(ctx, state, pids) {
             .size(65, 10)
             .scaleXY()
             .scale(0.4)
-            .color(0xffffff)
+            .color(color ? color : 0xffffff)
             .zOrder(1)
             .draw(ctx)
       }
     }
 
+    let negativRowY = Math.max(0, 5 - platform_list.length - departures / 2)
     if (pids.station().getName().includes("|")) {
+      let rowY = sizeY(600, 369) - 13 * negativRowY
       Text.create("station name 1")
-          .pos(24, 68 - sizeY(600, 369) - 12 * platform_list.length)
+          .pos(24, 68 - rowY)
           .text(String(pids.station().getName()).split("|")[0] + ",")
           .size(70, 10)
           .scaleXY()
           .scale(0.65)
-          .color(0x004ea5)
+          .color(color ? color : 0x004ea5)
           .centerAlign()
           .zOrder(1)
           .draw(ctx)
       Text.create("station name 2")
-          .pos(24, 74 - sizeY(600, 369) - 12 * platform_list.length)
+          .pos(24, 74 - rowY)
           .text(String(pids.station().getName()).split("|")[1])
           .size(70, 10)
           .scaleXY()
           .scale(0.65)
-          .color(0x004ea5)
+          .color(color ? color : 0x004ea5)
           .centerAlign()
           .zOrder(1)
           .draw(ctx)
     } else {
       Text.create("station name")
-          .pos(24, 68 - sizeY(600, 369) - 12 * (platform_list.length + departures / 2))
+          .pos(24, 68 - sizeY(600, 369) - 12 * (platform_list.length + departures / 2 + (negativRowY)))
           .text(pids.station().getName().replace("|", " "))
           .size(70, 10)
           .scaleXY()
           .scale(0.65)
-          .color(0x004ea5)
+          .color(color ? color : 0x004ea5)
           .centerAlign()
           .zOrder(1)
           .draw(ctx)
     }
   }
 
+  let negativRowY = Math.max(0, 5 - platform_list.length - departures / 2)
   Texture.create("Background")
-      .texture("jsblock:assets/mvv_bus_sign/head.png")
+      .texture(`jsblock:assets/mvv_bus_sign/head${variant}.png`)
       .size(sizeX, sizeY(600, 660))
-      .pos(0, 80 - sizeY(600, 369) - sizeY(600, 660) - 12 * (platform_list.length + departures / 2))
+      .pos(0, 80 - sizeY(600, 369) - sizeY(600, 660) - 12 * (platform_list.length + departures / 2 + (negativRowY)))
       .zOrder(0)
       .draw(ctx);
 
   if (departures != 0) {
     if (departures == 2) {
       Texture.create("Background")
-          .texture("jsblock:assets/mvv_bus_sign/display_2.png")
+          .texture(`jsblock:assets/mvv_bus_sign/display_2${variant}.png`)
           .pos(0, 80 - sizeY(600, 369) - sizeY(600, 150))
           .size(sizeX, sizeY(600, 150))
           .zOrder(0)
           .draw(ctx);
     } else {
       Texture.create("Background")
-          .texture("jsblock:assets/mvv_bus_sign/display_4.png")
+          .texture(`jsblock:assets/mvv_bus_sign/display_4${variant}.png`)
           .pos(0, 80 - sizeY(600, 369) - sizeY(600, 300))
           .size(sizeX, sizeY(600, 300))
           .zOrder(0)
