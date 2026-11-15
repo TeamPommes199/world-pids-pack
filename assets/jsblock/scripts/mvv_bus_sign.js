@@ -137,9 +137,11 @@ function render(ctx, state, pids) {
 
     let negativRowY = Math.max(0, 5 - platform_list.length - departures / 2)
     if (pids.station().getName().includes("|")) {
-      let rowY = sizeY(600, 369) - 13 * negativRowY
+      let rowY = sizeY(600, 369) + 8
+      let stationY = 68 - rowY - 12 * (platform_list.length + departures / 2 + negativRowY)
+
       Text.create("station name 1")
-          .pos(24, 68 - rowY)
+          .pos(24, stationY + 6)
           .text(String(pids.station().getName()).split("|")[0] + ",")
           .size(70, 10)
           .scaleXY()
@@ -148,8 +150,9 @@ function render(ctx, state, pids) {
           .centerAlign()
           .zOrder(1)
           .draw(ctx)
+
       Text.create("station name 2")
-          .pos(24, 74 - rowY)
+          .pos(24, stationY + 12)
           .text(String(pids.station().getName()).split("|")[1])
           .size(70, 10)
           .scaleXY()
@@ -160,7 +163,7 @@ function render(ctx, state, pids) {
           .draw(ctx)
     } else {
       Text.create("station name")
-          .pos(24, 68 - sizeY(600, 369) - 12 * (platform_list.length + departures / 2 + (negativRowY)))
+          .pos(24, 68 - sizeY(600, 369) - 12 * (platform_list.length + departures / 2 + negativRowY))
           .text(pids.station().getName().replace("|", " "))
           .size(70, 10)
           .scaleXY()
